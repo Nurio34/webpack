@@ -1,28 +1,61 @@
 
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-    mode : "development",
-    entry : {
-        bundle : path.resolve(__dirname, "./src/index.js")
+    
+    entry: "./src/index.js",
+
+    mode: "development",
+
+    devServer: {
+        static: "./dist"
     },
-    output : {
-        path : path.resolve(__dirname, "./dist"),
-        filename : "[name].js"
-    },
-    module : {
-        rules : [
+
+    module: {
+        rules: [
             {
-                test : /\.css$/,
-                use : [ "style-loader", "css-loader" ]
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                      presets: ['@babel/preset-env']
+                    }
+                  }
+            },
+            {
+                test: /\.scss$/i,
+                use: [ 
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        // options: {
+                        //     hmr: process.env.NODE_ENV === "development"
+                        // }
+                    },
+                    "css-loader", 
+                    "postcss-loader",
+                    "sass-loader" ]
             }
         ]
     },
-    plugins : [
+
+    plugins: [
+        
         new HtmlWebpackPlugin({
-            title : "Webpack by Nurio34",
-            filename : "index.html"
+            title : "Webpack try5",
+        }),
+
+        new MiniCssExtractPlugin({
+            filename: "[name].css"
         })
-    ]
+        
+    ],
+
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js"
+    }
+
 }

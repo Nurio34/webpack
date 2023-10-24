@@ -1,9 +1,11 @@
 
-import "./css/style.min.css"
+import './main.scss'
 
-const sum = (a) => {
-    console.log(a + 2);
+console.log("Hello from Webpack try6");
+
+const foo = (name)=> {
+
+    console.log(`Hello ${name}`);	
 }
 
-sum(2)
-
+foo("Nuri")
