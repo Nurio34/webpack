@@ -1,11 +1,17 @@
 
-import './main.scss'
+import generateJoke from "./generateJoke"
+import "./styles/style.css"
+import laugh from "./assets/laugh.png"
 
-console.log("Hello from Webpack try6");
 
-const foo = (name)=> {
+const laughImgEl = document.querySelector("#laughImgEl")
+    laughImgEl.style = "width: 2rem; aspect-ratio: 1"
+    laughImgEl.src = laugh
 
-    console.log(`Hello ${name}`);	
-}
+const jokeBtn = document.querySelector(".jokeBtn")
+    jokeBtn.onclick = generateJoke
 
-foo("Nuri")
+generateJoke()
+
+//! SASS LOADER DOES NOT WORK
+console.log("sass-loader does NOT work");

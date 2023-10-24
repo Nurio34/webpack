@@ -1,61 +1,70 @@
 
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-    
-    entry: "./src/index.js",
 
-    mode: "development",
+    mode : "development",
 
-    devServer: {
-        static: "./dist"
+    entry : {
+
+        bundle : path.resolve(__dirname, "./src/index.js"),
     },
 
-    module: {
-        rules: [
+    output : {
+        path : path.resolve(__dirname, "dist"),
+        filename : "[name][contenthash].js",
+        clean : true,
+        assetModuleFilename : "[name][ext]"
+    },
+
+    devServer : {
+
+        static : {
+            directory : path.resolve(__dirname, "dist")
+        },
+        port : 3000,
+        open : true,
+        hot : true,
+        compress : true,
+        historyApiFallback : true
+    },
+
+    devtool : "source-map",
+
+    module : {
+
+        rules : [
+
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                      presets: ['@babel/preset-env']
-                    }
-                  }
+                test : /\.css$/,
+                use : [ "style-loader", "css-loader"]
             },
             {
-                test: /\.scss$/i,
-                use: [ 
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        // options: {
-                        //     hmr: process.env.NODE_ENV === "development"
-                        // }
-                    },
-                    "css-loader", 
-                    "postcss-loader",
-                    "sass-loader" ]
+                test : /\.js$/,
+                exclude : /node_modules/,
+                use : {
+                    loader : "babel-loader",
+                    options : {
+                        presets : ["@babel/preset-env"]
+                    }
+                }
+            },
+            {
+                test : /\.(png|jpg|jpeg|svg|gif|jif|webp)$/i,
+                type : "asset/resource"
             }
+
         ]
     },
 
-    plugins: [
-        
+    plugins : [
+
         new HtmlWebpackPlugin({
-            title : "Webpack try5",
-        }),
-
-        new MiniCssExtractPlugin({
-            filename: "[name].css"
+            title : "Webpack Tutorial",
+            filename : "index.html",
+            template : "./src/template.html"
         })
-        
-    ],
-
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
-    }
+    ]
 
 }
