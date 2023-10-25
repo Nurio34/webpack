@@ -13,7 +13,7 @@ module.exports = {
 
     output : {
         path : path.resolve(__dirname, "dist"),
-        filename : "[name][contenthash].js",
+        filename : "[name].js",
         clean : true,
         assetModuleFilename : "[name][ext]"
     },
@@ -30,7 +30,12 @@ module.exports = {
         historyApiFallback : true
     },
 
-    devtool : "source-map",
+    devtool : "source-map", // "inline-source-map" written in docs.
+
+    // optimization : {
+    //     runTimeChunk : "single" //! throws error
+    // },
+    
 
     module : {
 
@@ -38,7 +43,20 @@ module.exports = {
 
             {
                 test : /\.css$/,
-                use : [ "style-loader", "css-loader"]
+                use : [ 
+                    "style-loader", 
+                    "css-loader",
+                    {
+                        loader : "postcss-loader",
+                        options : {
+                            postcssOptions : {
+                                plugins : [
+                                    "postcss-preset-env"
+                                ]
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test : /\.js$/,
@@ -53,8 +71,11 @@ module.exports = {
             {
                 test : /\.(png|jpg|jpeg|svg|gif|jif|webp)$/i,
                 type : "asset/resource"
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
             }
-
         ]
     },
 

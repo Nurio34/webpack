@@ -1,19 +1,18 @@
-const axios = require("axios")
 
-const generateJoke = ()=> {
+import laugh from "./assets/images/laugh.png"
+import Joke from "./joke"
 
-    const config = {
-        headers : {
-            Accept : "application/json"
-        }
-    }
-    axios.get("https://icanhazdadjoke.com/", config)
-    .then(res=>{
+const generateJoke = async() => {
 
-        const id = res.data.id
-        const jokeImgEl = document.querySelector("#jokeImgEl")
-            jokeImgEl.src = `https://icanhazdadjoke.com/j/${id}.png`
-    })
-} 
+    const laughImgEl = document.querySelector("#laughImgEl")
+    laughImgEl.style = "width: 2rem; aspect-ratio: 1"
+    laughImgEl.src = laugh
+
+    const joke = await Joke()
+    const id = joke.id
+    const jokeImgEl = document.querySelector("#jokeImgEl")
+        jokeImgEl.src = `https://icanhazdadjoke.com/j/${id}.png`
+        console.log(id);
+}
 
 export default generateJoke
