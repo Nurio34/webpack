@@ -12,4 +12,4 @@ const jokeBtn = document.querySelector(".jokeBtn")
 generateJoke()
 
 //! SASS LOADER DOES NOT WORK
-console.log("sass-loader does NOT work");
+console.log("sass-loader does NOT work")
