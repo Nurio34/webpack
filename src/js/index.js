@@ -4,7 +4,7 @@ import generateJoke from "./generateJoke"
 
 
 const jokeBtn = document.querySelector(".jokeBtn")
-    jokeBtn.onclick = generateJoke
+jokeBtn.onclick = generateJoke
 
 generateJoke()
 

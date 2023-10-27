@@ -3,40 +3,40 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-    
-    entry : {
 
-        bundle : {
-            import : "./src/js/index.js",
-            dependOn : "shared"
+    entry: {
+
+        bundle: {
+            import: "./src/js/index.js",
+            dependOn: "shared"
         },
-        joke : {
-            import : "./src/js/joke.js",
-            dependOn : "shared"
+        joke: {
+            import: "./src/js/joke.js",
+            dependOn: "shared"
         },
-        generateJoke : {
-            import : "./src/js/generateJoke.js",
-            dependOn : "shared"
+        generateJoke: {
+            import: "./src/js/generateJoke.js",
+            dependOn: "shared"
         },
-        shared : "lodash"
+        shared: "lodash"
     },
 
-    module : {
+    module: {
 
-        rules : [
+        rules: [
 
             {
-                test : /\.js$/,
-                exclude : /node_modules/,
-                use : {
-                    loader : "babel-loader",
-                    options : {
-                        presets : [
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
                             [
                                 "@babel/preset-env",
                                 {
-                                    targets : {
-                                        node : "current"
+                                    targets: {
+                                        node: "current"
                                     }
                                 }
                             ]
@@ -46,31 +46,31 @@ module.exports = {
             },
 
             {
-                test : /\.(png|jpg|jpeg|svg|gif|jif|webp)$/i,
-                type : "asset/resource"
+                test: /\.(png|jpg|jpeg|svg|gif|jif|webp)$/i,
+                type: "asset/resource"
             }
         ]
     },
 
-    plugins : [
+    plugins: [
 
         new HtmlWebpackPlugin({
-            title : "Webpack Tutorial",
-            filename : "index.html",
-            template : "./src/template.html"
-            }
+            title: "Webpack Tutorial",
+            filename: "index.html",
+            template: "./src/template.html"
+        }
         )
     ],
 
-    output : {
-        path : path.resolve(__dirname, "dist"),
-        filename : "[name].js",
-        clean : true,
-        assetModuleFilename : "[name][ext]"
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "[name].js",
+        clean: true,
+        assetModuleFilename: "[name][ext]"
     },
 
-    optimization : {
-        runtimeChunk : "single",
+    optimization: {
+        runtimeChunk: "single",
         splitChunks: {
             chunks: 'all',
         },
