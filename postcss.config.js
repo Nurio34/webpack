@@ -10,8 +10,8 @@ if (process.env.NODE_ENV === 'production') {
               'nesting-rules': true
             },
             env : "development",
+            browsers : "last 4 versions",
         },
-        autoprefixer: {},
         cssnano: {},
         'rucksack-css': {},
       },
@@ -28,8 +28,8 @@ if (process.env.NODE_ENV === 'production') {
               'nesting-rules': true
             },
             env : "development",
+            browsers : "last 4 versions",
         },
-        autoprefixer: {},
         'rucksack-css': {},
       },
     };
@@ -51,3 +51,24 @@ if (process.env.NODE_ENV === 'production') {
 // //       },
 // //     };
 // //   }
+postcssOptions : {
+  plugins : [
+      [
+          "postcss-preset-env",
+          {
+              stage: 3,
+              features: {
+                'nesting-rules': true
+              },
+              env : "production",
+              browsers : "last 4 versions",
+          }
+      ],
+      [
+          "cssnano"
+      ],
+      [
+          "rucksack-css"
+      ]
+  ]
+}

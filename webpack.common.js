@@ -49,7 +49,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Webpack Tutorial",
             filename: "index.html",
-            template: "./src/template.html"
+            template: "./src/template.html",
+            inject : true
         })
     ],
 

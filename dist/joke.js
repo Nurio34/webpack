@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebpack=self.webpackChunkwebpack||[]).push([[752],{593:function(t,c,a){const n=a(218);c.Z=async()=>{let t=[];const c={headers:{Accept:"application/json"}};try{t=(await n.get("https://icanhazdadjoke.com/",c)).data}catch(t){}return t}}},function(t){t.O(0,[218],(function(){return 593,t(t.s=593)})),t.O()}]);
