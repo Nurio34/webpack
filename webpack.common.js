@@ -28,21 +28,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            [
-                                "@babel/preset-env",
-                                {
-                                    targets: {
-                                        node: "current"
-                                    }
-                                }
-                            ]
-                        ]
-                    }
-                }
+                loader: "babel-loader"
             },
 
             {
@@ -52,14 +38,19 @@ module.exports = {
         ]
     },
 
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
+
     plugins: [
 
         new HtmlWebpackPlugin({
             title: "Webpack Tutorial",
             filename: "index.html",
             template: "./src/template.html"
-        }
-        )
+        })
     ],
 
     output: {
@@ -69,10 +60,5 @@ module.exports = {
         assetModuleFilename: "[name][ext]"
     },
 
-    optimization: {
-        runtimeChunk: "single",
-        splitChunks: {
-            chunks: 'all',
-        },
-    }
+    
 }

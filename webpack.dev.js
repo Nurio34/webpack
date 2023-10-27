@@ -35,25 +35,6 @@ module.exports = merge(common,{
                         loader : "postcss-loader",
                         options : {
                             sourceMap : true,
-
-                            postcssOptions : {
-                                plugins : [
-                                    [
-                                        "postcss-preset-env",
-                                        {
-                                            stage: 3,
-                                            features: {
-                                              'nesting-rules': true
-                                            },
-                                            env : "development",
-                                            browsers : "last 4 versions",
-                                        }
-                                    ],
-                                    [
-                                        "rucksack-css"
-                                    ]
-                                ]
-                            }
                         }
                     }
                 ]

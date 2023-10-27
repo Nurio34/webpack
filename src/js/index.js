@@ -8,5 +8,6 @@ jokeBtn.onclick = generateJoke
 
 generateJoke()
 
+console.log("heyy");
 
 

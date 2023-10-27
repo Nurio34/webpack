@@ -6,7 +6,7 @@
 
 body {
     min-height: 100vh;
-    background-color: black;
+    background-color: yellow;
     color: white;
 
     .container {
@@ -29,7 +29,6 @@ body {
             border: none;
             padding: 0.8rem 3.2rem;
             border-radius: 0.2rem;
-            font-family: "MyFont";
             font-size: responsive;
         }
 
