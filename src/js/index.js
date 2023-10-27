@@ -1,9 +1,6 @@
 
-import "./assets/styles/style.css"
+import "../assets/styles/style.css"
 import generateJoke from "./generateJoke"
-
-
-
 
 
 const jokeBtn = document.querySelector(".jokeBtn")
@@ -11,5 +8,5 @@ const jokeBtn = document.querySelector(".jokeBtn")
 
 generateJoke()
 
-//! SASS LOADER DOES NOT WORK
-console.log("sass-loader does NOT work")
+
+

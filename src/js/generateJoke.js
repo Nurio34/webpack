@@ -1,5 +1,5 @@
 
-import laugh from "./assets/images/laugh.png"
+import laugh from "../assets/images/laugh.png"
 import Joke from "./joke"
 
 const generateJoke = async() => {

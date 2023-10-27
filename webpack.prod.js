@@ -7,6 +7,8 @@ module.exports = merge(common,{
 
     mode : "production",
 
+    devtool : "source-map",
+
     module : {
 
         rules : [
@@ -15,33 +17,24 @@ module.exports = merge(common,{
                 test : /\.css$/,
                 use : [ 
                     {
-                        loader : MiniCssExtractPlugin.loader,
-                        options : {
-                            // hmr : process.env.NODE_ENV === "development"
-                        }
+                        loader : MiniCssExtractPlugin.loader
                     },
                     "css-loader",
                     {
                         loader : "postcss-loader",
-                        //** POSTCSS OPTIONS BURAYA */
                         options : {
+
                             postcssOptions : {
-                                //** POSTCSS PLUGIN'LER BURAYA */
                                 plugins : [
                                     [
                                         "postcss-preset-env",
                                         {
-                                            //** POSTCSS-PRESET-ENV OPTIONS BURAYA */
                                             stage: 3,
                                             features: {
                                               'nesting-rules': true
                                             },
-                                            env : "development",
+                                            env : "production",
                                             browsers : "last 4 versions",
-                                            //** EXTRA AUTOPREFIXER AYARI YAPCAKSAN DA BURAYA */
-                                            // // autoprefixer : {
-                                            // //     grid : true
-                                            // // }
                                         }
                                     ],
                                     [
