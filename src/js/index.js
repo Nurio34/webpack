@@ -1,13 +1,4 @@
+import "../assets/styles/style.css";
+import generateJoke from "./generateJoke";
 
-import "../assets/styles/style.css"
-import generateJoke from "./generateJoke"
-
-
-const jokeBtn = document.querySelector(".jokeBtn")
-jokeBtn.onclick = generateJoke
-
-generateJoke()
-
-console.log("hw1eyy2");
-
-
+generateJoke();

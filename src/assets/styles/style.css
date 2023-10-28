@@ -1,43 +1,15 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-    min-height: 100vh;
-    background-color: black;
-    color: white;
-
-    .container {
-        --w: calc(1750 / 16);
-        width: min(calc(100vw - 2rem), 35rem);
-        background-color: white;
-        color: black;
-        padding: 1rem;
-        text-align: center;
-        border-radius: 0.8rem;
-
-        #jokeImgEl {
-            box-shadow: 0 0 5px 1px black;
-            border-radius: 0.8rem;
-        }
-
-        .jokeBtn {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 0.8rem 3.2rem;
-            border-radius: 0.2rem;
-            font-size: responsive;
-        }
-
+@layer base {
+    body {
+        @apply bg-green-500;
     }
-}
 
-.grid {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    gap: 0.7rem;
+    @media (min-width: 750px) {
+        body {
+            @apply bg-red-500;
+        }
+    }
 }
