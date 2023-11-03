@@ -10,14 +10,6 @@ module.exports = {
             import: "./src/js/index.js",
             dependOn: "shared"
         },
-        joke: {
-            import: "./src/js/joke.js",
-            dependOn: "shared"
-        },
-        generateJoke: {
-            import: "./src/js/generateJoke.js",
-            dependOn: "shared"
-        },
         shared: "lodash"
     },
 
