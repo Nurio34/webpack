@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
     body {
         @apply bg-green-500;
     }
@@ -12,4 +12,4 @@
             @apply bg-red-500;
         }
     }
-}
+} */
