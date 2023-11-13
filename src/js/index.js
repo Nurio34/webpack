@@ -1,56 +1,46 @@
 
 import styles from "../assets/styles/style.css"
-import carRace from "./carRace/main"
+import carrace from "./carrace/main"
+import CwParseInt from "./Code-Wars/4-parseInt"
 
-const test1 = "two hundred fifty one thousand forty two"
-const test10 = "seven hundred eighty-three thousand nine hundred and nineteen" 
-const test11 = "seven hundred forty three million seven hundred eighty-three thousand nine hundred and nineteen" 
+const test1 = [104976, 220900, 34969, 59049, 150544, 12321, 48841, 15876, 28561, 96100, 23104, 93025, 126025, 40401, 5776, 16641, 89401, 35344, 52900, 207936, 178929, 249001, 234256, 25600, 207936, 72900, 173056, 66049, 242064, 199809, 230400, 102400, 11664, 27225, 73984, 6724, 96100, 35721, 207025, 5476, 9025, 63001, 6084, 11881, 232324, 161604, 33489, 35721, 50176, 65025, 227529, 60025, 91204, 57121, 20164, 6889, 234256, 188356, 15876, 3136, 73441, 25921]
 
 
-function pasreInt(string) {
-	
-    const map = {
-        zero: 0,
-        one: 1,
-        two: 2,
-        three: 3,
-        four: 4,
-        five: 5,
-        six: 6,
-        seven: 7,
-        eight: 8,
-        nine: 9,
-        ten: 10,
-        eleven: 11,
-        twelve: 12,
-        thirteen: 13,
-        fourteen: 14,
-        fifteen: 15,
-        sixteen: 16,
-        seventeen: 17,
-        eighteen: 18,
-        nineteen: 19,
-        twenty: 20,
-        thirty : 30,
-        forty : 40,
-        fifty : 50,
-        sixty:60,
-        seventy : 70,
-        eighty : 80,
-        ninety : 90,
-        hundred : 100,
-        thousand : 1000,
-        million : 1000000
-      };
 
-      const arr = string.split(" ").join("-").split("-")
-      const ind = arr.findIndex(item => item === "and")
-      if(ind > -1) arr.splice(ind,1)
+function solution(numbers) {
+ 
+  let Arr = numbers
+  let total = 0
 
-      return arr.map(str=> {
+  rec()
 
-        return map[str]
-      })
+  function rec() {
+    let copyArr = [...Arr].sort((a,b)=> b-a)
+    let max = copyArr[0]
+    let substractFrom = copyArr[1]
+
+    if(true) {
+      let substractResult = max - substractFrom
+
+        Arr = Arr.map(num => {
+          if(num == max ) return substractResult
+          return num
+        })
+        const sum = Arr.reduce((res,num)=>res+num,0)
+        console.log(Arr,sum);
+      rec()
+      
+    }
+    else {
+      total = Arr.reduce((res,num)=>res+num,0)
+    }
+  }
+
+
+
+  return total
 }
 
-console.log(pasreInt(test1));
+
+
+console.log(solution(test1));
