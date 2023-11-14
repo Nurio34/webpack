@@ -1,26 +1,29 @@
 
 import listeners from "./UI-Listeners"
+import data from "./data"
 
 export default function main() {
+
     const mainEl = document.createElement("main")
-        mainEl.innerHTML = formHTML()
 
-    const formEl = mainEl.querySelector("form")
+    const formEl = document.createElement("form")
+        formEl.className = "flex flex-wrap gap-4 justify-between m-4 p-4 border-2 border-purple-400 rounded-lg"
+        mainEl.appendChild(formEl)
         formEl.innerHTML = shiftSelectHTML() + daySelectHTML() + categorySelectHTML() +
-                                                todoInputHTML()
+                                                todoInputHTML() +
+                                            displayFilterSelectHTML()
 
-    document.body.appendChild(mainEl)
+    const sectionEl = document.createElement("section")  
+        sectionEl.className = "w-full h-16 bg-red-500"  
+        mainEl.appendChild(sectionEl)   
 
-    listeners(formEl)
+
+        document.body.appendChild(mainEl)
+        listeners(formEl)
+
+            console.log(data());
 }
 
-function formHTML() {
-    return`
-    <form class="flex flex-wrap gap-4 justify-between m-4 p-4 border-2 border-purple-400 rounded-lg">
-
-    </form>
-    `
-}
 
 function shiftSelectHTML() {
     return `
@@ -67,7 +70,22 @@ function categorySelectHTML() {
 function todoInputHTML() {
     return`
         <input type="text" name="Todo" id="todoInput"
-            class="border-2 border-black grow px-1"
+            class="border-2 border-black grow px-1 basis-full"
         >
     `
+}
+
+function displayFilterSelectHTML() {
+    return `
+    <select name="DisplayFilter" id="displayFilterSelect" class=" border-2 border-black m-auto">
+        <option value="" selected disabled>Display Filter</option>
+        <option value="dayShift">Day</option>
+        <option value="midShift">Mid</option>
+        <option value="nightShift">Night</option>
+    </select>
+    `
+}
+
+function dayPart(sectionEl) {
+
 }

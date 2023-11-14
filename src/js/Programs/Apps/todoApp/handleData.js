@@ -11,7 +11,7 @@ export default function handleData(shift,day,category,todo) {
         }
     })
 
-    console.log(todoList);
-
-    // console.log({shift,day,category,todo});
+    localStorage.setItem("todo",JSON.stringify(todoList))
+        console.log(todoList);
+    return todoList
 }
