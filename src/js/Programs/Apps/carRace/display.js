@@ -1,5 +1,5 @@
 
-import images from "../../assets/images/pic.png"
+import images from "../../../../assets/images/pic.png"
 
 function display(people) {
 
