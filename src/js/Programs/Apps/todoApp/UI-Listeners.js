@@ -6,8 +6,13 @@ export default function listeners(formEl) {
     let shift = ""
     let day = ""
     let category = ""
-    let filter = ""
     let todo = ""
+    let date = ""
+    let hour = ""
+    let shiftFilter = ""
+    let dayFilter = ""
+    let categoryFilter = ""
+
         
     const selectEls = formEl.querySelectorAll("select")
 
@@ -27,8 +32,16 @@ export default function listeners(formEl) {
                     category = e.target.value
                     break;
 
-                case "DisplayFilter":
-                    filter = e.target.value
+                case "ShiftFilter":
+                    shiftFilter = e.target.value
+                    break;
+
+                case "DayFilter":
+                    dayFilter = e.target.value
+                    break;
+
+                case "CategoryFilter":
+                    categoryFilter = e.target.value
                     break;
             }
         }))
@@ -45,7 +58,7 @@ export default function listeners(formEl) {
 
                     if(shift && day && category && todo) {
 
-                        handleData(shift,day,category,todo)
+                        handleData(shift,day,category,todo,date,hour)
                     } 
                     
                     break;

@@ -4,64 +4,232 @@ const dataSchema = {
         {
             day : "monday",
             todos : {
-                work : ["DayShift-Monday-Work"],
-                love : ["DayShift-Monday-Love"],
-                other : ["DayShift-Monday-Other"],
-                lesson : ["DayShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "tuesday",
             todos : {
-                work : ["DayShift-Tuesday-Work"],
-                love : ["DayShift-Tuesday-Love"],
-                other : ["DayShift-Tuesday-Other"],
-                lesson : ["DayShift-Tuesday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Tuesday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "wednesday",
             todos : {
-                work : ["DayShift-Wednesday-Work"],
-                love : ["DayShift-Wednesday-Love"],
-                other : ["DayShift-Wednesday-Other"],
-                lesson : ["DayShift-Wednesday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Wednesday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "thursday",
             todos : {
-                work : ["DayShift-Tuesday-Work"],
-                love : ["DayShift-Tuesday-Love"],
-                other : ["DayShift-Tuesday-Other"],
-                lesson : ["DayShift-Tuesday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Tuesday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "friday",
             todos : {
-                work : ["DayShift-Friday-Work"],
-                love : ["DayShift-Friday-Love"],
-                other : ["DayShift-Friday-Other"],
-                lesson : ["DayShift-Friday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Friday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "saturday",
             todos : {
-                work : ["DayShift-Saturday-Work"],
-                love : ["DayShift-Saturday-Love"],
-                other : ["DayShift-Saturday-Other"],
-                lesson : ["DayShift-Saturday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Saturday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "sunday",
             todos : {
-                work : ["DayShift-Sunday-Work"],
-                love : ["DayShift-Sunday-Love"],
-                other : ["DayShift-Sunday-Other"],
-                lesson : ["DayShift-Sunday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Sunday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         }
     ],
@@ -69,64 +237,232 @@ const dataSchema = {
         {
             day : "monday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "tuesday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "wednesday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "thursday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "friday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "saturday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "sunday",
             todos : {
-                work : ["MidShift-Monday-Work"],
-                love : ["MidShift-Monday-Love"],
-                other : ["MidShift-Monday-Other"],
-                lesson : ["MidShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "MidShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         }
     ],
@@ -134,64 +470,232 @@ const dataSchema = {
         {
             day : "monday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "tuesday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "wednesday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "thursday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "friday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "saturday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         },
         {
             day : "sunday",
             todos : {
-                work : ["NightShift-Monday-Work"],
-                love : ["NightShift-Monday-Love"],
-                other : ["NightShift-Monday-Other"],
-                lesson : ["NightShift-Monday-Lesson"]
+                work : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "NightShift Monday Work"
+                    }
+                ],
+                love : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        date : "12.12.2023",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
             }
         }
     ]
