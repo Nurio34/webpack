@@ -17,7 +17,6 @@ export default function listeners(formEl) {
 
                 case "Shift":
                     shift = e.target.value
-                    console.log(shift);
                     break;
 
                 case "Day":
@@ -44,7 +43,11 @@ export default function listeners(formEl) {
                     e.preventDefault()
                     todo = e.target.value
 
-                    if(shift && day && category && todo) handleData(shift,day,category,todo)
+                    if(shift && day && category && todo) {
+
+                        handleData(shift,day,category,todo)
+                    } 
+                    
                     break;
             }
         })

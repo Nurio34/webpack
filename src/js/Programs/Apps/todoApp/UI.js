@@ -14,13 +14,12 @@ export default function main() {
                                             displayFilterSelectHTML()
 
     const sectionEl = document.createElement("section")  
-        sectionEl.className = "w-full h-16 bg-red-500"  
+        sectionEl.className = "w-full bg-pink-300"  
         mainEl.appendChild(sectionEl)   
-
+        // sectionEl.innerHTML = dayPart()
 
         document.body.appendChild(mainEl)
         listeners(formEl)
-
             console.log(data());
 }
 
@@ -86,6 +85,37 @@ function displayFilterSelectHTML() {
     `
 }
 
-function dayPart(sectionEl) {
+export function allTodosHTML() {
 
+    return Object.entries(data()).map(([shift,daysArr],ind)=>{
+
+        return `
+            <h2 class="text-lg text-center uppercase">${shift}</h2>
+            ${
+                daysArr.map(dayObj=>{
+
+                    return `
+                        <h3 class="text-center text-md text-red-600 uppercase">${dayObj.day}</h3>
+                        ${
+                            Object.keys(dayObj.todos).map(category=>{
+                                // console.log(dayObj.todos[category])
+                                return `
+                                    <h4 class="text-center text-base text-purple-600 uppercase">${category}</h4>
+                                    <ul>
+                                    ${
+                                        dayObj.todos[category].map(todo=>{
+                                            return `
+                                                <li>${todo}</li>
+                                             `
+                                        }).join("")
+                                    }                                  
+                                </ul>
+                                ` 
+                            }).join("")
+                        }
+                    `
+                }).join("")
+            }
+        `
+    }).join("")
 }
