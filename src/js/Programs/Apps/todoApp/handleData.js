@@ -2,7 +2,7 @@
 import data from "./data"
 import { allTodosHTML, allTodosStyle } from "./UI"
 
-export default function handleData(shift,day,category,todo,date,hour) {
+export default function handleData(shift,day,category,todo,date,hour,addDate) {
 
     //** CERATE TODO LİST VARIABLE */
     const todoList = data() || dataSchema
@@ -14,7 +14,8 @@ export default function handleData(shift,day,category,todo,date,hour) {
                 {
                     date : date,
                     hour : hour,
-                    todo : todo
+                    todo : todo,
+                    addDate : addDate
                 }
             )
         }
@@ -27,4 +28,5 @@ export default function handleData(shift,day,category,todo,date,hour) {
     const sectionEl = document.querySelector("main section")
         sectionEl.innerHTML = allTodosHTML(todoList)
         allTodosStyle(sectionEl)
+            console.log(todoList);
 }
