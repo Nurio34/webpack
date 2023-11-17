@@ -44,6 +44,9 @@ module.exports = {
             colors: {
                 myClr: "#f6ff00",
             },
+            boxShadow: {
+                "cus" : "0 0 15px 3px black"
+            }
         },
     },
     plugins: [],

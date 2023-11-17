@@ -6,6 +6,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -13,6 +14,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -20,6 +22,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -27,6 +30,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -39,6 +43,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Tuesday Work"
@@ -46,6 +51,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -53,6 +59,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -60,6 +67,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -72,6 +80,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Wednesday Work"
@@ -79,6 +88,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -86,6 +96,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -93,6 +104,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -105,6 +117,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Tuesday Work"
@@ -112,6 +125,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -119,6 +133,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -126,6 +141,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -138,6 +154,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Friday Work"
@@ -145,6 +162,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -152,6 +170,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -159,6 +178,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -171,6 +191,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Saturday Work"
@@ -178,6 +199,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -185,6 +207,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -192,6 +215,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -204,6 +228,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Sunday Work"
@@ -211,6 +236,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -218,6 +244,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -225,6 +252,44 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
+            }
+        },
+        {
+            day : "noday",
+            todos : {
+                work : [
+                    {
+                        id : "17289637916293825",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Sunday Work"
+                    }
+                ],
+                love : [
+                    {
+                        id : "17289637916293826",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        id : "17289637916293827",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        id : "17289637916293828",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -239,6 +304,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -246,6 +312,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -253,6 +320,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -260,6 +328,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -272,6 +341,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -279,6 +349,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -286,6 +357,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -293,6 +365,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -305,6 +378,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -312,6 +386,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -319,6 +394,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -326,6 +402,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -338,6 +415,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -345,6 +423,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -352,6 +431,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -359,6 +439,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -371,6 +452,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -378,6 +460,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -385,6 +468,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -392,6 +476,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -404,6 +489,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -411,6 +497,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -418,6 +505,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -425,6 +513,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -437,6 +526,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "MidShift Monday Work"
@@ -444,6 +534,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -451,6 +542,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -458,6 +550,44 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
+            }
+        },
+        {
+            day : "noday",
+            todos : {
+                work : [
+                    {
+                        id : "17289637916293825",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Sunday Work"
+                    }
+                ],
+                love : [
+                    {
+                        id : "17289637916293826",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        id : "17289637916293827",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        id : "17289637916293828",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -472,6 +602,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -479,6 +610,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -486,6 +618,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -493,6 +626,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -505,6 +639,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -512,6 +647,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -519,6 +655,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -526,6 +663,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -538,6 +676,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -545,6 +684,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -552,6 +692,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -559,6 +700,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -571,6 +713,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -578,6 +721,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -585,6 +729,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -592,6 +737,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -604,6 +750,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -611,6 +758,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -618,6 +766,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -625,6 +774,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -637,6 +787,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -644,6 +795,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -651,6 +803,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -658,6 +811,7 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"
@@ -670,6 +824,7 @@ const dataSchema = {
             todos : {
                 work : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "NightShift Monday Work"
@@ -677,6 +832,7 @@ const dataSchema = {
                 ],
                 love : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Love"
@@ -684,6 +840,7 @@ const dataSchema = {
                 ],
                 other : [
                     {
+                        id : "172896379162938",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Other"
@@ -691,6 +848,44 @@ const dataSchema = {
                 ],
                 lesson : [
                     {
+                        id : "172896379162938",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Work"
+                    }
+                ]
+            }
+        },
+        {
+            day : "noday",
+            todos : {
+                work : [
+                    {
+                        id : "17289637916293825",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Sunday Work"
+                    }
+                ],
+                love : [
+                    {
+                        id : "17289637916293826",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Love"
+                    }
+                ],
+                other : [
+                    {
+                        id : "17289637916293827",
+                        date : "12.12.23",
+                        hour : "01:05",
+                        todo : "DayShift Monday Other"
+                    }
+                ],
+                lesson : [
+                    {
+                        id : "17289637916293828",
                         date : "12.12.23",
                         hour : "01:05",
                         todo : "DayShift Monday Work"

@@ -1,5 +1,5 @@
 
-import listeners from "./UI-Listeners"
+import {listeners,editButtonsListeneres} from "./UI-Listeners"
 import data from "./data"
 
 export default function main() {
@@ -15,19 +15,22 @@ export default function main() {
         mainEl.appendChild(formEl)
         formEl.innerHTML =  shiftSelectHTML() + daySelectHTML() + categorySelectHTML() +
                             dateInputHTML() + timeInputHTML() + todoInputHTML() +
-                                        shiftFilterSelectHTML()         
+                                        shiftFilterSelectHTML()
 
     //** CREATE SECTION ELEMENT AND APPEND IT TO MAIN ELEMENT*/
     const sectionEl = document.createElement("section")  
         // sectionEl.className = "w-full bg-pink-300"  
         mainEl.appendChild(sectionEl)   
-        sectionEl.innerHTML = allTodosHTML(data())
+        sectionEl.innerHTML =            allTodosHTML(data()) +
+                            editModal()   
+
         allTodosStyle(sectionEl)
 
             listeners()
+            editButtonsListeneres()
 
 
-            // console.log(data());
+            console.log(data());
 }
 
 function shiftSelectHTML() {
@@ -51,13 +54,14 @@ function daySelectHTML() {
                 col-start-5 col-span-3 "
             >
                 <option value="Day" selected disabled>Day</option>
-                <option value=monday>Monday</option>
-                <option value=tuesday>Tuesday</option>
-                <option value=wednesday>Wednesday</option>
-                <option value=thursday>Thursday</option>
-                <option value=friday>Friday</option>
-                <option value=saturday>Saturday</option>
-                <option value=sunday>Sunday</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+                <option value="no day">No Day</option>
             </select>
     `
 }
@@ -102,7 +106,7 @@ function todoInputHTML() {
                 col-start-4 col-span-full
         ">
             <input type="text" name="Todo" id="todoInput" class=" col-span-10 px-1 grow border-r-2 border-black">
-            <i class="fa-regular fa-rectangle-list px-2 col-span-2"></i>
+            <i id="submitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2"></i>
         </div>
         
     `
@@ -141,8 +145,8 @@ export function allTodosHTML(data) {
 
                                 return `
                                     <div id=${category}>
-                                    <h4 class="text-center text-base text-purple-600 uppercase">${category}</h4>
-                                    <ul>
+                                    <h4 class="text-center text-base text-purple-600 uppercase ">${category}</h4>
+                                    <ul class=" border-b-4 border-black">
                                         ${
                                             dayObj.todos[category].map(todo=>{
 
@@ -158,11 +162,11 @@ export function allTodosHTML(data) {
                                                         
 
                                                         <div class="row-start-3 col-span-2 flex justify-center gap-x-4">
-                                                            <button data-type=editBtn data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                            <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                 class="border-2 border-black px-1 bg-green-400">Edit</button>
-                                                            <button data-type=complateBtn data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                            <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                 class="border-2 border-black px-1 bg-green-400">Complate</button>
-                                                            <button data-type=deleteBtn data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                            <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                 class="border-2  border-black px-1 bg-green-400">Delete</button>
                                                         </div>
                                                         
@@ -205,6 +209,7 @@ export function allTodosStyle(sectionEl){
                 default:
                     break;
             }
+
             const categoryDivEls = shiftDivEl.querySelectorAll("div")
                 categoryDivEls.forEach(el=>{
 
@@ -292,4 +297,73 @@ export function partlyTodosHTML(shiftFilter) {
             </div>
         `
     }).join("")
+}
+
+export function editModal() {
+
+    return `
+        <div id="editModal" class=" bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                                         w-10/12 px-4 py-8 shadow-cus rounded-lg
+                                         grid grid-cols-12 gap-y-4 
+                                         -z-50 invisible                                
+        ">
+
+            <select name="ModalShift" id="modalShiftSelect" 
+                class=" border-2 border-black
+                    col-start-1 col-span-3 "
+            >
+                <option value="shift" selected disabled>Shift</option>
+                <option value="dayShift">Day</option>
+                <option value="midShift">Mid</option>
+                <option value="nightShift">Night</option>
+            </select>
+
+            <select name="ModalDay" id="modalDaySelect"
+                class=" border-2 border-black
+                    col-start-5 col-span-3 "
+            >
+                <option value="Day" selected disabled>Day</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+                <option value="noday">No Day</option>
+            </select>
+
+            <select name="ModalCategory" id="modalCategorySelect"
+                class=" border-2 border-black
+                    col-start-9 col-span-full"
+            >
+                <option value="Category" selected disabled>Category</option>
+                <option value="work">Work</option>
+                <option value="lesson">Lesson</option>
+                <option value="love">Love</option>
+                <option value="other">Other</option>
+            </select>
+
+            <input type="date" name="ModalDate" id="modalDateInput" data-id="time"
+                class="border-2 border-black
+                    col-start-1 col-span-5
+            ">
+
+            <input type="time" name="ModalTime" id="modalTimeInput" data-id="time"  
+                class="border-2 border-black
+                    col-start-8 col-span-5
+            "
+            >
+
+            <div class="border-2 border-black grid grid-cols-12 items-center
+                col-start-1 col-span-full
+            ">
+                
+                <textarea name="ModalTodo" id="modalTodoTextarea" rows="3"
+                    class=" col-span-10 px-1 grow border-r-2 border-black"
+                ></textarea>
+                <i id="ModalSubmitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2"></i>
+            </div>
+        </div>
+    `
 }
