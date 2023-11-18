@@ -6,34 +6,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "1",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Monday Work",
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "2",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Monday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "3",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Monday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "4",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Monday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -43,34 +51,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "5",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Tuesday Work"
+                        todo : "DayShift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "6",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Tuesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "7",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Tuesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "8",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -80,34 +96,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "9",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Wednesday Work"
+                        todo : "DayShift Wednesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "10",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Wednesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "11",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Wednesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "12",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Wednesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -117,34 +141,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "13",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Tuesday Work"
+                        todo : "DayShift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "14",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Tuesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "15",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Tuesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "16",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -154,34 +186,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "17",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Friday Work"
+                        todo : "DayShift Friday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "18",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Friday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "19",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Friday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "20",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Friday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -191,34 +231,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "21",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Saturday Work"
+                        todo : "DayShift Saturday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "22",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Saturday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "23",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Saturday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "24",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Saturday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -228,34 +276,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "25",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Sunday Work"
+                        todo : "DayShift Sunday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "26",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Sunday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "27",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Sunday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "28",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Sunday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -265,34 +321,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "17289637916293825",
+                        id : "29",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Sunday Work"
+                        todo : "DayShift Noday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "17289637916293826",
+                        id : "30",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "DayShift Noday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "17289637916293827",
+                        id : "31",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "DayShift Noday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "17289637916293828",
+                        id : "32",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "DayShift Noday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -304,34 +368,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "33",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Monday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "34",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Monday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "35",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Monday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "36",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Monday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -341,34 +413,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "37",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "38",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Tuesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "39",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Tuesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "40",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -378,34 +458,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "41",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Wednesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "42",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Wednesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "43",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Wednesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "44",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Wednesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -415,34 +503,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "45",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "46",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Tuesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "47",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Tuesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "48",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -452,34 +548,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "49",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Friday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "50",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Friday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "51",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Friday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "52",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Friday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -489,34 +593,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "53",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Saturday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "54",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Saturday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "55",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Saturday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "56",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Saturday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -526,34 +638,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "57",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "MidShift Monday Work"
+                        todo : "Midshift Sunday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "58",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Sunday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "59",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Sunday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "60",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Sunday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -563,34 +683,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "17289637916293825",
+                        id : "61",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Sunday Work"
+                        todo : "Midshift Noday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "17289637916293826",
+                        id : "62",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Midshift Noday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "17289637916293827",
+                        id : "63",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Midshift Noday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "17289637916293828",
+                        id : "64",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Midshift Noday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -602,34 +730,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "65",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Monday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "66",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Monday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "67",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Monday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "68",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Monday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -639,34 +775,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "69",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "70",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Tuesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "71",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Tuesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "72",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -676,34 +820,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "73",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Wednesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "74",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Wednesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "75",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Wednesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "76",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Wednesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -713,34 +865,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "77",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "78",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Tuesday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "79",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Tuesday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "80",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Tuesday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -750,34 +910,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "81",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Friday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "82",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Friday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "83",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Friday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "84",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Friday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -787,34 +955,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "85",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Saturday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "86",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Saturday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "87",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Saturday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "88",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Saturday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -824,34 +1000,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "172896379162938",
+                        id : "89",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "NightShift Monday Work"
+                        todo : "Nightshift Sunday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "172896379162938",
+                        id : "90",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Sunday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "172896379162938",
+                        id : "91",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Sunday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "172896379162938",
+                        id : "92",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Sunday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }
@@ -861,34 +1045,42 @@ const dataSchema = {
             todos : {
                 work : [
                     {
-                        id : "17289637916293825",
+                        id : "93",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Sunday Work"
+                        todo : "Nightshift Noday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 love : [
                     {
-                        id : "17289637916293826",
+                        id : "94",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Love"
+                        todo : "Nightshift Noday Love",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 other : [
                     {
-                        id : "17289637916293827",
+                        id : "95",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Other"
+                        todo : "Nightshift Noday Other",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ],
                 lesson : [
                     {
-                        id : "17289637916293828",
+                        id : "96",
                         date : "12.12.23",
                         hour : "01:05",
-                        todo : "DayShift Monday Work"
+                        todo : "Nightshift Noday Work",                        
+                        addDate : new Date().toDateString(),
+                        updateDate : "",
                     }
                 ]
             }

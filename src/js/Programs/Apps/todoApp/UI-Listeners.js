@@ -11,20 +11,22 @@ let todo = ""
 let date = ""
 let time = ""
 let shiftFilter = ""
-let addDate = "" //todo BUNU DAHA İŞLEVSEL HALE GİTRMEDİM
+
+const days = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"]
+let addDate = "" 
+let addTime = ""
 let updateDate = ""
-let complateDate = ""
-let editingMode = false
+let complateTime = ""
+let editingMode = ""
 
 export function listeners() {
     const formEl = document.querySelector("form")
     const sectionEl = document.querySelector("section")
 
-    const days = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"]
 
     const selectEls = formEl.querySelectorAll("select")
 
-        selectEls.forEach(el=> el.addEventListener("change",e=> {
+        selectEls.forEach(el=> el.addEventListener("click",e=> {
 
             switch (e.target.name) {
 
@@ -67,12 +69,10 @@ export function listeners() {
                     console.log(day);
                     date = date.split("-")
                     date = `${date[2]}-${date[1]}-${date[0].substring(2)}<br>${day}`
-                    console.log(date);
                     break;
             
                 case "Time":
                     time = e.target.value
-                    console.log(time);
                     break;
             
                 default:
@@ -84,6 +84,9 @@ export function listeners() {
         
         todoInput.addEventListener("input",e=>{
             todo = e.target.value
+            addDate = convertDate()
+            addTime = new Date().getTime()
+            console.log(addDate);
         })
 
         todoInput.addEventListener("keydown",e=>{
@@ -92,11 +95,10 @@ export function listeners() {
                 
                 case "Enter":
                     e.preventDefault()
-                    addDate = new Date().toString().split(" ").filter((item,ind)=>ind<=4).join(" ")
 
                     if(shift && day && category && todo) {
-                        editingMode = false
-                        handleData(shift,day,category,todo,date,time,addDate,editingMode)
+                        editingMode = "add"
+                        handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
                     } 
                     
                     break;
@@ -106,8 +108,8 @@ export function listeners() {
     const submitBtn = formEl.querySelector("#submitBtn")
 
         submitBtn.addEventListener("click",()=>{
-            editingMode = false
-            handleData(shift,day,category,todo,date,time,addDate,editingMode)
+            editingMode = "add"
+            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,`id`,addTime)
         })
 
     
@@ -121,12 +123,11 @@ export function editButtonsListeneres() {
 
         editButtons.forEach(btn=> btn.addEventListener("click", e=>{
 
-            // console.log(e.target.dataset.shift, e.target.dataset.day, e.target.dataset.category, e.target.classList.contains("editBtn"));
 
             switch (e.target.dataset.type) {
 
                 case "editBtn":
-                    editingMode = true
+                    editingMode = "update"
 
                     //** EDIT MODAL AÇ */
                     editModal.classList.remove("invisible","-z-50")
@@ -136,12 +137,20 @@ export function editButtonsListeneres() {
                     let shift = e.target.dataset.shift
                     let day = e.target.dataset.day
                     let category = e.target.dataset.category
-                    let editingTodo = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category][0].todo
-                    let time = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category][0].hour
-                    let date = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category][0].date
-
-                    //** NOTU DATA'DAN SİL */
-
+                    let editingTodo = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
+                        return todoObj.id == id
+                    })[0].todo
+                        todo = editingTodo
+                    let time = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
+                        return todoObj.id == id
+                    })[0].hour
+                    let date = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
+                        return todoObj.id == id
+                    })[0].date
+                        addDate = e.target.dataset.adddate
+                        updateDate = convertDate()
+                        addTime = e.target.dataset.addtime
+                        console.log(e.target.dataset.addtime);
 
                     //** BİLGİLERİ MODAL'A YERLEŞTİR */
                     const shiftSelect = editModal.querySelector("[name='ModalShift']")
@@ -187,13 +196,18 @@ export function editButtonsListeneres() {
 
                     const todoTextarea = editModal.querySelector("[name='ModalTodo']")
                         todoTextarea.value = editingTodo
-                        todoTextarea.addEventListener("change",(e)=>todo = e.target.value)
+                        todoTextarea.addEventListener("input",(e)=> todo = e.target.value)
+
+                    const addDateEl = editModal.querySelector("#addDate")
+                        addDateEl.innerText = `Add : ${addDate}`
+
+                    const updateDateEl = editModal.querySelector("#updateDate")
+                        updateDateEl.innerText = `Update : ${updateDate}`
 
                     const submitBtn = editModal.querySelector("#ModalSubmitBtn")
                         submitBtn.addEventListener("click",()=> {
 
-                            //todo YENİ DATAYI YERİNE İTELE
-                            handleData(shift,day,category,todo,date,time,addDate,editingMode,id)
+                            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,id,addTime)
                         })
 
                         
@@ -201,16 +215,39 @@ export function editButtonsListeneres() {
                     break;
 
                 case "complateBtn":
+                    editingMode = "complate"
+                    complateTime = new Date().getTime()
+                    console.log(e.target.dataset.addtime);
+                        // handleData(e.target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,e.target.dataset.id,complateTime)
+
                     console.log(e.target);
                     break;
 
                 case "deleteBtn":
-                    console.log(e.target);
+                    editingMode = "delete"
+                        handleData(e.target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,e.target.dataset.id)
                     break;
             
                 default:
                     break;
             }
         }))
+}
+
+function convertDate() {
+    const months = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+
+    let date = new Date().toString().split(" ").splice(1,3)
+    const dateMonth = date[0]
+    let convertedMonth = String(months.findIndex(item => item == dateMonth) + 1)
+    if(convertedMonth < 10) convertedMonth = 0 + convertedMonth
+    date.splice(0,1)
+    date.splice(1,0,convertedMonth)
+    date = date.join(".")
+
+    return date
 }
 

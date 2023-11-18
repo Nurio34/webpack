@@ -3,7 +3,7 @@ import {listeners,editButtonsListeneres} from "./UI-Listeners"
 import data from "./data"
 
 export default function main() {
-
+    console.log(new Date().getTime());
     //** CREATE MAIN ELEMENT AND APPEND IT TO BODY */
     const mainEl = document.createElement("main")
         document.body.appendChild(mainEl)
@@ -118,7 +118,7 @@ function shiftFilterSelectHTML() {
             class=" border-2 border-black
                 col-start-4 col-span-5
             ">
-        <option value="" selected disabled>Filter by Shift</option>
+        <option value="all" selected disabled>Filter by Shift</option>
         <option value="all">All</option>
         <option value="dayShift">Day</option>
         <option value="midShift">Mid</option>
@@ -163,9 +163,13 @@ export function allTodosHTML(data) {
 
                                                         <div class="row-start-3 col-span-2 flex justify-center gap-x-4">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                                        data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
                                                                 class="border-2 border-black px-1 bg-green-400">Edit</button>
+
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                                        data-addtime="${todo.addTime}"
                                                                 class="border-2 border-black px-1 bg-green-400">Complate</button>
+
                                                             <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                 class="border-2  border-black px-1 bg-green-400">Delete</button>
                                                         </div>
@@ -258,7 +262,7 @@ export function partlyTodosHTML(shiftFilter) {
                                 return `
                                     <div id=${category}>
                                     <h4 class="text-center text-base text-purple-600 uppercase">${category}</h4>
-                                    <ul>
+                                    <ul class=" border-b-4 border-black">
                                         ${
                                             dayObj.todos[category].map(todo=>{
 
@@ -274,11 +278,15 @@ export function partlyTodosHTML(shiftFilter) {
                                                         
 
                                                         <div class="row-start-3 col-span-2 flex justify-center gap-x-4">
-                                                            <button data-type=editBtn data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                            <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                                        data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
                                                                 class="border-2 border-black px-1 bg-green-400">Edit</button>
-                                                            <button data-type=complateBtn data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+
+                                                            <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+                                                                    data-addtime="${todo.addTime}"
                                                                 class="border-2 border-black px-1 bg-green-400">Complate</button>
-                                                            <button data-type=deleteBtn data-shift=${shift} data-day=${dayObj.day} data-category=${category}
+
+                                                            <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                 class="border-2  border-black px-1 bg-green-400">Delete</button>
                                                         </div>
                                                         
@@ -302,7 +310,7 @@ export function partlyTodosHTML(shiftFilter) {
 export function editModal() {
 
     return `
-        <div id="editModal" class=" bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+        <div id="editModal" class=" bg-white fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                                          w-10/12 px-4 py-8 shadow-cus rounded-lg
                                          grid grid-cols-12 gap-y-4 
                                          -z-50 invisible                                
@@ -364,6 +372,10 @@ export function editModal() {
                 ></textarea>
                 <i id="ModalSubmitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2"></i>
             </div>
+
+            <p id="addDate" class=" col-start-1 col-span-6">Add : 12.12.23 </p>
+
+            <p id="updateDate" class=" col-start-7 col-span-6">Update : 15.12.23 </p>
         </div>
     `
 }
