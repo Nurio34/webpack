@@ -1,23 +1,31 @@
 
 import handleData from "./handleData"
 import data from "./data"
+import { complatedData } from "./data"
 import { allTodosHTML,allTodosStyle,partlyTodosHTML,editModal } from "./UI"
 
-
+let id = ""
 let shift = ""
 let day = ""
 let category = ""
 let todo = ""
 let date = ""
 let time = ""
-let shiftFilter = ""
-
-const days = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"]
 let addDate = "" 
 let addTime = ""
-let updateDate = ""
-let complateTime = ""
+
+const days = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"]
+
 let editingMode = ""
+let editingTodo = ""
+let updateDate = ""
+
+let complateDate = ""
+let complateTime = ""
+
+
+let shiftFilter = ""
+
 
 export function listeners() {
     const formEl = document.querySelector("form")
@@ -46,16 +54,27 @@ export function listeners() {
                     shiftFilter = e.target.value
 
                         if(shiftFilter === "all") {
-                            sectionEl.innerHTML = allTodosHTML(data())
+                            sectionEl.innerHTML = allTodosHTML(data()) +
+                                                        editModal()
                         }
                         else {
-                            sectionEl.innerHTML =       partlyTodosHTML(shiftFilter) + 
-                                                editModal()
+                            sectionEl.innerHTML = partlyTodosHTML(shiftFilter,data()) + 
+                                                    editModal()
                         }
-                            allTodosStyle(sectionEl)
+                            allTodosStyle()
                             editButtonsListeneres()
                     break;
-            }
+            
+                case "TodoFilter":
+                    
+                    if(e.target.value === "todo") {
+                        sectionEl.innerHTML = allTodosHTML(data())
+                    }
+                    else sectionEl.innerHTML = allTodosHTML(complatedData(),`complated`)
+                        allTodosStyle()
+                        editButtonsListeneres()
+                    break;
+                }
         }))
 
     const timeInputs = formEl.querySelectorAll("[data-id='time']")
@@ -85,8 +104,7 @@ export function listeners() {
         todoInput.addEventListener("input",e=>{
             todo = e.target.value
             addDate = convertDate()
-            addTime = new Date().getTime()
-            console.log(addDate);
+            addTime = +new Date().getTime()
         })
 
         todoInput.addEventListener("keydown",e=>{
@@ -108,8 +126,10 @@ export function listeners() {
     const submitBtn = formEl.querySelector("#submitBtn")
 
         submitBtn.addEventListener("click",()=>{
-            editingMode = "add"
-            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,`id`,addTime)
+            if(shift && day && category && todo) {
+                editingMode = "add"
+                handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
+            } 
         })
 
     
@@ -133,25 +153,7 @@ export function editButtonsListeneres() {
                     editModal.classList.remove("invisible","-z-50")
 
                     //** EDİT BUTONUNA TIKLANILAN NOTUN TÜM BİLGİLERİNİ KAYDET */
-                    let id = e.target.dataset.id
-                    let shift = e.target.dataset.shift
-                    let day = e.target.dataset.day
-                    let category = e.target.dataset.category
-                    let editingTodo = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
-                        return todoObj.id == id
-                    })[0].todo
-                        todo = editingTodo
-                    let time = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
-                        return todoObj.id == id
-                    })[0].hour
-                    let date = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
-                        return todoObj.id == id
-                    })[0].date
-                        addDate = e.target.dataset.adddate
-                        updateDate = convertDate()
-                        addTime = e.target.dataset.addtime
-                        console.log(e.target.dataset.addtime);
-
+                        getAllInfo(e)
                     //** BİLGİLERİ MODAL'A YERLEŞTİR */
                     const shiftSelect = editModal.querySelector("[name='ModalShift']")
                         const shiftOptions = Array.from(shiftSelect.querySelectorAll("option"))                            
@@ -216,11 +218,10 @@ export function editButtonsListeneres() {
 
                 case "complateBtn":
                     editingMode = "complate"
+                    complateDate = convertDate()
                     complateTime = new Date().getTime()
-                    console.log(e.target.dataset.addtime);
-                        // handleData(e.target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,e.target.dataset.id,complateTime)
-
-                    console.log(e.target);
+                        getAllInfo(e)
+                        handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,e.target.dataset.id,addTime,complateDate,complateTime)
                     break;
 
                 case "deleteBtn":
@@ -234,6 +235,29 @@ export function editButtonsListeneres() {
         }))
 }
 
+function getAllInfo(e) {
+
+    id = e.target.dataset.id
+    shift = e.target.dataset.shift
+    day = e.target.dataset.day
+    category = e.target.dataset.category
+    editingTodo = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
+        return todoObj.id == id
+    })[0].todo
+        todo = editingTodo
+    time = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
+        return todoObj.id == id
+    })[0].hour
+    date = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
+        return todoObj.id == id
+    })[0].date
+        addDate = e.target.dataset.adddate
+        updateDate = convertDate()
+        addTime = e.target.dataset.addtime
+
+}
+
+
 function convertDate() {
     const months = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -246,6 +270,8 @@ function convertDate() {
     if(convertedMonth < 10) convertedMonth = 0 + convertedMonth
     date.splice(0,1)
     date.splice(1,0,convertedMonth)
+    const year = date[2].substring(2,4)
+    date.splice(2,1,year)
     date = date.join(".")
 
     return date

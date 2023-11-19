@@ -1,9 +1,10 @@
 
 import {listeners,editButtonsListeneres} from "./UI-Listeners"
 import data from "./data"
+import { complatedData } from "./data"
 
 export default function main() {
-    console.log(new Date().getTime());
+
     //** CREATE MAIN ELEMENT AND APPEND IT TO BODY */
     const mainEl = document.createElement("main")
         document.body.appendChild(mainEl)
@@ -15,19 +16,17 @@ export default function main() {
         mainEl.appendChild(formEl)
         formEl.innerHTML =  shiftSelectHTML() + daySelectHTML() + categorySelectHTML() +
                             dateInputHTML() + timeInputHTML() + todoInputHTML() +
-                                        shiftFilterSelectHTML()
+                                    shiftFilterSelectHTML() + todoFilterSelectHTML()
 
     //** CREATE SECTION ELEMENT AND APPEND IT TO MAIN ELEMENT*/
     const sectionEl = document.createElement("section")  
         // sectionEl.className = "w-full bg-pink-300"  
         mainEl.appendChild(sectionEl)   
-        sectionEl.innerHTML =            allTodosHTML(data()) +
-                            editModal()   
-
-        allTodosStyle(sectionEl)
-
-            listeners()
-            editButtonsListeneres()
+        sectionEl.innerHTML = allTodosHTML(data()) +
+                                    editModal()   
+        allTodosStyle()
+        listeners()
+        editButtonsListeneres()
 
 
             console.log(data());
@@ -116,7 +115,7 @@ function shiftFilterSelectHTML() {
     return `
     <select name="ShiftFilter" id="shiftFilterSelect" 
             class=" border-2 border-black
-                col-start-4 col-span-5
+                col-start-1 col-span-5
             ">
         <option value="all" selected disabled>Filter by Shift</option>
         <option value="all">All</option>
@@ -127,51 +126,114 @@ function shiftFilterSelectHTML() {
     `
 }
 
+function todoFilterSelectHTML() {
+    return `
+        <select name="TodoFilter" id="todoFilterSelect" 
+                class=" border-2 border-black
+                    col-start-8 col-span-5
+                ">
+            <option value="todo" selected disabled>Show</option>
+            <option value="todo">Todo</option>
+            <option value="complated">Complated</option>
 
-export function allTodosHTML(data) {
+        </select>
+    `
+}
+
+
+export function allTodosHTML(data,filter) {
+
+    if(filter === "complated") {
+        return Object.entries(data).map(([shift,daysArr])=>{
+
+            return `
+            <div id=${shift} class=" m-4">
+            <h2 class=" text-xl text-center uppercase text-white font-extrabold">${shift}</h2>
+            ${
+                daysArr.map(dayObj=>{
+
+                    return `
+                        <h3 class="text-center text-md text-blacK bg-gray-300 uppercase font-extrabold text-lg ">${dayObj.day}</h3>
+                        ${
+                            Object.keys(dayObj.todos)
+                            .filter(todo => todo)
+                            .map(category=>{
+
+                                return `
+                                    <div id=${category}>
+                                    <h4 class="text-center text-base text-white uppercase font-bold ">${category}</h4>
+                                    <ul>
+                                        ${
+                                            dayObj.todos[category].map(todo=>{
+
+                                                return `
+                                                    <li class=" grid border-b-2 border-black pr-2">
+                                                        <div class=" col-span-2 ml-1">
+                                                            <p class="text-center leading-4 float-left mr-1 bg-blue-600 text-white rounded-b-xl p-1">${todo.addDate}</p>
+                                                            <p class="break-all pl-2">${todo.todo}</p>
+                                                            <p class="text-center leading-4 float-right mr-1 bg-green-500 text-white rounded-t-xl p-1">${todo.complateDate}</p>
+                                                        </div>                                                                                                                                                    
+                                                    </li>
+                                                `
+                                            }).join("")
+                                        }                                  
+                                    </ul>
+                                    </div>
+                                ` 
+                            }).join("")
+                        }
+                    `
+                }).join("")
+            }
+            </div>
+        `
+        }).join("")
+    }
 
     return Object.entries(data).map(([shift,daysArr])=>{
 
         return `
             <div id=${shift} class=" m-4">
-            <h2 class="text-lg text-center uppercase">${shift}</h2>
+            <h2 class=" text-xl text-center uppercase text-white font-extrabold">${shift}</h2>
             ${
                 daysArr.map(dayObj=>{
 
                     return `
-                        <h3 class="text-center text-md text-red-600 uppercase">${dayObj.day}</h3>
+                        <h3 class="text-center text-md text-blacK bg-gray-300 uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos).map(category=>{
 
                                 return `
                                     <div id=${category}>
-                                    <h4 class="text-center text-base text-purple-600 uppercase ">${category}</h4>
-                                    <ul class=" border-b-4 border-black">
+                                    <h4 class="text-center text-base text-white uppercase font-bold ">${category}</h4>
+                                    <ul>
                                         ${
-                                            dayObj.todos[category].map(todo=>{
+                                            dayObj.todos[category]
+                                            .filter(todo => todo)
+                                            .map(todo=>{
 
                                                 return `
-                                                    <li class=" grid border-b-2 border-black pb-2 px-2">
-                                                        <div class=" col-span-2">
-                                                            <div class=" row-start-1 bg-pink-300 float-left mr-1">
+                                                    <li class=" grid border-b-2 border-black pb-2 pr-2">
+                                                        <div class=" col-span-2 ml-1">
+                                                            <div class="float-left mr-1 bg-white rounded-b-xl p-1">
                                                                 <p class="text-center leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
-                                                            <p class="row-start-1 break-all">${todo.todo}</p>
+                                                            <p class="break-all pl-2">${todo.todo}</p>
                                                         </div>
                                                         
 
-                                                        <div class="row-start-3 col-span-2 flex justify-center gap-x-4">
+                                                        <div class="row-start-3 col-start-2 flex justify-center gap-x-3 justify-self-end">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
-                                                                class="border-2 border-black px-1 bg-green-400">Edit</button>
+                                                                class="border-2 border-black rounded-full w-7 aspect-square px-1 bg-orange-500">E</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                        data-addtime="${todo.addTime}"
-                                                                class="border-2 border-black px-1 bg-green-400">Complate</button>
+                                                                        data-addDate = "${todo.addDate}" data-addtime="${todo.addTime}"
+                                                                class="border-2 border-black rounded-full w-7 aspect-square px-1 bg-green-500">C</button>
 
                                                             <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                class="border-2  border-black px-1 bg-green-400">Delete</button>
+                                                                class="border-2  border-black rounded-full w-7 aspect-square px-1 bg-red-500">D</button>
                                                         </div>
                                                         
                                                     </li>
@@ -188,11 +250,13 @@ export function allTodosHTML(data) {
             }
             </div>
         `
-    }).join("")
+    }).join("")    
 }
 
 //** ADJUST CLASS PROPERITIES OF EACHOTHER DIV ELEMENTS IN SECTION ELEMENT */
-export function allTodosStyle(sectionEl){
+export function allTodosStyle(){
+
+        const sectionEl = document.querySelector("section")
 
         const shiftDivEls = sectionEl.querySelectorAll("div")
         shiftDivEls.forEach(shiftDivEl=>{
@@ -217,21 +281,22 @@ export function allTodosStyle(sectionEl){
             const categoryDivEls = shiftDivEl.querySelectorAll("div")
                 categoryDivEls.forEach(el=>{
 
+                    const heading = el.querySelector("h4")
                     switch (el.id) {
                         case "work":
-                            el.classList.add("bg-red-200")
+                            heading.classList.add("bg-red-500")
                             break;
         
                         case "love":
-                            el.classList.add("bg-pink-200")
+                            heading.classList.add("bg-pink-500")
                             break;
         
                         case "other":
-                            el.classList.add("bg-blue-200")
+                            heading.classList.add("bg-blue-500")
                             break;
         
                         case "lesson":
-                            el.classList.add("bg-green-200")
+                            heading.classList.add("bg-green-500")
                             break;
                     
                         default:
@@ -242,38 +307,38 @@ export function allTodosStyle(sectionEl){
         })
 }
 
-export function partlyTodosHTML(shiftFilter) {
+export function partlyTodosHTML(shiftFilter,data) {
 
-    return Object.entries(data()).
+    return Object.entries(data).
     filter(([shift,daysArr]) => shift === shiftFilter).
     map(([shift,daysArr]) => {
 
         return `
             <div id=${shift} class=" m-4">
-            <h2 class="text-lg text-center uppercase">${shift}</h2>
+            <h2 class=" text-xl text-center uppercase text-white font-extrabold">${shift}</h2>
             ${
                 daysArr.map(dayObj=>{
 
                     return `
-                        <h3 class="text-center text-md text-red-600 uppercase">${dayObj.day}</h3>
+                        <h3 class="text-center text-md text-blacK bg-gray-300 uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos).map(category=>{
 
                                 return `
                                     <div id=${category}>
-                                    <h4 class="text-center text-base text-purple-600 uppercase">${category}</h4>
-                                    <ul class=" border-b-4 border-black">
+                                    <h4 class="text-center text-base text-white uppercase font-bold ">${category}</h4>
+                                    <ul>
                                         ${
                                             dayObj.todos[category].map(todo=>{
 
                                                 return `
-                                                    <li class=" grid border-b-2 border-black pb-2 px-2">
-                                                        <div class=" col-span-2">
-                                                            <div class=" row-start-1 bg-pink-300 float-left mr-1">
-                                                                <p class=" text-center leading-4">${todo.date}</p>
+                                                    <li class=" grid border-b-2 border-black pb-2 pr-2">
+                                                        <div class=" col-span-2 ml-1">
+                                                            <div class="float-left mr-1 bg-white rounded-b-xl p-1">
+                                                                <p class="text-center leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
-                                                            <p class="row-start-1 break-all">${todo.todo}</p>
+                                                            <p class="break-all pl-2">${todo.todo}</p>
                                                         </div>
                                                         
 
@@ -283,7 +348,7 @@ export function partlyTodosHTML(shiftFilter) {
                                                                 class="border-2 border-black px-1 bg-green-400">Edit</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                    data-addtime="${todo.addTime}"
+                                                                        data-addDate = "${todo.addDate}" data-addtime="${todo.addTime}"
                                                                 class="border-2 border-black px-1 bg-green-400">Complate</button>
 
                                                             <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}

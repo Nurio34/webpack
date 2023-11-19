@@ -1,21 +1,23 @@
 
 import data from "./data"
+import { dataSchema,complatedSchema } from "./dataSchema"
+import { complatedData } from "./data"
 import { allTodosStyle,partlyTodosHTML, editModal } from "./UI"
 import { editButtonsListeneres } from "./UI-Listeners"
 
-export default function handleData(shift,day,category,todo,date,hour,addDate,updateDate,editingMode,id,addTime,complateTime) {
-
+export default function handleData(shift,day,category,todo,date,hour,addDate,updateDate,editingMode,id,addTime,complateDate,complateTime) {
     //** CERATE TODO LİST VARIABLE */
     let todoList = data() || dataSchema
+    let complatedList = complatedData() || complatedSchema
 
     //** ADD or UPDATE or DELETE TODO */
     if(editingMode === "add") {
-        Add(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime)
+        AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime)
     }
 
     else if(editingMode === "update") {
        todoList = Delete(todoList,id)
-       Add(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime)
+       AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime)
     }
 
     else if(editingMode === "delete") {
@@ -24,10 +26,13 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
     }
 
     else if(editingMode = "complate") {
-        console.log("complating");
         todoList = Delete(todoList,id)
+        AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,updateDate,addTime,complateDate,complateTime)
+        localStorage.setItem("complated",JSON.stringify(complatedList))
     }
 
+    console.log(todoList);
+    console.log(complatedList);
 
     //** SAVE VARIABLE TO LOCALSTORAGE */
     localStorage.setItem("todo",JSON.stringify(todoList))
@@ -35,15 +40,13 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
     //** DISPLAY TODO-LIST */
     const sectionEl = document.querySelector("main section")
 
-        sectionEl.innerHTML =           partlyTodosHTML(shift) + 
+        sectionEl.innerHTML =           partlyTodosHTML(shift,data()) + 
                             editModal()
-        allTodosStyle(sectionEl)
+        allTodosStyle()
         editButtonsListeneres()
-
-            console.log(todoList);
 }
 
-function Add(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime) {
+function AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime) {
     todoList[shift].forEach(dayObj => {
         if(dayObj.day === day) {
             dayObj.todos[category].push(
@@ -93,4 +96,30 @@ function Delete(todoList,id) {
 
     todoList = JSON.parse(todoString)
         return todoList
+}
+
+function AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,updateDate,addTime,complateDate,complateTime) {
+
+    complatedList[shift].forEach(dayObj => {
+        if(dayObj.day === day) {
+            dayObj.todos[category].push(
+                {
+                    date : date,
+                    hour : hour,
+                    todo : todo,
+                    addDate : addDate,
+                    addTime : +addTime,
+                    complateDate : complateDate,
+                    complateTime : +complateTime
+                }
+            )
+        }
+    })
+
+    console.log(complateTimeCalc(addTime,complateTime))
+}
+
+function complateTimeCalc(addTime, complateTime) {
+
+    return +complateTime - +addTime
 }
