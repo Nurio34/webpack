@@ -128,6 +128,7 @@ export function listeners() {
         submitBtn.addEventListener("click",()=>{
             if(shift && day && category && todo) {
                 editingMode = "add"
+                console.log(day);
                 handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
             } 
         })
