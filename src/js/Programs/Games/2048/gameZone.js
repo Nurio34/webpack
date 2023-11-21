@@ -6,6 +6,7 @@ import { Move_Boxes } from "./moveBoxes"
 
 export function createUI(){
 
+    localStorage.clear("AllPositions")
     const Size = Options.Size
     const Padding = Options.Padding
     const Gap = Options.Gap

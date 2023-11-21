@@ -2,7 +2,6 @@
 import { Options, Box_Size } from "./app"
 import { Move_Boxes } from "./moveBoxes"
 
-const All_Boxes_Positions = []
 
 function Create_New_Box() {
 
@@ -24,6 +23,13 @@ function Create_New_Box() {
     //** KUTUYU YARATTIKTAN SONRA RASTGELE BİYERE YERLEŞTİR */
         New_Box_Place()
         New_Box_Position()
+}
+
+function New_Box_Value() {
+
+    const values = [2,4]
+
+    return values[Math.floor( Math.random() * values.length )]
 }
 
 function New_Box_Place() {
@@ -94,29 +100,40 @@ function New_Box_Position() {
     (function Is_There_Already_Box_In_That_Position() {
 
                 
-        if(!All_Boxes_Positions[0]) All_Boxes_Positions.push(Get_Position())
-        
-        else {
-
-            const isThereAlready = All_Boxes_Positions.some(item=>JSON.stringify(item) === JSON.stringify(Get_Position()))
-           
-            if(isThereAlready){
-                gameZone.removeChild(New_Box)
-                Create_New_Box()
-            }
-            else {
-                All_Boxes_Positions.push(Get_Position())
-            }
-        }
+        All_Boxes_Positions(Get_Position())
     })()
 }
 
-function New_Box_Value() {
+export function All_Boxes_Positions(New_Position,Old_Position) {
+    
+    const gameZone = document.querySelector("section")
+    const All_Boxes = [...gameZone.querySelectorAll(".box")]
+    let Arr = JSON.parse(localStorage.getItem("AllPositions")) || []
 
-    const values = [2,4]
+    if(!Arr[0]) {
+        Arr.push(New_Position)
+        localStorage.setItem("AllPositions",JSON.stringify(Arr))
+    }
 
-    return values[Math.floor( Math.random() * values.length )]
+    else {
+        Arr = Arr.filter(subArr=>JSON.stringify(subArr) !== JSON.stringify(Old_Position))
+        const isThereAlready = Arr.some(item=>JSON.stringify(item) === JSON.stringify(New_Position))
+       
+        if(isThereAlready){
+            const New_Box = gameZone.querySelectorAll(".box")[All_Boxes.length - 1]
+            gameZone.removeChild(New_Box)
+            Create_New_Box()
+        }
+        else {
+            Arr.push(New_Position)
+            localStorage.setItem("AllPositions",JSON.stringify(Arr))
+        }
+    }
+
+    return Arr
+
 }
+
 
 export function Transition() {
     return +Box_Size + +Options.Gap
