@@ -18,6 +18,7 @@ function Create_New_Box() {
         gameZone.appendChild(New_Box)
         New_Box.className = "box absolute bg-white aspect-square grid place-items-center font-bold text-[1.7rem]"
         New_Box.textContent = New_Box_Value()
+        New_Box.dataset.value = New_Box.textContent
         New_Box.dataset.id = "created"
 
     //** KUTUYU YARATTIKTAN SONRA RASTGELE BİYERE YERLEŞTİR */
@@ -32,14 +33,15 @@ function New_Box_Place() {
     const Gap = Options.Gap
     const Size = Options.Size
 
-    const Transition = +Box_Width + +Gap
     const Random_X_Transition = Math.floor( Math.random() * Size )
     const Random_Y_Transition = Math.floor( Math.random() * Size )
 
 
     const New_Box = document.querySelector("[data-id='created']")
-        New_Box.style = `width:${Box_Width}rem;top:${Padding}rem; left:${Padding}rem; 
-        transform:translate(${Random_X_Transition * Transition}rem,${Random_Y_Transition * Transition}rem)`
+        New_Box.style.width = `${Box_Width}rem`
+        New_Box.style.top = `${Padding}rem`
+        New_Box.style.left = `${Padding}rem`
+        New_Box.style.transform = `translate(${Random_X_Transition * Transition()}rem,${Random_Y_Transition * Transition()}rem)`
 }
 
 function New_Box_Position() {
@@ -116,5 +118,8 @@ function New_Box_Value() {
     return values[Math.floor( Math.random() * values.length )]
 }
 
+export function Transition() {
+    return +Box_Size + +Options.Gap
+}
 
 export {Create_New_Box }
