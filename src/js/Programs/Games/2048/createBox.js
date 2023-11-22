@@ -50,6 +50,10 @@ function New_Box_Place() {
         New_Box.style.transform = `translate(${Random_X_Transition * Transition()}rem,${Random_Y_Transition * Transition()}rem)`
 }
 
+export function Transition() {
+    return +Box_Size + +Options.Gap
+}
+
 function New_Box_Position() {
 
     const Size = Options.Size
@@ -63,6 +67,7 @@ function New_Box_Position() {
     const Offset_Y = (New_Box.getBoundingClientRect().y / 16) - (gameZone.getBoundingClientRect().y / 16) 
 
         Get_Position()
+        All_Boxes_Positions(Get_Position())
 
     function Get_Position() {
 
@@ -97,14 +102,9 @@ function New_Box_Position() {
         return [X,Y]       
     }
 
-    (function Is_There_Already_Box_In_That_Position() {
-
-                
-        All_Boxes_Positions(Get_Position())
-    })()
 }
 
-export function All_Boxes_Positions(New_Position,Old_Position) {
+function All_Boxes_Positions(New_Position) {
     
     const gameZone = document.querySelector("section")
     const All_Boxes = [...gameZone.querySelectorAll(".box")]
@@ -116,7 +116,6 @@ export function All_Boxes_Positions(New_Position,Old_Position) {
     }
 
     else {
-        Arr = Arr.filter(subArr=>JSON.stringify(subArr) !== JSON.stringify(Old_Position))
         const isThereAlready = Arr.some(item=>JSON.stringify(item) === JSON.stringify(New_Position))
        
         if(isThereAlready){
@@ -129,14 +128,9 @@ export function All_Boxes_Positions(New_Position,Old_Position) {
             localStorage.setItem("AllPositions",JSON.stringify(Arr))
         }
     }
-
-    return Arr
-
 }
 
 
-export function Transition() {
-    return +Box_Size + +Options.Gap
-}
+
 
 export {Create_New_Box }

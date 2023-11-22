@@ -26,6 +26,7 @@ export function createUI(){
     //** AFTER CRETAING UI and GAMEZONE, CREATE FİRST BOX */
     Create_New_Box()
     Move_Boxes()
+
     // Create_New_Box()
     // Create_New_Box()
 }
