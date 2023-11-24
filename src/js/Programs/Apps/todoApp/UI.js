@@ -27,9 +27,6 @@ export default function main() {
         allTodosStyle()
         listeners()
         editButtonsListeneres()
-
-
-            console.log(data());
 }
 
 function shiftSelectHTML() {
@@ -153,7 +150,7 @@ export function allTodosHTML(data,filter) {
                 daysArr.map(dayObj=>{
 
                     return `
-                        <h3 class="text-center text-md text-blacK bg-gray-300 uppercase font-extrabold text-lg ">${dayObj.day}</h3>
+                        <h3 class="text-center text-md text-blacK uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos)
                             .filter(todo => todo)
@@ -199,7 +196,7 @@ export function allTodosHTML(data,filter) {
                 daysArr.map(dayObj=>{
 
                     return `
-                        <h3 class="text-center text-md text-blacK bg-gray-300 uppercase font-extrabold text-lg ">${dayObj.day}</h3>
+                        <h3 class="text-center text-md text-blacK uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos).map(category=>{
 
@@ -215,8 +212,8 @@ export function allTodosHTML(data,filter) {
                                                 return `
                                                     <li class=" grid border-b-2 border-black pb-2 pr-2">
                                                         <div class=" col-span-2 ml-1">
-                                                            <div class="float-left mr-1 bg-white rounded-b-xl p-1">
-                                                                <p class="text-center leading-4">${todo.date}</p>
+                                                            <div class="float-left mr-1 rounded-b-xl p-1 text-center" style="background-color : rgba(255,255,255,0.5">
+                                                                <p class=" leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
                                                             <p class="break-all pl-2 text-white font-bold ">${todo.todo}</p>
@@ -266,7 +263,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                 daysArr.map(dayObj=>{
 
                     return `
-                        <h3 class="text-center text-md text-blacK bg-gray-300 uppercase font-extrabold text-lg ">${dayObj.day}</h3>
+                        <h3 class="text-center text-md text-blacK uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos).map(category=>{
 
@@ -355,25 +352,28 @@ export function allTodosStyle(){
                     const heading = el.querySelector("h4")
                     switch (el.id) {
                         case "work":
-                            heading.classList.add("bg-red-500")
+                            heading.style.backgroundColor = "rgba(239,68,68,0.5)"
                             break;
         
                         case "love":
-                            heading.classList.add("bg-pink-500")
+                            heading.style.backgroundColor = "rgba(236,72,153,0.5)"
                             break;
         
                         case "other":
-                            heading.classList.add("bg-blue-500")
+                            heading.style.backgroundColor = "rgba(93,154,229,0.5)"
                             break;
         
                         case "lesson":
-                            heading.classList.add("bg-green-500")
+                            heading.style.backgroundColor = "rgba(34,197,94,0.5)"
                             break;
                     
                         default:
                             break;
                     }
                 })
+
+            const h3Els = document.querySelectorAll("h3")
+                h3Els.forEach(el => el.style.backgroundColor = "rgba(209,213,219,0.5)")
         })
 }
 

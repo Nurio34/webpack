@@ -1,11 +1,9 @@
 
 import { Options, Box_Size } from "./app"
-import { Move_Boxes } from "./moveBoxes"
 
 
 function Create_New_Box() {
-
-    const Box_Width =  Box_Size
+    console.log("ok");
 
     const gameZone = document.querySelector("section")
 
@@ -19,6 +17,7 @@ function Create_New_Box() {
         New_Box.textContent = New_Box_Value()
         New_Box.dataset.value = New_Box.textContent
         New_Box.dataset.id = "created"
+            Box_Colors(New_Box)
 
     //** KUTUYU YARATTIKTAN SONRA RASTGELE BİYERE YERLEŞTİR */
         New_Box_Place()
@@ -28,15 +27,14 @@ function Create_New_Box() {
 function New_Box_Value() {
 
     const values = [2,4]
-
-    return values[Math.floor( Math.random() * values.length )]
+    
+    return Math.random() > 0.3 ? values[0] : values[1]
 }
 
 function New_Box_Place() {
 
     const Box_Width = Box_Size
     const Padding = Options.Padding
-    const Gap = Options.Gap
     const Size = Options.Size
 
     const Random_X_Transition = Math.floor( Math.random() * Size )
@@ -47,7 +45,13 @@ function New_Box_Place() {
         New_Box.style.width = `${Box_Width}rem`
         New_Box.style.top = `${Padding}rem`
         New_Box.style.left = `${Padding}rem`
-        New_Box.style.transform = `translate(${Random_X_Transition * Transition()}rem,${Random_Y_Transition * Transition()}rem)`
+        New_Box.style.transform = `translate(${Random_X_Transition * Transition()}rem,${Random_Y_Transition * Transition()}rem) scale(0)`
+
+        //** CREATİNG ANİMATİON */
+        setTimeout(() => {
+            // New_Box.style.transition = "0.2s"
+            New_Box.style.transform = `translate(${Random_X_Transition * Transition()}rem,${Random_Y_Transition * Transition()}rem) scale(1)`
+        }, 100);
 }
 
 export function Transition() {
@@ -127,6 +131,54 @@ function All_Boxes_Positions(New_Position) {
             Arr.push(New_Position)
             localStorage.setItem("AllPositions",JSON.stringify(Arr))
         }
+    }
+}
+
+export function Box_Colors(Box) {
+
+    if(Box.dataset.value === `2`) {
+        Box.style.color = "#776e65"
+        Box.style.backgroundColor = "#eee4da"
+    }
+    else if(Box.dataset.value === `4`) {
+        Box.style.color = "#776e65"
+        Box.style.backgroundColor = "#eee4da"
+    }
+    else if(Box.dataset.value === `8`) {
+        Box.style.color = "#f9faf8"
+        Box.style.backgroundColor = "#f59563"
+    }
+    else if(Box.dataset.value === `16`) {
+        Box.style.color = "#f9f6f2"
+        Box.style.backgroundColor = "#f59563"
+    }
+    else if(Box.dataset.value === `32`) {
+        Box.style.color = "#f9f6f2"
+        Box.style.backgroundColor = "#f67c5f"
+    }
+    else if(Box.dataset.value === `64`) {
+        Box.style.color = "#f9faf7"
+        Box.style.backgroundColor = "#f55d36"
+    }
+    else if(Box.dataset.value === `128`) {
+        Box.style.color = "#f9f8f8"
+        Box.style.backgroundColor = "#e9d16f"
+    }
+    else if(Box.dataset.value === `256`) {
+        Box.style.color = "#faf9fd"
+        Box.style.backgroundColor = "#eccc5d"
+    }
+    else if(Box.dataset.value === `512`) {
+        Box.style.color = "#f7f9dc"
+        Box.style.backgroundColor = "#ebc74c"
+    }
+    else if(Box.dataset.value === `1024`) {
+        Box.style.color = "#f9f8eb"
+        Box.style.backgroundColor = "#eac539"
+    }
+    else if(Box.dataset.value === `2048`) {
+        Box.style.color = "#776e65"
+        Box.style.backgroundColor = "#eee4da"
     }
 }
 

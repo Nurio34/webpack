@@ -1,48 +1,52 @@
 
 import { Logger } from "sass";
 import { Options } from "./app";
-import { Create_New_Box, Transition } from "./createBox";
+import { Create_New_Box, Transition, Box_Colors } from "./createBox";
 
 
 export function Move_Boxes() {
 
 
-    window.addEventListener("keydown",e=>{
-
-        const keys = ["ArrowRight","ArrowLeft","ArrowDown","ArrowUp"]
-
-        if(keys.some(key => key === e.key)) {
-
-            switch (e.key) {
-                case "ArrowRight":
-                    Lines_Y_Forward()
-                    break;
-
-                case "ArrowLeft":
-                    Lines_Y_Backward()
-
-                    break;
-
-                case "ArrowDown":
-                    Lines_X_Down()
-
-                    break;
-
-                case "ArrowUp":
-                    Lines_X_Up()
-
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-    })
+    window.addEventListener("keydown",Arrow_Keys_Events)
 }
 
+export function Arrow_Keys_Events(e){
 
-function Lines_Y_Forward() {
+
+    const keys = ["ArrowRight","ArrowLeft","ArrowDown","ArrowUp"]
+
+    if(keys.some(key => key === e.key)) {
+
+        e.preventDefault()
+
+        switch (e.key) {
+            case "ArrowRight":
+                Lines_Y_Forward()
+                break;
+
+            case "ArrowLeft":
+                Lines_Y_Backward()
+
+                break;
+
+            case "ArrowDown":
+                Lines_X_Down()
+
+                break;
+
+            case "ArrowUp":
+                Lines_X_Up()
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
+}
+
+function Lines_Y_Forward() {    
 
     let Move_Amount
     const Will_Create_New_Box = []
@@ -203,7 +207,7 @@ function Lines_Y_Forward() {
     else Create_New_Box()
 }
 
-function Lines_Y_Backward() {
+function Lines_Y_Backward() {    
 
     let Move_Amount
     const Will_Create_New_Box = []
@@ -370,16 +374,15 @@ function Translate_On_Y_Line(Box) {
     if(Box.dataset.direction === "forward") Translate_X = parseFloat(Box.style.transform.split(" ")[0].split("(")[1]) + ( Transition() * Box.dataset.move)
     else if(Box.dataset.direction === "backward") Translate_X = parseFloat(Box.style.transform.split(" ")[0].split("(")[1]) - ( Transition() * Box.dataset.move)
 
-    const Transition_Time = "1s"
-    Box.style.transition = Transition_Time
+    // const Transition_Time = "0.2s"
+    // Box.style.transition = Transition_Time
     Box.style.transform = `translate(${Translate_X}rem, ${Translate_Y}rem)`
 
     if(Box.dataset.status === "mutate") {
         Box.dataset.value = Box.dataset.value  * 2
         Box.textContent = Box.dataset.value
         Box.dataset.status = "normal"
-
-        if(Box.dataset.value === `4`) Box.style.backgroundColor = "orange"
+            Box_Colors(Box)
     }
     else if(Box.dataset.status === "remove") {
         Box.style.opacity = "0"
@@ -390,18 +393,17 @@ function Translate_On_Y_Line(Box) {
 
         setTimeout(() => {
             document.querySelector("section").removeChild(Box)
-        }, parseInt(Transition_Time) * 750);
+        }, 1 * 750);
 
     }
 }
 
-function Lines_X_Down() {
-
+function Lines_X_Down() {    
     let Move_Amount
     const Will_Create_New_Box = []
 
     for( let i = 1; i <= Options.Size; i++) {
-        let Boxes_At_X = [...document.querySelectorAll(`[data-x='X${i}']`)].sort((b,a)=>a.dataset.x.slice(1) - b.dataset.x.slice(1) );
+        let Boxes_At_X = [...document.querySelectorAll(`[data-x='X${i}']`)].sort((a,b)=>a.dataset.y.slice(1) - b.dataset.y.slice(1) );
         let Size = Options.Size
         recrusion()
 
@@ -554,6 +556,165 @@ function Lines_X_Down() {
 
     if(Will_Create_New_Box.every(moveAmount => moveAmount === 0)) return
     else Create_New_Box()
+    // Create_New_Box()
+}
+
+function Lines_X_Up() {    
+
+    let Move_Amount
+    const Will_Create_New_Box = []
+
+    for( let i = 1; i <= Options.Size; i++) {
+        let Boxes_At_X = [...document.querySelectorAll(`[data-x='X${i}']`)].sort((a,b)=>a.dataset.y.slice(1) - b.dataset.y.slice(1) );
+        let Go_To = 1
+        recrusion()
+
+        function recrusion() {
+            //** EN SOLDAKİ KUTUYU TESPİT ET */
+            const Most_Top = Boxes_At_X[0]
+            if(Most_Top) {
+                //** EN SOLDAKİNİN POSİZSYONU TESPİT ET */
+                const Most_Top_Position = Most_Top.dataset.y.slice(1)
+                const Most_Top_Old_Position = [Most_Top.dataset.x,Most_Top.dataset.y]
+                
+                //** EN SOLDAKİNİN SAĞA DOĞRU NEKADR İLERLİCEĞNİ TESPİT ET */
+                Move_Amount = Most_Top_Position - Go_To // 1
+                Most_Top.dataset.move = Move_Amount
+                Most_Top.dataset.direction = "up"
+                
+                //** EN SOLDAKİNİN YENİ POZİSYONUNU AYARLA */
+                Most_Top.dataset.y = `Y${+Most_Top_Position - +Move_Amount}`
+                const Most_Top_New_Position = [Most_Top.dataset.x,Most_Top.dataset.y]
+    
+                //** LOCAL ALL_POSİTİONS ARRAY'INI GÜNCELLE */
+                Update_All_Boxes_Position_Local_Array(Most_Top_Old_Position,Most_Top_New_Position)
+    
+                //** SAĞINDAKİ KUTUYU TESPİT ET */
+                const Bottom_Box = Boxes_At_X[1] // DİV.X2
+    
+                //** SAĞINDA KUTU YOKSA SADECE EN SAĞDAKİNİN DATA.STATUS = "NORMAL". BAŞKA YAPCAK BİŞE YOK SANIRIM */
+                if(!Bottom_Box) {
+    
+                    Most_Top.dataset.status = "normal"
+                    Boxes_At_X.shift()
+                    Will_Create_New_Box.push(Move_Amount)
+                }
+    
+                //** SAĞINDA KUTU VARSA */
+                else if(Bottom_Box) {
+    
+                    //** SAĞINDAKİNİN POZİSYONUNU TESPİT ET */
+                    const Bottom_Box_Position = Bottom_Box.dataset.y.slice(1)
+                    const Bottom_Box_Old_Position = [Bottom_Box.dataset.x,Bottom_Box.dataset.y]
+                    Bottom_Box.dataset.direction = "up"
+    
+                    //** EN SOLDAKİNİN SAĞINDAKİ KUTU İLE BİTİŞİK OLUP OLMAMA DURUMLARINI KONTROL ET*/
+                    const isBottomBoxNext = +Bottom_Box_Position - +Most_Top_Position === 1
+                    const isBottomBoxFar = +Bottom_Box_Position - +Most_Top_Position !== 1
+    
+                    //** */ PAİR OLUP OLMADIKLARINI CHECK
+                    const isPair = Most_Top.dataset.value === Bottom_Box.dataset.value
+    
+                    //! SAĞINDAKİ KUTU İLE BİTİŞİKSE
+                    if(isBottomBoxNext) {
+    
+                        //! ve SAĞINDAKİ İLE PAİR DEĞİLSE
+                        if(!isPair) {
+    
+                            //** SAĞINDAKİNİN YENİ POZİSYONUNU AYARLA */
+                            Bottom_Box.dataset.y = `Y${+Bottom_Box_Position - +Move_Amount}`
+                            const Bottom_Box_New_Position = [Bottom_Box.dataset.x,Bottom_Box.dataset.y]
+    
+                            //** LOCAL ALL_POSİTİONS ARRAY'INI GÜNCELLE */
+                            Update_All_Boxes_Position_Local_Array(Bottom_Box_Old_Position,Bottom_Box_New_Position)
+    
+                            //** STATUS DATALARINI GÜNCELLE */
+                            Bottom_Box.dataset.status = "normal"
+    
+                            // //** BOXES_AT_X ARRAYİNDEKİ BAŞTAKİ ELEMANI YOK ET VE RECRUSİOUN() */
+                            Boxes_At_X.shift()
+                            Will_Create_New_Box.push(Move_Amount)
+                        }
+    
+                        //! ve SAĞINDAKİ İLE PAİR İSE
+                        else if(isPair) {
+    
+                            //** SAĞDAKİNİN SAĞA DOĞRU NEKADR İLERLİCEĞNİ TESPİT ET*/
+                            Move_Amount++
+    
+                            //** LOCAL ALL_POSİTİONS ARRAY'INI GÜNCELLE */
+                            Update_All_Boxes_Position_Local_Array(Bottom_Box_Old_Position)
+    
+                            //** STATUS DATALARINI GÜNCELLE */
+                            Most_Top.dataset.status = "mutate"
+                            Bottom_Box.dataset.status = "remove"
+    
+                            //** BOXES_AT_X ARRAYİNDEKİ BAŞTAKİ 2 ELEMANI YOK ET VE RECRUSİOUN() */
+                            Boxes_At_X.splice(0,2)
+                            Will_Create_New_Box.push(Move_Amount)
+                        }    
+                    }
+    
+                    //! SOLUNDAKİ KUTUDAN UZAKSA
+                    else if(isBottomBoxFar) {
+    
+                        //** ARADAKİ MESAFEYİ HESAPLA */
+                        const distance = +Bottom_Box_Position - +Most_Top_Position   -1
+    
+                        // //** SOLDAKİNİN SAĞA DOĞRU NEKADR İLERLİCEĞNİ TESPİT ET*/
+                        Move_Amount = +Move_Amount + +distance
+    
+                        //! ve SOLUNDAKİ İLE PAİR DEĞİLSE
+                        if(!isPair) {
+                            //** SOLDKİNİN YENİ POZİSYONUNU AYARLA */
+                            Bottom_Box.dataset.y = `Y${+Bottom_Box_Position - +Move_Amount}`
+                            const Bottom_Box_New_Position = [Bottom_Box.dataset.x,Bottom_Box.dataset.y]
+    
+                            //** LOCAL ALL_POSİTİONS ARRAY'INI GÜNCELLE */
+                            Update_All_Boxes_Position_Local_Array(Bottom_Box_Old_Position,Bottom_Box_New_Position)
+    
+                            //** STATUS DATALARINI GÜNCELLE */
+                            Bottom_Box.dataset.status = "normal"
+    
+                            // //** BOXES_AT_X ARRAYİNDEKİ SONDAKİ ELEMANI YOK ET VE RECRUSİOUN() */
+                            Boxes_At_X.shift()
+                            Will_Create_New_Box.push(Move_Amount)
+                        }
+                        //! ve SOLUNDAKİ İLE PAİR İSE
+                        else if(isPair) {
+    
+                            //** SOLDAKİNİN SAĞA DOĞRU NEKADR İLERLİCEĞNİ TESPİT ET*/
+                            Move_Amount++
+    
+                            //** LOCAL ALL_POSİTİONS ARRAY'INI GÜNCELLE */
+                            Update_All_Boxes_Position_Local_Array(Bottom_Box_Old_Position)
+    
+                            //** STATUS DATALARINI GÜNCELLE */
+                            Most_Top.dataset.status = "mutate"
+                            Bottom_Box.dataset.status = "remove"
+    
+                            // //** BOXES_AT_X ARRAYİNDEKİ SONDAKİ 2 ELEMANI YOK ET VE RECRUSİOUN() */
+                            Boxes_At_X.splice(0,2)
+                            Will_Create_New_Box.push(Move_Amount)
+                        }
+                    }
+    
+                    Bottom_Box.dataset.move = Move_Amount
+                    Translate_On_X_Line(Bottom_Box)
+                }
+    
+                Translate_On_X_Line(Most_Top)
+    
+                if(Boxes_At_X.length > 0) {
+                    Go_To ++
+                    recrusion()
+                }
+            }
+        }
+    }
+
+    if(Will_Create_New_Box.every(moveAmount => moveAmount === 0)) return
+    else Create_New_Box()
 }
 
 function Translate_On_X_Line(Box) {
@@ -562,18 +723,17 @@ function Translate_On_X_Line(Box) {
     let Translate_Y
 
     if(Box.dataset.direction === "down") Translate_Y = parseFloat(Box.style.transform.split(" ")[1] ) + ( Transition() * Box.dataset.move)
-    else if(Box.dataset.direction === "top") Translate_Y = parseFloat(Box.style.transform.split(" ")[1] ) - ( Transition() * Box.dataset.move)
+    else if(Box.dataset.direction === "up") Translate_Y = parseFloat(Box.style.transform.split(" ")[1] ) - ( Transition() * Box.dataset.move)
 
-    const Transition_Time = "1s"
-    Box.style.transition = Transition_Time
+    // const Transition_Time = "0.2s"
+    // Box.style.transition = Transition_Time
     Box.style.transform = `translate(${Translate_X}rem, ${Translate_Y}rem)`
 
     if(Box.dataset.status === "mutate") {
         Box.dataset.value = Box.dataset.value  * 2
         Box.textContent = Box.dataset.value
         Box.dataset.status = "normal"
-
-        if(Box.dataset.value === `4`) Box.style.backgroundColor = "orange"
+            Box_Colors(Box)
     }
     else if(Box.dataset.status === "remove") {
         Box.style.opacity = "0"
@@ -584,10 +744,11 @@ function Translate_On_X_Line(Box) {
 
         setTimeout(() => {
             document.querySelector("section").removeChild(Box)
-        }, parseInt(Transition_Time) * 750);
+        }, 1 * 750);
 
     }
 }
+
 
 function Update_All_Boxes_Position_Local_Array(Old_Position,New_Position) {
     let All_Boxes_Positions = JSON.parse(localStorage.getItem("AllPositions"))
