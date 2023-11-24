@@ -31,9 +31,6 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
         localStorage.setItem("complated",JSON.stringify(complatedList))
     }
 
-    console.log(todoList);
-    console.log(complatedList);
-
     //** SAVE VARIABLE TO LOCALSTORAGE */
     localStorage.setItem("todo",JSON.stringify(todoList))
 

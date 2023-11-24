@@ -1,5 +1,4 @@
 
-import images from "../../../../assets/images/pic.png"
 
 function display(people) {
 
@@ -11,7 +10,7 @@ function display(people) {
         <div class="wrapper flex flex-wrap m-1 max-w-md bg-gradient-to-br from-red-200 to-yellow-200 rounded-lg">
                     
                     <div class="personelInfo w-2/5 flex flex-wrap p-1">
-                        <img class=" w-2/3 aspect-square rounded-full" src=${images} alt="">
+                        <img class=" w-2/3 aspect-square rounded-full" src="" alt="">
                         <div class="wrapper flex-grow-0 w-1/3
                                     grid place-content-center">
                             <p class="">${name.toUpperCase()}</p>

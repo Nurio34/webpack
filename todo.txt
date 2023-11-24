@@ -1,4 +1,0 @@
-
--- Günler ve İşler için de display filter'lar oluştur
--- Filterlar'a All seçeneği de ekle
--- UI-Listener's dosyasına data importla.. selectleri seçme durumunda data'nın lengthleriyle fonksiyonlar oluştur

@@ -5,7 +5,7 @@ import {display} from "./display"
 
 //! WHEN NEW DATA COMES TO DATA.JS, APP UPDATES 
 
-export default function carRace () {
+export function carRace () {
 
     const people = []
 
