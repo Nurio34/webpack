@@ -19,7 +19,7 @@ export function createUI(){
 
     const gameZone = document.createElement("section")
         mainElement.append(gameZone)
-        gameZone.className = `grid grid-cols-${Size} relative`
+        gameZone.className = `grid grid-cols-3 relative`
         gameZone.style = `padding:${Padding}rem; gap:${Gap}rem; background-color:${Theme}`
         gameZone.innerHTML = drawGameZone()
 

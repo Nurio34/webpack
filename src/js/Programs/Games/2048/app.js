@@ -9,7 +9,7 @@ export function g2048() {
 export const Options = {
     
     Max_GameZone_Width : 23.43,
-    Size : 6,
+    Size : 3,
     Padding : 1,
     Gap : 1,
     Theme : "purple"
