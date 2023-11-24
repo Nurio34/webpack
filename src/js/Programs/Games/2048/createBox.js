@@ -3,7 +3,6 @@ import { Options, Box_Size } from "./app"
 
 
 function Create_New_Box() {
-    console.log("ok");
 
     const gameZone = document.querySelector("section")
 
@@ -49,7 +48,7 @@ function New_Box_Place() {
 
         //** CREATİNG ANİMATİON */
         setTimeout(() => {
-            // New_Box.style.transition = "0.2s"
+            New_Box.style.transition = "0.2s"
             New_Box.style.transform = `translate(${Random_X_Transition * Transition()}rem,${Random_Y_Transition * Transition()}rem) scale(1)`
         }, 100);
 }

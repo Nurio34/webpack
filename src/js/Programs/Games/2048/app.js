@@ -6,8 +6,6 @@ export function g2048() {
     localStorage.removeItem("AllPositions")
     window.removeEventListener("keydown",Arrow_Keys_Events)
     createUI()
-    setInterval(() => {
-    }, 1000);
 }
 
 export const Options = {

@@ -6,8 +6,29 @@ import { Create_New_Box, Transition, Box_Colors } from "./createBox";
 
 export function Move_Boxes() {
 
-
     window.addEventListener("keydown",Arrow_Keys_Events)
+
+
+    let X_Start,Y_Start,X_End,Y_End
+
+    window.addEventListener("touchstart",e=>{
+
+        X_Start = e.touches[0].clientX
+        Y_Start = e.touches[0].clientY
+        console.log({X_Start,Y_Start});
+    })
+
+    window.addEventListener("touchend",e=>{
+        X_End = e.changedTouches[0].clientX
+        Y_End = e.changedTouches[0].clientY
+            console.log({X_End,Y_End});
+
+        if(X_Start - X_End > 100) Lines_Y_Backward()
+        else if(X_Start - X_End < -100) Lines_Y_Forward()
+        else if(Y_Start - Y_End > 100) Lines_X_Up()
+        else if(Y_Start - Y_End < -100) Lines_X_Down();
+    })
+
 }
 
 export function Arrow_Keys_Events(e){
@@ -374,8 +395,8 @@ function Translate_On_Y_Line(Box) {
     if(Box.dataset.direction === "forward") Translate_X = parseFloat(Box.style.transform.split(" ")[0].split("(")[1]) + ( Transition() * Box.dataset.move)
     else if(Box.dataset.direction === "backward") Translate_X = parseFloat(Box.style.transform.split(" ")[0].split("(")[1]) - ( Transition() * Box.dataset.move)
 
-    // const Transition_Time = "0.2s"
-    // Box.style.transition = Transition_Time
+    const Transition_Time = "0.2s"
+    Box.style.transition = Transition_Time
     Box.style.transform = `translate(${Translate_X}rem, ${Translate_Y}rem)`
 
     if(Box.dataset.status === "mutate") {
@@ -725,8 +746,8 @@ function Translate_On_X_Line(Box) {
     if(Box.dataset.direction === "down") Translate_Y = parseFloat(Box.style.transform.split(" ")[1] ) + ( Transition() * Box.dataset.move)
     else if(Box.dataset.direction === "up") Translate_Y = parseFloat(Box.style.transform.split(" ")[1] ) - ( Transition() * Box.dataset.move)
 
-    // const Transition_Time = "0.2s"
-    // Box.style.transition = Transition_Time
+    const Transition_Time = "0.2s"
+    Box.style.transition = Transition_Time
     Box.style.transform = `translate(${Translate_X}rem, ${Translate_Y}rem)`
 
     if(Box.dataset.status === "mutate") {
@@ -748,7 +769,6 @@ function Translate_On_X_Line(Box) {
 
     }
 }
-
 
 function Update_All_Boxes_Position_Local_Array(Old_Position,New_Position) {
     let All_Boxes_Positions = JSON.parse(localStorage.getItem("AllPositions"))

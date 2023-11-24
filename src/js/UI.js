@@ -35,7 +35,7 @@ export function Main_Header_Container_Listeners() {
 
     const selectEls = document.querySelectorAll("select")
 
-        selectEls.forEach(el=> el.addEventListener("click", e=>{
+        selectEls.forEach(el=> el.addEventListener("change", e=>{
 
             const mainEl = document.querySelector("main")
             if(mainEl) document.body.removeChild(mainEl)
@@ -58,4 +58,6 @@ export function Main_Header_Container_Listeners() {
                     break;
             }
         }))
+
+        g2048()
 }

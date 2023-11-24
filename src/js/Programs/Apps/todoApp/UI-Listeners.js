@@ -34,7 +34,7 @@ export function listeners() {
 
     const selectEls = formEl.querySelectorAll("select")
 
-        selectEls.forEach(el=> el.addEventListener("click",e=> {
+        selectEls.forEach(el=> el.addEventListener("change",e=> {
 
             switch (e.target.name) {
 
