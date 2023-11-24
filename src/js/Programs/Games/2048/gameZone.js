@@ -12,7 +12,7 @@ export function createUI(){
     const Theme =  Options.Theme
 
     const mainElement = document.createElement("main")
-        mainElement.className = "min-h-[90vh] grid place-items-center"
+        mainElement.className = "min-h-[80vh] grid place-items-center"
         document.body.append(mainElement) 
         document.body.className = "min-h-screen"
 

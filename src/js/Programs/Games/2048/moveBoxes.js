@@ -23,11 +23,12 @@ export function Move_Boxes() {
         Y_End = e.changedTouches[0].clientY
             console.log({X_End,Y_End});
 
-        if(X_Start - X_End > 100) Lines_Y_Backward()
-        else if(X_Start - X_End < -100) Lines_Y_Forward()
-        else if(Y_Start - Y_End > 100) Lines_X_Up()
-        else if(Y_Start - Y_End < -100) Lines_X_Down();
+        if(X_Start - X_End > 50) Lines_Y_Backward()
+        else if(X_Start - X_End < -50) Lines_Y_Forward()
+        else if(Y_Start - Y_End > 50) Lines_X_Up()
+        else if(Y_Start - Y_End < -50) Lines_X_Down();
     })
+
 
 }
 

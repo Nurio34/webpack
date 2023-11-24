@@ -8,7 +8,7 @@ export function Main_Header_Container_HTML() {
 
     const Main_Header_Container = document.createElement("div")
     Main_Header_Container.id = "main_Header_Container"
-    Main_Header_Container.className = `grid grid-cols-3`
+    Main_Header_Container.className = `grid grid-cols-2`
 
     Main_Header_Container.innerHTML = `
         <div id="log">
