@@ -1,2 +1,0 @@
-# webpack
-study on webpack
