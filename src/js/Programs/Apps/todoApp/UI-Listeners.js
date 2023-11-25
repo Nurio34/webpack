@@ -3,6 +3,9 @@ import handleData from "./handleData"
 import data from "./data"
 import { complatedData } from "./data"
 import { allTodosHTML,allTodosStyle,partlyTodosHTML,editModal } from "./UI"
+import dayImg from "../../../../assets/images/day.webp"
+import midImg from "../../../../assets/images/mid.webp"
+import nightImg from "../../../../assets/images/night.webp"
 
 let id = ""
 let shift = ""
@@ -34,12 +37,15 @@ export function listeners() {
 
     const selectEls = formEl.querySelectorAll("select")
 
-        selectEls.forEach(el=> el.addEventListener("change",e=> {
+
+        selectEls.forEach(selectEl=> selectEl.addEventListener("change",e=> {
 
             switch (e.target.name) {
 
                 case "Shift":
-                    shift = e.target.value
+                    shift = e.target.value    
+
+                    Change_Selects_Background(selectEl,shift)
                     break;
 
                 case "Day":
@@ -63,6 +69,8 @@ export function listeners() {
                         }
                             allTodosStyle()
                             editButtonsListeneres()
+
+                        Change_Selects_Background(selectEl,shiftFilter)
                     break;
             
                 case "TodoFilter":
@@ -78,6 +86,7 @@ export function listeners() {
         }))
 
     const timeInputs = formEl.querySelectorAll("[data-id='time']")
+
         timeInputs.forEach(timeInput=> timeInput.addEventListener("change", e=> {
 
             switch (e.target.name) {
@@ -117,6 +126,7 @@ export function listeners() {
                     if(shift && day && category && todo) {
                         editingMode = "add"
                         handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
+                        todoInput.value = ""
                     } 
                     
                     break;
@@ -130,6 +140,7 @@ export function listeners() {
                 editingMode = "add"
                 console.log(day);
                 handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
+                todoInput.value = ""
             } 
         })
 
@@ -276,5 +287,29 @@ function convertDate() {
     date = date.join(".")
 
     return date
+}
+
+function Change_Selects_Background(selectEl,shift) {
+
+    switch (shift) {
+        case "dayShift":                            
+            selectEl.style.background = `url('${dayImg}') no-repeat`
+            selectEl.style.backgroundPosition = "60% 10%"
+            break;
+
+        case "midShift":                            
+            selectEl.style.background = `url('${midImg}') no-repeat`
+            selectEl.style.backgroundPosition = "60% 40%"
+            break;
+            
+        case "nightShift":                            
+            selectEl.style.background = `url('${nightImg}')`
+            selectEl.style.backgroundPosition = "100% 20%"
+            selectEl.style.textShadow = "0 0 15px white"
+            break;
+    
+        default:
+            break;
+    }
 }
 

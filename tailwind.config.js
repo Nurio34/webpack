@@ -1,3 +1,4 @@
+
 module.exports = {
     content: ["./src/**/*.{html,js}"],
     theme: {
@@ -46,7 +47,7 @@ module.exports = {
             },
             boxShadow: {
                 "cus" : "0 0 15px 3px black"
-            }
+            },
         },
     },
     plugins: [],

@@ -1,6 +1,10 @@
 
 import {listeners,editButtonsListeneres} from "./UI-Listeners"
 import data from "./data"
+import day from "../../../../assets/images/day.webp"
+import mid from "../../../../assets/images/mid.webp"
+import night from "../../../../assets/images/night.webp"
+
 import { complatedData } from "./data"
 
 export default function main() {
@@ -137,7 +141,6 @@ function todoFilterSelectHTML() {
     `
 }
 
-
 export function allTodosHTML(data,filter) {
 
     if(filter === "complated") {
@@ -145,7 +148,7 @@ export function allTodosHTML(data,filter) {
 
             return `
             <div id=${shift} class=" m-1">
-            <h2 class=" text-xl text-center uppercase text-white font-extrabold ">${shift}</h2>
+            <h2 class=" text-xl text-center text-white uppercase font-extrabold ">${shift}</h2>
             ${
                 daysArr.map(dayObj=>{
 
@@ -167,7 +170,7 @@ export function allTodosHTML(data,filter) {
                                                     <li class=" grid border-b-2 border-black pr-2">
                                                         <div class=" col-span-2 ml-1">
                                                             <p class="text-center leading-4 float-left bg-blue-600 text-white rounded-b-xl p-1">${todo.addDate}</p>
-                                                            <p class="break-all pl-2 text-white font-bold">${todo.todo}</p>
+                                                            <p class="break-all pl-2 font-bold">${todo.todo}</p>
                                                             <p class="text-center leading-4 float-right bg-green-500 text-white rounded-t-xl p-1">${todo.complateDate}</p>
                                                         </div>                                                                                                                                                    
                                                     </li>
@@ -191,7 +194,7 @@ export function allTodosHTML(data,filter) {
 
         return `
             <div id=${shift} class=" m-1">
-            <h2 class=" text-xl text-center uppercase text-white font-extrabold">${shift}</h2>
+            <h2 class=" text-xl text-center uppercase text-white font-extrabold bg-no-repeat">${shift}</h2>
             ${
                 daysArr.map(dayObj=>{
 
@@ -216,7 +219,7 @@ export function allTodosHTML(data,filter) {
                                                                 <p class=" leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
-                                                            <p class="break-all pl-2 text-white font-bold ">${todo.todo}</p>
+                                                            <p class="break-all pl-2 font-bold ">${todo.todo}</p>
                                                         </div>
                                                         
 
@@ -258,7 +261,7 @@ export function partlyTodosHTML(shiftFilter,data) {
 
         return `
             <div id=${shift} class=" m-1">
-            <h2 class=" text-xl text-center uppercase text-white font-extrabold">${shift}</h2>
+            <h2 class=" text-xl text-center text-white uppercase font-extrabold">${shift}</h2>
             ${
                 daysArr.map(dayObj=>{
 
@@ -281,7 +284,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                                                                 <p class="text-center leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
-                                                            <p class="break-all pl-2 text-white font-bold">${todo.todo}</p>
+                                                            <p class="break-all pl-2 font-bold">${todo.todo}</p>
                                                         </div>
                                                         
 
@@ -322,54 +325,91 @@ export function allTodosStyle(){
 
     const shiftDivEls = sectionEl.querySelectorAll("div")
         shiftDivEls.forEach(shiftDivEl=>{
+            const h2Els= shiftDivEl.querySelectorAll("h2")
 
-            shiftDivEl.style.backgroundRepeat = "no-repeat"
-            shiftDivEl.style.backgroundSize = "cover"
-            shiftDivEl.style.backgroundPosition = "center"
-
-            switch (shiftDivEl.id) {
-                case `dayShift`:
-                    // shiftDivEl.classList.add("bg-gradient-to-br","from-blue-400","to-white") 
-                    shiftDivEl.style.backgroundImage = "url('https://i1.sndcdn.com/artworks-inFkCuMeIJV7oQLc-z1ezuQ-t500x500.jpg')"
-                    break;
-
-                case `midShift`:
-                    shiftDivEl.style.backgroundImage = "url('https://live.staticflickr.com/2442/3945939267_a27612ec11_b.jpg')"
+                h2Els.forEach(h2El => {
                     
-                    break;
-                    
-                    case `nightShift`:
-                    shiftDivEl.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2021/11/01/22/10/night-6761907_640.jpg')"
-                    break;
-            
-                default:
-                    break;
-            }
+                    h2El.style.backgroundRepeat = "no-repeat"
+                    h2El.style.backgroundSize = "cover"
+                    h2El.style.backgroundPosition = "center"
 
-            const categoryDivEls = shiftDivEl.querySelectorAll("div")
-                categoryDivEls.forEach(el=>{
+                    switch (shiftDivEl.id) {
+                        case `dayShift`:
+                            // shiftDivEl.classList.add("bg-gradient-to-br","from-blue-400","to-white") 
+                            h2El.style.backgroundImage = `url('${day}')`
+                            h2El.style.backgroundPosition = "center 10%"
 
-                    const heading = el.querySelector("h4")
-                    switch (el.id) {
-                        case "work":
-                            heading.style.backgroundColor = "rgba(239,68,68,0.5)"
                             break;
         
-                        case "love":
-                            heading.style.backgroundColor = "rgba(236,72,153,0.5)"
+                        case `midShift`:
+                            h2El.style.backgroundImage = `url('${mid}')`
+                            h2El.style.backgroundPosition = "center 40%"
+                            
                             break;
-        
-                        case "other":
-                            heading.style.backgroundColor = "rgba(93,154,229,0.5)"
-                            break;
-        
-                        case "lesson":
-                            heading.style.backgroundColor = "rgba(34,197,94,0.5)"
+                            
+                            case `nightShift`:
+                            h2El.style.backgroundImage = `url('${night}')`
+                            h2El.style.backgroundPosition = "center 10%"
+
                             break;
                     
                         default:
                             break;
                     }
+                })                            
+
+            const categoryDivEls = shiftDivEl.querySelectorAll("div")
+                categoryDivEls.forEach(categoryDivEl=>{
+
+                    const heading = categoryDivEl.querySelector("h4")
+
+                    switch (categoryDivEl.id) {
+                        case "work":
+                            heading.style.backgroundColor = "rgb(239,68,68)"
+                            break;
+        
+                        case "love":
+                            heading.style.backgroundColor = "rgb(255,155,54)"
+                            break;
+        
+                        case "other":
+                            heading.style.backgroundColor = "rgb(93,154,229)"
+                            break;
+        
+                        case "lesson":
+                            heading.style.backgroundColor = "rgb(34,197,94)"
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+                    const todoLiEls = categoryDivEl.querySelectorAll("li")
+                        todoLiEls.forEach(todoLiEl => {
+
+                            switch (todoLiEl.parentElement.parentElement.id) {
+                                case "work":
+                                    todoLiEl.style.backgroundColor = "rgba(239,68,68,0.3)"
+                                    break;
+
+                                case "love":
+                                    todoLiEl.style.backgroundColor = "rgba(255,155,54,0.3)"
+                                    break;
+
+                                case "other":
+                                    todoLiEl.style.backgroundColor = "rgba(93,154,229,0.3)"
+                                    break;
+
+                                case "lesson":
+                                    todoLiEl.style.backgroundColor = "rgba(34,197,94,0.3)"
+                                    break;
+
+                            
+                                default:
+                                    break;
+                            }
+                        })
+
                 })
 
             const h3Els = document.querySelectorAll("h3")

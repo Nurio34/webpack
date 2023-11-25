@@ -24,9 +24,22 @@ module.exports = {
             },
 
             {
-                test: /\.(png|jpg|jpeg|svg|gif|jif|webp)$/i,
-                type: "asset/resource"
-            }
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: '[name].[ext]',
+                      outputPath: 'images/',
+                    },
+                  },
+                ],
+            },
+
+            {
+                test: /\.webp$/i,
+                type: 'asset/resource',
+            },
         ]
     },
 
