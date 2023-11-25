@@ -3,7 +3,7 @@ import data from "./data"
 import { dataSchema,complatedSchema } from "./dataSchema"
 import { complatedData } from "./data"
 import { allTodosStyle,partlyTodosHTML, editModal } from "./UI"
-import { editButtonsListeneres } from "./UI-Listeners"
+import { editBtnsListeners } from "./UI-Listeners"
 
 export default function handleData(shift,day,category,todo,date,hour,addDate,updateDate,editingMode,id,addTime,complateDate,complateTime) {
     //** CERATE TODO LİST VARIABLE */
@@ -40,7 +40,7 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
         sectionEl.innerHTML =           partlyTodosHTML(shift,data()) + 
                             editModal()
         allTodosStyle()
-        editButtonsListeneres()
+        editBtnsListeners()
 }
 
 function AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime) {

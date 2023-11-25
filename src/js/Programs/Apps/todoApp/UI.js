@@ -1,5 +1,5 @@
 
-import {listeners,editButtonsListeneres} from "./UI-Listeners"
+import {listeners,editBtnsListeners} from "./UI-Listeners"
 import data from "./data"
 import day from "../../../../assets/images/day.webp"
 import mid from "../../../../assets/images/mid.webp"
@@ -30,7 +30,7 @@ export default function main() {
                                     editModal()   
         allTodosStyle()
         listeners()
-        editButtonsListeneres()
+        editBtnsListeners()
 }
 
 function shiftSelectHTML() {
@@ -223,17 +223,17 @@ export function allTodosHTML(data,filter) {
                                                         </div>
                                                         
 
-                                                        <div class="row-start-3 col-start-2 flex justify-center gap-x-3 justify-self-end">
+                                                        <div class="editBtns absolute grid border-2 border-black invisible  ">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
-                                                                class="border-2 border-black rounded-full w-7 aspect-square px-1 bg-orange-500">E</button>
+                                                                class=" border-b-2 border-black px-1 bg-white">Edit</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-addtime="${todo.addTime}"
-                                                                class="border-2 border-black rounded-full w-7 aspect-square px-1 bg-green-500">C</button>
+                                                                class="border-b-2 border-black px-1 bg-white">Complate</button>
 
                                                             <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                class="border-2  border-black rounded-full w-7 aspect-square px-1 bg-red-500">D</button>
+                                                                class="px-1 bg-white">Delete</button>
                                                         </div>
                                                         
                                                     </li>
@@ -288,17 +288,17 @@ export function partlyTodosHTML(shiftFilter,data) {
                                                         </div>
                                                         
 
-                                                        <div class="row-start-3 col-start-2 flex justify-center gap-x-3 justify-self-end">
+                                                        <div class="editBtns absolute grid border-2 border-black invisible">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
-                                                                class="border-2 border-black rounded-full w-7 aspect-square px-1 bg-orange-500">E</button>
+                                                                class="border-b-2 border-black px-1 bg-white">Edit</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-addtime="${todo.addTime}"
-                                                                class="border-2 border-black rounded-full w-7 aspect-square px-1 bg-green-500">C</button>
+                                                                class="border-b-2 border-black px-1 bg-white">Complate</button>
 
                                                             <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                class="border-2  border-black rounded-full w-7 aspect-square px-1 bg-red-500">D</button>
+                                                                class="px-1 bg-white">Delete</button>
                                                         </div>
                                                         
                                                     </li>

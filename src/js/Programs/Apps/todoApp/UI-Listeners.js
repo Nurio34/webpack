@@ -58,6 +58,7 @@ export function listeners() {
 
                 case "ShiftFilter":
                     shiftFilter = e.target.value
+                    Change_Selects_Background(selectEl,shiftFilter)
 
                         if(shiftFilter === "all") {
                             sectionEl.innerHTML = allTodosHTML(data()) +
@@ -68,9 +69,8 @@ export function listeners() {
                                                     editModal()
                         }
                             allTodosStyle()
-                            editButtonsListeneres()
+                            editBtnsListeners()
 
-                        Change_Selects_Background(selectEl,shiftFilter)
                     break;
             
                 case "TodoFilter":
@@ -80,7 +80,7 @@ export function listeners() {
                     }
                     else sectionEl.innerHTML = allTodosHTML(complatedData(),`complated`)
                         allTodosStyle()
-                        editButtonsListeneres()
+                        editBtnsListeners()
                     break;
                 }
         }))
@@ -147,104 +147,129 @@ export function listeners() {
     
 }
 
-export function editButtonsListeneres() {
+export function editBtnsListeners() {
 
     const sectionEl = document.querySelector("section")
-    const editButtons = sectionEl.querySelectorAll("button")
-    const editModal = sectionEl.querySelector("#editModal")
+    const todoEls = document.querySelectorAll("#work,#love,#other,#lesson")
 
-        editButtons.forEach(btn=> btn.addEventListener("click", e=>{
+        todoEls.forEach(todoEl=>todoEl.addEventListener("contextmenu",e=>{
+
+            document.querySelectorAll(".editBtns").forEach(btn=>btn.classList.add("invisible"))
+
+            e.preventDefault()
+
+            const click_X = e.clientX
+            const click_Y = e.clientY
+
+            const editBtnsContainer = todoEl.querySelector(".editBtns")
+            if(!editBtnsContainer) return 
+
+            const editBtnsContainer_Width = editBtnsContainer.getBoundingClientRect().width
+            const edge = 375 - +editBtnsContainer_Width
+
+                editBtnsContainer.classList.remove("invisible")
+                editBtnsContainer.style.top = `${click_Y}px`
+
+                if(click_X < edge) editBtnsContainer.style.left = `${click_X}px`
+                else editBtnsContainer.style.left = `${+click_X - +editBtnsContainer_Width}px`
+                
+            const editBtns = editBtnsContainer.querySelectorAll("button")
+            const editModal = sectionEl.querySelector("#editModal")
+
+            editBtns.forEach(btn=> btn.addEventListener("click", e=>{
 
 
-            switch (e.target.dataset.type) {
-
-                case "editBtn":
-                    editingMode = "update"
-
-                    //** EDIT MODAL AÇ */
-                    editModal.classList.remove("invisible","-z-50")
-
-                    //** EDİT BUTONUNA TIKLANILAN NOTUN TÜM BİLGİLERİNİ KAYDET */
-                        getAllInfo(e)
-                    //** BİLGİLERİ MODAL'A YERLEŞTİR */
-                    const shiftSelect = editModal.querySelector("[name='ModalShift']")
-                        const shiftOptions = Array.from(shiftSelect.querySelectorAll("option"))                            
-                            shiftOptions.forEach(option=>{
-                                option.setAttribute("selected", false)                                
-                            })
-                            shiftOptions.filter(option => option.value === shift)[0].selected = true
-                        shiftSelect.addEventListener("change", (e)=> shift = e.target.value)
-
-                    const daySelect = editModal.querySelector("[name='ModalDay']")
-                        const dayOptions = Array.from(daySelect.querySelectorAll("option"))                                
-                                dayOptions.forEach(option=>{
-                                    option.setAttribute("selected", false)                                    
+                switch (e.target.dataset.type) {
+    
+                    case "editBtn":
+                        editingMode = "update"
+    
+                        //** EDIT MODAL AÇ */
+                        editModal.classList.remove("invisible","-z-50")
+    
+                        //** EDİT BUTONUNA TIKLANILAN NOTUN TÜM BİLGİLERİNİ KAYDET */
+                            getAllInfo(e)
+                        //** BİLGİLERİ MODAL'A YERLEŞTİR */
+                        const shiftSelect = editModal.querySelector("[name='ModalShift']")
+                            const shiftOptions = Array.from(shiftSelect.querySelectorAll("option"))                            
+                                shiftOptions.forEach(option=>{
+                                    option.setAttribute("selected", false)                                
                                 })
-                                dayOptions.filter(option => option.value === day)[0].selected = true
-                        daySelect.addEventListener("change", (e)=> day = e.target.value)
-
-
-                    const categorySelect = editModal.querySelector("[name='ModalCategory']")
-                        const categoryOptions = Array.from(categorySelect.querySelectorAll("option"))                        
-                            categoryOptions.forEach(option=>{
-                                option.setAttribute("selected", false)                            
+                                shiftOptions.filter(option => option.value === shift)[0].selected = true
+                            shiftSelect.addEventListener("change", (e)=> shift = e.target.value)
+    
+                        const daySelect = editModal.querySelector("[name='ModalDay']")
+                            const dayOptions = Array.from(daySelect.querySelectorAll("option"))                                
+                                    dayOptions.forEach(option=>{
+                                        option.setAttribute("selected", false)                                    
+                                    })
+                                    dayOptions.filter(option => option.value === day)[0].selected = true
+                            daySelect.addEventListener("change", (e)=> day = e.target.value)
+    
+    
+                        const categorySelect = editModal.querySelector("[name='ModalCategory']")
+                            const categoryOptions = Array.from(categorySelect.querySelectorAll("option"))                        
+                                categoryOptions.forEach(option=>{
+                                    option.setAttribute("selected", false)                            
+                                })
+                                categoryOptions.filter(option => option.value === category)[0].selected = true
+                            categorySelect.addEventListener("change", (e)=> category = e.target.value)
+    
+    
+                        const dateSelect = editModal.querySelector("[name='ModalDate']")
+                            dateSelect.value = date.split(".").reverse().map((item,ind)=>{
+                                return ind === 0 ? "20"+item  : item
+                            }).join("-")
+                            dateSelect.addEventListener("change", (e)=> {
+                                date = e.target.value
+                                date = date.split("-").reverse().map((item,ind)=>{
+                                    return ind === 2 ? item.substring(2,4) : item
+                                }).join(".")
+                            } )
+                            
+                        const timeSelect = editModal.querySelector("[name='ModalTime']")
+                            timeSelect.value = time
+                            timeSelect.addEventListener("change", (e)=> time = e.target.value)
+    
+                        const todoTextarea = editModal.querySelector("[name='ModalTodo']")
+                            todoTextarea.value = editingTodo
+                            todoTextarea.addEventListener("input",(e)=> todo = e.target.value)
+    
+                        const addDateEl = editModal.querySelector("#addDate")
+                            addDateEl.innerText = `Add : ${addDate}`
+    
+                        const updateDateEl = editModal.querySelector("#updateDate")
+                            updateDateEl.innerText = `Update : ${updateDate}`
+    
+                        const submitBtn = editModal.querySelector("#ModalSubmitBtn")
+                            submitBtn.addEventListener("click",()=> {
+    
+                                handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,id,addTime)
                             })
-                            categoryOptions.filter(option => option.value === category)[0].selected = true
-                        categorySelect.addEventListener("change", (e)=> category = e.target.value)
-
-
-                    const dateSelect = editModal.querySelector("[name='ModalDate']")
-                        dateSelect.value = date.split(".").reverse().map((item,ind)=>{
-                            return ind === 0 ? "20"+item  : item
-                        }).join("-")
-                        dateSelect.addEventListener("change", (e)=> {
-                            date = e.target.value
-                            date = date.split("-").reverse().map((item,ind)=>{
-                                return ind === 2 ? item.substring(2,4) : item
-                            }).join(".")
-                        } )
-                        
-                    const timeSelect = editModal.querySelector("[name='ModalTime']")
-                        timeSelect.value = time
-                        timeSelect.addEventListener("change", (e)=> time = e.target.value)
-
-                    const todoTextarea = editModal.querySelector("[name='ModalTodo']")
-                        todoTextarea.value = editingTodo
-                        todoTextarea.addEventListener("input",(e)=> todo = e.target.value)
-
-                    const addDateEl = editModal.querySelector("#addDate")
-                        addDateEl.innerText = `Add : ${addDate}`
-
-                    const updateDateEl = editModal.querySelector("#updateDate")
-                        updateDateEl.innerText = `Update : ${updateDate}`
-
-                    const submitBtn = editModal.querySelector("#ModalSubmitBtn")
-                        submitBtn.addEventListener("click",()=> {
-
-                            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,id,addTime)
-                        })
-
-                        
-
-                    break;
-
-                case "complateBtn":
-                    editingMode = "complate"
-                    complateDate = convertDate()
-                    complateTime = new Date().getTime()
-                        getAllInfo(e)
-                        handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,e.target.dataset.id,addTime,complateDate,complateTime)
-                    break;
-
-                case "deleteBtn":
-                    editingMode = "delete"
-                        handleData(e.target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,e.target.dataset.id)
-                    break;
-            
-                default:
-                    break;
-            }
+    
+                            
+    
+                        break;
+    
+                    case "complateBtn":
+                        editingMode = "complate"
+                        complateDate = convertDate()
+                        complateTime = new Date().getTime()
+                            getAllInfo(e)
+                            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,e.target.dataset.id,addTime,complateDate,complateTime)
+                        break;
+    
+                    case "deleteBtn":
+                        editingMode = "delete"
+                            handleData(e.target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,e.target.dataset.id)
+                        break;
+                
+                    default:
+                        break;
+                }
+            }))
         }))
+        
 }
 
 function getAllInfo(e) {
