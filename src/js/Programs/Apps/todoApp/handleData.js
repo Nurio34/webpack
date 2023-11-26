@@ -3,7 +3,7 @@ import data from "./data"
 import { dataSchema,complatedSchema } from "./dataSchema"
 import { complatedData } from "./data"
 import { allTodosStyle,partlyTodosHTML, editModal } from "./UI"
-import { editBtnsListeners } from "./UI-Listeners"
+import { Close_EditBtns_Modal, editBtnsListeners } from "./UI-Listeners"
 
 export default function handleData(shift,day,category,todo,date,hour,addDate,updateDate,editingMode,id,addTime,complateDate,complateTime) {
     //** CERATE TODO LİST VARIABLE */
@@ -39,8 +39,10 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
 
         sectionEl.innerHTML =           partlyTodosHTML(shift,data()) + 
                             editModal()
+                            
         allTodosStyle()
         editBtnsListeners()
+        Close_EditBtns_Modal()
 }
 
 function AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime) {
@@ -113,13 +115,10 @@ function AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,
             )
         }
     })
-
-    console.log(complateTimeCalc(addTime,complateTime))
 }
 
 function complateTimeCalc(addTime, complateTime) {
-    // const complatedIn = +complateTime - +addTime
-    const complatedIn = 61000
+    const complatedIn = +complateTime - +addTime
 
     const second = 1000
     const minute = 60 * second
@@ -139,7 +138,6 @@ function complateTimeCalc(addTime, complateTime) {
     if(complatedIn > month) complateMonth = Math.floor(( complatedIn / month) % 12) + "months"
     if(complatedIn > year) complateYear = Math.floor(complatedIn / year) + "years"
 
-     console.log({complateYear,complateMonth});
 
     if(parseInt(complateYear) > 0 && parseInt(complateMonth) > 0) return complateYear + "," + complateMonth
     if(parseInt(complateYear) > 0) return complateYear

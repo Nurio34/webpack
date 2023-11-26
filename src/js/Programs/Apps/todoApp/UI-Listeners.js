@@ -2,7 +2,7 @@
 import handleData from "./handleData"
 import data from "./data"
 import { complatedData } from "./data"
-import { allTodosHTML,allTodosStyle,partlyTodosHTML,editModal } from "./UI"
+import { allTodosHTML,allTodosStyle,partlyTodosHTML,editModal, Are_You_Sure_Modal_HTML } from "./UI"
 import dayImg from "../../../../assets/images/day.webp"
 import midImg from "../../../../assets/images/mid.webp"
 import nightImg from "../../../../assets/images/night.webp"
@@ -63,10 +63,14 @@ export function listeners() {
                         if(shiftFilter === "all") {
                             sectionEl.innerHTML = allTodosHTML(data()) +
                                                         editModal()
+
+                            Close_EditBtns_Modal()
                         }
                         else {
                             sectionEl.innerHTML = partlyTodosHTML(shiftFilter,data()) + 
                                                     editModal()
+                                            
+                            Close_EditBtns_Modal()
                         }
                             allTodosStyle()
                             editBtnsListeners()
@@ -138,7 +142,6 @@ export function listeners() {
         submitBtn.addEventListener("click",()=>{
             if(shift && day && category && todo) {
                 editingMode = "add"
-                console.log(day);
                 handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
                 todoInput.value = ""
             } 
@@ -258,12 +261,12 @@ export function editBtnsListeners() {
                         complateDate = convertDate()
                         complateTime = new Date().getTime()
                             getAllInfo(e)
-                            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,e.target.dataset.id,addTime,complateDate,complateTime)
+                            Are_You_Sure_Modal(e.target)
                         break;
     
                     case "deleteBtn":
                         editingMode = "delete"
-                            handleData(e.target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,e.target.dataset.id)
+                            Are_You_Sure_Modal(e.target)
                         break;
                 
                     default:
@@ -339,3 +342,72 @@ function Change_Selects_Background(selectEl,shift) {
     }
 }
 
+function Are_You_Sure_Modal(target) {
+
+    const sectionEl = document.querySelector("section")
+        sectionEl.appendChild(Are_You_Sure_Modal_HTML())
+
+    const sureModalEls = document.querySelectorAll(".sureModal")
+
+    const modalBtns = document.querySelectorAll("#yesBtn,#noBtn")
+
+
+        modalBtns.forEach(btn=>btn.addEventListener("click",modalFunction))
+
+    
+    function modalFunction(e) {
+
+        switch (target.dataset.type) {
+
+                case "complateBtn":
+
+                    switch (e.target.id) {
+                
+                        case "yesBtn":                            
+                            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,target.dataset.id,addTime,complateDate,complateTime)
+                            break;
+        
+                        case "noBtn":                            
+                            sureModalEls.forEach(sureModalEl=>sectionEl.removeChild(sureModalEl))
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+                    break;
+
+                case "deleteBtn":
+                    
+                    switch (e.target.id) {
+                    
+                        case "yesBtn":                            
+                            handleData(target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,target.dataset.id)
+                            break;
+        
+                        case "noBtn":                            
+                            sureModalEls.forEach(sureModalEl=>sectionEl.removeChild(sureModalEl))
+
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+                    break;
+            
+                default:
+                    break;
+            }
+
+            
+        }
+    }
+
+
+export function Close_EditBtns_Modal() {
+
+    const editBtnsModals = [...document.querySelectorAll(".editBtns")]   
+    const openedModel = editBtnsModals.filter(modal => !modal.classList.contains("invisible"))[0]
+        if(openedModel) openedModel.classList.add("invisible")                    
+}

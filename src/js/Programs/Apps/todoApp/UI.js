@@ -1,5 +1,5 @@
 
-import {listeners,editBtnsListeners} from "./UI-Listeners"
+import {listeners,editBtnsListeners, Close_EditBtns_Modal} from "./UI-Listeners"
 import data from "./data"
 import day from "../../../../assets/images/day.webp"
 import mid from "../../../../assets/images/mid.webp"
@@ -31,7 +31,8 @@ export default function main() {
         allTodosStyle()
         listeners()
         editBtnsListeners()
-}
+        window.addEventListener("click",Close_EditBtns_Modal)
+    }
 
 function shiftSelectHTML() {
     return `
@@ -489,4 +490,19 @@ export function editModal() {
             <p id="updateDate" class=" col-start-7 col-span-6">Update : 15.12.23 </p>
         </div>
     `
+}
+
+export function Are_You_Sure_Modal_HTML() {
+
+    const modalEl = document.createElement("div")
+        modalEl.className = "sureModal bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 flex flex-wrap justify-center gap-4"
+
+
+    modalEl.innerHTML = `
+        <h2 class=" w-full text-center"> Is Complated ? </h2>
+        <button id="yesBtn" class=" border-2 border-black bg-green-500 py-1 px-2"> Yes </button>
+        <button id="noBtn" class=" border-2 border-black bg-red-500 py-1 px-2"> No </button> 
+    `
+
+    return modalEl
 }
