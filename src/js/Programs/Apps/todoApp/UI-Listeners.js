@@ -149,10 +149,11 @@ export function listeners() {
 
 export function editBtnsListeners() {
 
-    const sectionEl = document.querySelector("section")
     const todoEls = document.querySelectorAll("#work,#love,#other,#lesson")
 
         todoEls.forEach(todoEl=>todoEl.addEventListener("contextmenu",e=>{
+            
+            const sectionEl = document.querySelector("section")
 
             document.querySelectorAll(".editBtns").forEach(btn=>btn.classList.add("invisible"))
 
@@ -165,7 +166,8 @@ export function editBtnsListeners() {
             if(!editBtnsContainer) return 
 
             const editBtnsContainer_Width = editBtnsContainer.getBoundingClientRect().width
-            const edge = 375 - +editBtnsContainer_Width
+            const screenWidth = window.innerWidth
+            const edge = screenWidth - +editBtnsContainer_Width
 
                 editBtnsContainer.classList.remove("invisible")
                 editBtnsContainer.style.top = `${click_Y}px`
@@ -293,7 +295,6 @@ function getAllInfo(e) {
         addTime = e.target.dataset.addtime
 
 }
-
 
 function convertDate() {
     const months = [

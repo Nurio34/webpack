@@ -107,7 +107,8 @@ function AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,
                     addDate : addDate,
                     addTime : +addTime,
                     complateDate : complateDate,
-                    complateTime : +complateTime
+                    complateTime : +complateTime,
+                    complatedIn : complateTimeCalc(addTime, complateTime)
                 }
             )
         }
@@ -117,6 +118,40 @@ function AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,
 }
 
 function complateTimeCalc(addTime, complateTime) {
+    // const complatedIn = +complateTime - +addTime
+    const complatedIn = 61000
 
-    return +complateTime - +addTime
+    const second = 1000
+    const minute = 60 * second
+    const hour = 60 * minute
+    const day = 24 * hour
+    const week = 7 * day
+    const month = 30 * day
+    const year = 365 * day
+
+    let complateYear, complateMonth, complateWeek, complateDay, complateHour, complateMinute, complateSecond
+
+    if(complatedIn >= second) complateSecond = Math.floor((complatedIn / second) % 60) + "secs"
+    if(complatedIn >= minute ) complateMinute = Math.floor((complatedIn / minute) % 60) + "mins"
+    if(complatedIn >= hour) complateHour = Math.floor((complatedIn / hour) % 24) + "hours"
+    if(complatedIn >= day ) complateDay = Math.floor((complatedIn / day) % 30) + "days"
+    if(complatedIn >= week ) complateWeek = ( Math.floor(complatedIn / week ) % 4) + "weeks"
+    if(complatedIn > month) complateMonth = Math.floor(( complatedIn / month) % 12) + "months"
+    if(complatedIn > year) complateYear = Math.floor(complatedIn / year) + "years"
+
+     console.log({complateYear,complateMonth});
+
+    if(parseInt(complateYear) > 0 && parseInt(complateMonth) > 0) return complateYear + "," + complateMonth
+    if(parseInt(complateYear) > 0) return complateYear
+    if(parseInt(complateMonth) > 0 && parseInt(complateWeek) > 0) return complateMonth + "," + complateWeek
+    if(parseInt(complateMonth) > 0) return complateMonth
+    if(parseInt(complateWeek) > 0 && parseInt(complateDay) > 0) return complateWeek + "," + complateDay
+    if(parseInt(complateWeek) > 0) return complateWeek 
+    if(parseInt(complateDay) > 0 && parseInt(complateHour) > 0) return complateDay + "," + complateHour
+    if(parseInt(complateDay) > 0) return complateDay
+    if(parseInt(complateHour) > 0 && parseInt(complateMinute) > 0) return complateHour + "," + complateMinute
+    if(parseInt(complateHour) > 0) return complateHour
+    if(parseInt(complateMinute) > 0 && parseInt(complateSecond) > 0) return complateMinute + "," + complateSecond
+    if(parseInt(complateMinute) > 0 ) return complateMinute
+    if(parseInt(complateSecond) > 0 ) return complateSecond
 }

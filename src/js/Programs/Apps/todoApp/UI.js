@@ -15,7 +15,7 @@ export default function main() {
 
     //** CREATE FORM ELEMENT AND APPEND IT TO MAIN ELEMENT */
     const formEl = document.createElement("form")
-        formEl.className = "m-1 p-4 border-2 border-purple-400 rounded-lg sticky top-0 bg-white"
+        formEl.className = "m-1 p-4 border-2 border-purple-400 rounded-lg bg-white"
         formEl.classList.add("grid","grid-cols-12","gap-y-4")
         mainEl.appendChild(formEl)
         formEl.innerHTML =  shiftSelectHTML() + daySelectHTML() + categorySelectHTML() +
@@ -172,6 +172,7 @@ export function allTodosHTML(data,filter) {
                                                             <p class="text-center leading-4 float-left bg-blue-600 text-white rounded-b-xl p-1">${todo.addDate}</p>
                                                             <p class="break-all pl-2 font-bold">${todo.todo}</p>
                                                             <p class="text-center leading-4 float-right bg-green-500 text-white rounded-t-xl p-1">${todo.complateDate}</p>
+                                                            <p>Complated In : ${todo.complatedIn}
                                                         </div>                                                                                                                                                    
                                                     </li>
                                                 `
@@ -226,14 +227,14 @@ export function allTodosHTML(data,filter) {
                                                         <div class="editBtns absolute grid border-2 border-black invisible  ">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
-                                                                class=" border-b-2 border-black px-1 bg-white">Edit</button>
+                                                                class=" border-b-2 border-black p-1 bg-white">Edit</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-addtime="${todo.addTime}"
-                                                                class="border-b-2 border-black px-1 bg-white">Complate</button>
+                                                                class="border-b-2 border-black p-1 bg-white">Complate</button>
 
                                                             <button data-type=deleteBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                class="px-1 bg-white">Delete</button>
+                                                                class="p-1 bg-white">Delete</button>
                                                         </div>
                                                         
                                                     </li>
