@@ -215,7 +215,7 @@ export function allTodosHTML(data,filter) {
                                             .map(todo=>{
 
                                                 return `
-                                                    <li class=" grid border-b-2 border-black pb-2 pr-2">
+                                                    <li class="relative grid border-b-2 border-black pb-2 pr-2">
                                                         <div class=" col-span-2 ml-1">
                                                             <div class="float-left mr-1 rounded-b-xl p-1 text-center" style="background-color : rgba(255,255,255,0.5">
                                                                 <p class=" leading-4">${todo.date}</p>
@@ -225,7 +225,7 @@ export function allTodosHTML(data,filter) {
                                                         </div>
                                                         
 
-                                                        <div class="editBtns absolute grid border-2 border-black invisible  ">
+                                                        <div class="editBtns absolute grid border-2 border-black invisible z-10  ">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
                                                                 class=" border-b-2 border-black p-1 bg-white">Edit</button>
@@ -280,7 +280,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                                             dayObj.todos[category].map(todo=>{
 
                                                 return `
-                                                    <li class=" grid border-b-2 border-black pb-2 pr-2">
+                                                    <li class="relative grid border-b-2 border-black pb-2 pr-2">
                                                         <div class=" col-span-2 ml-1">
                                                             <div class="float-left mr-1 bg-white rounded-b-xl p-1">
                                                                 <p class="text-center leading-4">${todo.date}</p>
@@ -290,7 +290,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                                                         </div>
                                                         
 
-                                                        <div class="editBtns absolute grid border-2 border-black invisible">
+                                                        <div class="editBtns absolute grid border-2 border-black invisible z-10">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
                                                                         data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
                                                                 class="border-b-2 border-black px-1 bg-white">Edit</button>

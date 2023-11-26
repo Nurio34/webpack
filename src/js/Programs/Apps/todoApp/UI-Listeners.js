@@ -155,8 +155,10 @@ export function editBtnsListeners() {
     const todoEls = document.querySelectorAll("#work,#love,#other,#lesson")
 
         todoEls.forEach(todoEl=>todoEl.addEventListener("contextmenu",e=>{
-            
             const sectionEl = document.querySelector("section")
+
+            const li = e.target.parentElement.parentElement
+            const editBtnContainer = li.querySelector(".editBtns")
 
             document.querySelectorAll(".editBtns").forEach(btn=>btn.classList.add("invisible"))
 
@@ -165,20 +167,19 @@ export function editBtnsListeners() {
             const click_X = e.clientX
             const click_Y = e.clientY
 
-            const editBtnsContainer = todoEl.querySelector(".editBtns")
-            if(!editBtnsContainer) return 
+            // if(!editBtnsContainer) return 
 
-            const editBtnsContainer_Width = editBtnsContainer.getBoundingClientRect().width
+            const editBtnContainer_Width = editBtnContainer.getBoundingClientRect().width
             const screenWidth = window.innerWidth
-            const edge = screenWidth - +editBtnsContainer_Width
+            const edge = screenWidth - +editBtnContainer_Width
 
-                editBtnsContainer.classList.remove("invisible")
-                editBtnsContainer.style.top = `${click_Y}px`
+                editBtnContainer.classList.remove("invisible")
+                editBtnContainer.style.top = `1px`
 
-                if(click_X < edge) editBtnsContainer.style.left = `${click_X}px`
-                else editBtnsContainer.style.left = `${+click_X - +editBtnsContainer_Width}px`
+                if(click_X < edge) editBtnContainer.style.left = `${click_X}px`
+                else editBtnContainer.style.left = `${+click_X - +editBtnContainer_Width}px`
                 
-            const editBtns = editBtnsContainer.querySelectorAll("button")
+            const editBtns = editBtnContainer.querySelectorAll("button")
             const editModal = sectionEl.querySelector("#editModal")
 
             editBtns.forEach(btn=> btn.addEventListener("click", e=>{
