@@ -5,19 +5,19 @@ import { complatedData } from "./data"
 import { allTodosStyle,partlyTodosHTML, editModal } from "./UI"
 import { Close_EditBtns_Modal, editBtnsListeners } from "./UI-Listeners"
 
-export default function handleData(shift,day,category,todo,date,hour,addDate,updateDate,editingMode,id,addTime,complateDate,complateTime) {
+export default function handleData(shift,day,category,todo,date,hour,importance,addDate,updateDate,editingMode,id,addTime,complateDate,complateTime) {
     //** CERATE TODO LİST VARIABLE */
     let todoList = data() || dataSchema
     let complatedList = complatedData() || complatedSchema
 
     //** ADD or UPDATE or DELETE TODO */
     if(editingMode === "add") {
-        AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime)
+        AddToTodo(todoList,shift,day,category,todo,date,hour,importance,addDate,updateDate,addTime)
     }
 
     else if(editingMode === "update") {
        todoList = Delete(todoList,id)
-       AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime)
+       AddToTodo(todoList,shift,day,category,todo,date,hour,importance,addDate,updateDate,addTime)
     }
 
     else if(editingMode === "delete") {
@@ -27,7 +27,7 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
 
     else if(editingMode = "complate") {
         todoList = Delete(todoList,id)
-        AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,updateDate,addTime,complateDate,complateTime)
+        AddToComplated(complatedList,shift,day,category,todo,date,"importance",hour,addDate,updateDate,addTime,complateDate,complateTime)
         localStorage.setItem("complated",JSON.stringify(complatedList))
     }
 
@@ -45,7 +45,7 @@ export default function handleData(shift,day,category,todo,date,hour,addDate,upd
         Close_EditBtns_Modal()
 }
 
-function AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate,addTime) {
+function AddToTodo(todoList,shift,day,category,todo,date,hour,importance,addDate,updateDate,addTime) {
     todoList[shift].forEach(dayObj => {
         if(dayObj.day === day) {
             dayObj.todos[category].push(
@@ -53,6 +53,7 @@ function AddToTodo(todoList,shift,day,category,todo,date,hour,addDate,updateDate
                     id : new Date().getTime(),
                     date : date,
                     hour : hour,
+                    importance : importance,
                     todo : todo,
                     addDate : addDate,
                     updateDate : updateDate,

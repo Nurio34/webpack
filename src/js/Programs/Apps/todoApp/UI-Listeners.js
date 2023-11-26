@@ -2,7 +2,7 @@
 import handleData from "./handleData"
 import data from "./data"
 import { complatedData } from "./data"
-import { allTodosHTML,allTodosStyle,partlyTodosHTML,editModal, Are_You_Sure_Modal_HTML } from "./UI"
+import { allTodosHTML,allTodosStyle,partlyTodosHTML,editModal, Are_You_Sure_Modal_HTML, Nth_Day } from "./UI"
 import dayImg from "../../../../assets/images/day.webp"
 import midImg from "../../../../assets/images/mid.webp"
 import nightImg from "../../../../assets/images/night.webp"
@@ -14,6 +14,7 @@ let category = ""
 let todo = ""
 let date = ""
 let time = ""
+let importance = ""
 let addDate = "" 
 let addTime = ""
 
@@ -56,6 +57,10 @@ export function listeners() {
                     category = e.target.value
                     break;
 
+                case "Importance":
+                    importance = e.target.value
+                    break;
+
                 case "ShiftFilter":
                     shiftFilter = e.target.value
                     Change_Selects_Background(selectEl,shiftFilter)
@@ -74,6 +79,7 @@ export function listeners() {
                         }
                             allTodosStyle()
                             editBtnsListeners()
+                            Nth_Day()
 
                     break;
             
@@ -81,6 +87,7 @@ export function listeners() {
                     
                     if(e.target.value === "todo") {
                         sectionEl.innerHTML = allTodosHTML(data())
+                        Nth_Day()
                     }
                     else sectionEl.innerHTML = allTodosHTML(complatedData(),`complated`)
                         allTodosStyle()
@@ -112,15 +119,15 @@ export function listeners() {
             }
         }))
 
-    const todoInput = formEl.querySelector("[type='text'][name='Todo']")
+    const todoTextarea = formEl.querySelector("textarea[name='Todo']")
         
-        todoInput.addEventListener("input",e=>{
-            todo = e.target.value
+        todoTextarea.addEventListener("input",e=>{
+            todo = e.target.value.trim()
             addDate = convertDate()
             addTime = +new Date().getTime()
         })
 
-        todoInput.addEventListener("keydown",e=>{
+        todoTextarea.addEventListener("keydown",e=>{
  
                switch (e.key) {
                 
@@ -129,8 +136,8 @@ export function listeners() {
 
                     if(shift && day && category && todo) {
                         editingMode = "add"
-                        handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
-                        todoInput.value = ""
+                        handleData(shift,day,category,todo,date,time,importance,addDate,updateDate,editingMode,"id",addTime)
+                        todoTextarea.value = ""
                     } 
                     
                     break;
@@ -142,8 +149,8 @@ export function listeners() {
         submitBtn.addEventListener("click",()=>{
             if(shift && day && category && todo) {
                 editingMode = "add"
-                handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,"id",addTime)
-                todoInput.value = ""
+                handleData(shift,day,category,todo,date,time,importance,addDate,updateDate,editingMode,"id",addTime)
+                todoTextarea.value = ""
             } 
         })
 
@@ -152,22 +159,16 @@ export function listeners() {
 
 export function editBtnsListeners() {
 
-    const todoEls = document.querySelectorAll("#work,#love,#other,#lesson")
+    const li_Els = [...document.querySelectorAll("li")]
+        
+        li_Els.forEach(li=>li.addEventListener("contextmenu",e=>{
 
-        todoEls.forEach(todoEl=>todoEl.addEventListener("contextmenu",e=>{
-            let li 
-            const sectionEl = document.querySelector("section")
+            e.preventDefault()
 
-            if(e.target.nodeName == "P")li = e.target.parentElement.parentElement
-            else if(e.target.nodeName == "DIV")li = e.target.parentElement
-            else if(e.target.nodeName === "LI") li = e.target
-
-                console.log(li);
             const editBtnContainer = li.querySelector(".editBtns")
 
             document.querySelectorAll(".editBtns").forEach(btn=>btn.classList.add("invisible"))
 
-            e.preventDefault()
 
             const click_X = e.clientX
             const click_Y = e.clientY
@@ -179,13 +180,13 @@ export function editBtnsListeners() {
             const edge = screenWidth - +editBtnContainer_Width
 
                 editBtnContainer.classList.remove("invisible")
-                editBtnContainer.style.top = `1px`
+                editBtnContainer.style.top = `10px`
 
                 if(click_X < edge) editBtnContainer.style.left = `${click_X}px`
                 else editBtnContainer.style.left = `${+click_X - +editBtnContainer_Width}px`
                 
             const editBtns = editBtnContainer.querySelectorAll("button")
-            const editModal = sectionEl.querySelector("#editModal")
+            const editModal = document.querySelector("#editModal")
 
             editBtns.forEach(btn=> btn.addEventListener("click", e=>{
 
@@ -241,6 +242,17 @@ export function editBtnsListeners() {
                         const timeSelect = editModal.querySelector("[name='ModalTime']")
                             timeSelect.value = time
                             timeSelect.addEventListener("change", (e)=> time = e.target.value)
+
+                        const importanceSelect = editModal.querySelector("[name='ModalImportance']")
+                        const importanceOptions =Array.from(importanceSelect.querySelectorAll("option"))                        
+                            importanceOptions.forEach(option=>{
+                                option.setAttribute("selected", false)                            
+                            })
+                            importanceOptions.filter(option => option.value === importance)[0].selected = true
+                            importanceSelect.addEventListener("change", (e)=> importance = e.target.value)
+
+
+                            console.log(importanceSelect);
     
                         const todoTextarea = editModal.querySelector("[name='ModalTodo']")
                             todoTextarea.value = editingTodo
@@ -255,7 +267,7 @@ export function editBtnsListeners() {
                         const submitBtn = editModal.querySelector("#ModalSubmitBtn")
                             submitBtn.addEventListener("click",()=> {
     
-                                handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,id,addTime)
+                                handleData(shift,day,category,todo,date,time,importance,addDate,updateDate,editingMode,id,addTime)
                             })
     
                             
@@ -299,6 +311,8 @@ function getAllInfo(e) {
     date = data()[shift].filter(dayObj => dayObj.day === day)[0].todos[category].filter(todoObj=>{
         return todoObj.id == id
     })[0].date
+    importance = e.target.dataset.imp
+
         addDate = e.target.dataset.adddate
         updateDate = convertDate()
         addTime = e.target.dataset.addtime
@@ -370,7 +384,7 @@ function Are_You_Sure_Modal(target) {
                     switch (e.target.id) {
                 
                         case "yesBtn":                            
-                            handleData(shift,day,category,todo,date,time,addDate,updateDate,editingMode,target.dataset.id,addTime,complateDate,complateTime)
+                            handleData(shift,day,category,todo,date,time,"importance",addDate,updateDate,editingMode,target.dataset.id,addTime,complateDate,complateTime)
                             break;
         
                         case "noBtn":                            
@@ -388,7 +402,7 @@ function Are_You_Sure_Modal(target) {
                     switch (e.target.id) {
                     
                         case "yesBtn":                            
-                            handleData(target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,`addDate`,`updateDate`,editingMode,target.dataset.id)
+                            handleData(target.dataset.shift,`day`,`category`,`todo`,`date`,`time`,"importance",`addDate`,`updateDate`,editingMode,target.dataset.id)
                             break;
         
                         case "noBtn":                            

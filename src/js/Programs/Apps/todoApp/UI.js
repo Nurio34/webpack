@@ -19,8 +19,9 @@ export default function main() {
         formEl.classList.add("grid","grid-cols-12","gap-y-4")
         mainEl.appendChild(formEl)
         formEl.innerHTML =  shiftSelectHTML() + daySelectHTML() + categorySelectHTML() +
-                            dateInputHTML() + timeInputHTML() + todoInputHTML() +
-                                    shiftFilterSelectHTML() + todoFilterSelectHTML()
+                            dateInputHTML() + timeInputHTML() + importance() +
+                                              todoTextareaHTML() +
+                            shiftFilterSelectHTML()   +     todoFilterSelectHTML()
 
     //** CREATE SECTION ELEMENT AND APPEND IT TO MAIN ELEMENT*/
     const sectionEl = document.createElement("section")  
@@ -32,6 +33,7 @@ export default function main() {
         listeners()
         editBtnsListeners()
         window.addEventListener("click",Close_EditBtns_Modal)
+        Nth_Day()
     }
 
 function shiftSelectHTML() {
@@ -86,7 +88,7 @@ function dateInputHTML() {
     return `
         <input type="date" name="Date" id="dateInput" data-id="time"
             class="border-2 border-black
-                col-start-1 col-span-1
+                col-start-1 col-span-3
             ">
     `
 }
@@ -95,19 +97,32 @@ function timeInputHTML() {
     return`
         <input type="time" name="Time" id="timeInput" data-id="time"  
             class="border-2 border-black
-                col-start-2 col-span-2
+                col-start-5 col-span-3
             "
             >
     `
 }
 
-function todoInputHTML() {
+function importance() {
+    return`
+    <select name="Importance" id="importanceSelect"
+        class=" border-2 border-black
+            col-start-9 col-span-4"
+        >
+            <option value="" selected disabled>Importance</option>
+            <option value="important">Important</option>
+            <option value="not">Not Imp.</option>
+    </select>
+    `
+}
+
+function todoTextareaHTML() {
     return`
         <div class="border-2 border-black grid grid-cols-12 items-center
-                col-start-4 col-span-full
+                col-start-1 col-span-full
         ">
-            <input type="text" name="Todo" id="todoInput" class=" col-span-10 px-1 grow border-r-2 border-black">
-            <i id="submitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2"></i>
+            <textarea  name="Todo" id="todoTextarea" rows="3" class=" col-span-10 px-1 grow border-r-2 border-black "></textarea>
+            <i id="submitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2 h-full grid place-content-center"></i>
         </div>
         
     `
@@ -201,6 +216,7 @@ export function allTodosHTML(data,filter) {
                 daysArr.map(dayObj=>{
 
                     return `
+                        <div class = "day">
                         <h3 class="text-center text-md text-blacK uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos).map(category=>{
@@ -215,19 +231,19 @@ export function allTodosHTML(data,filter) {
                                             .map(todo=>{
 
                                                 return `
-                                                    <li class="relative grid border-b-2 border-black pb-2 pr-2">
-                                                        <div class=" col-span-2 ml-1">
-                                                            <div class="float-left mr-1 rounded-b-xl p-1 text-center" style="background-color : rgba(255,255,255,0.5">
+                                                    <li class="${todo.importance} relative grid border-b-2 border-black pb-2 pr-2">
+                                                        <div class=" pointer-events-none col-span-2 ml-1">
+                                                            <div class=" pointer-events-none float-left mr-1 rounded-b-xl p-1 text-center" style="background-color : rgba(255,255,255,0.5">
                                                                 <p class="leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
-                                                            <p class="break-all pl-2 font-bold ">${todo.todo}</p>
+                                                            <p class=" pointer-events-none break-all pl-2 font-bold ">${todo.todo}</p>
                                                         </div>
                                                         
 
                                                         <div class="editBtns absolute grid border-2 border-black invisible z-10  ">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                        data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
+                                                                        data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}" data-imp="${todo.importance}"
                                                                 class=" border-b-2 border-black p-1 bg-white">Edit</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
@@ -247,6 +263,7 @@ export function allTodosHTML(data,filter) {
                                 ` 
                             }).join("")
                         }
+                        </div>
                     `
                 }).join("")
             }
@@ -268,6 +285,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                 daysArr.map(dayObj=>{
 
                     return `
+                    <div class ="day">
                         <h3 class="text-center text-md text-blacK uppercase font-extrabold text-lg ">${dayObj.day}</h3>
                         ${
                             Object.keys(dayObj.todos).map(category=>{
@@ -280,19 +298,19 @@ export function partlyTodosHTML(shiftFilter,data) {
                                             dayObj.todos[category].map(todo=>{
 
                                                 return `
-                                                    <li class="relative grid border-b-2 border-black pb-2 pr-2">
-                                                        <div class=" col-span-2 ml-1">
-                                                            <div class="float-left mr-1 bg-white rounded-b-xl p-1">
+                                                    <li class="${todo.importance} relative grid border-b-2 border-black pb-2 pr-2">
+                                                        <div class=" pointer-events-none col-span-2 ml-1">
+                                                            <div class=" pointer-events-none float-left mr-1 bg-white rounded-b-xl p-1">
                                                                 <p class="text-center leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
-                                                            <p class="break-all pl-2 font-bold">${todo.todo}</p>
+                                                            <p class=" pointer-events-none break-all pl-2 font-bold">${todo.todo}</p>
                                                         </div>
                                                         
 
                                                         <div class="editBtns absolute grid border-2 border-black invisible z-10">
                                                             <button data-type=editBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
-                                                                        data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}"
+                                                                        data-addDate = "${todo.addDate}" data-updateDate = "${todo.updateDate}" data-addtime="${todo.addTime}" data-imp="${todo.importance}"
                                                                 class="border-b-2 border-black px-1 bg-white">Edit</button>
 
                                                             <button data-type=complateBtn data-id=${todo.id} data-shift=${shift} data-day=${dayObj.day} data-category=${category}
@@ -312,6 +330,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                                 ` 
                             }).join("")
                         }
+                    </div>
                     `
                 }).join("")
             }
@@ -466,14 +485,23 @@ export function editModal() {
 
             <input type="date" name="ModalDate" id="modalDateInput" data-id="time"
                 class="border-2 border-black
-                    col-start-1 col-span-5
+                    col-start-1 col-span-3
             ">
 
             <input type="time" name="ModalTime" id="modalTimeInput" data-id="time"  
                 class="border-2 border-black
-                    col-start-8 col-span-5
+                    col-start-5 col-span-3
             "
             >
+
+            <select name="ModalImportance" id="modalImportanceSelect"
+                class=" border-2 border-black
+                    col-start-9 col-span-4"
+                >
+                    <option value="" selected disabled>Importance</option>
+                    <option value="important">Important</option>
+                    <option value="not">Not Imp.</option>
+            </select>
 
             <div class="border-2 border-black grid grid-cols-12 items-center
                 col-start-1 col-span-full
@@ -495,7 +523,7 @@ export function editModal() {
 export function Are_You_Sure_Modal_HTML() {
 
     const modalEl = document.createElement("div")
-        modalEl.className = "sureModal bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 flex flex-wrap justify-center gap-4"
+        modalEl.className = "sureModal bg-white fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-8 flex flex-wrap justify-center gap-4"
 
 
     modalEl.innerHTML = `
@@ -505,4 +533,57 @@ export function Are_You_Sure_Modal_HTML() {
     `
 
     return modalEl
+}
+
+export function Nth_Day() {
+
+    const sectionEl = document.querySelector("section")
+    const dayShiftEl = sectionEl.querySelector("#dayShift")
+    const midShiftEl = sectionEl.querySelector("#midShift")
+    const nightShiftEl = sectionEl.querySelector("#nightShift")
+
+        if(dayShiftEl){
+            const dayDivEls = [...dayShiftEl.querySelectorAll(".day")]
+                dayDivEls.length = 7
+
+                for(let i=0; i<=6; i++) {
+                    dayDivEls[i].dataset.nthday = i + 1 
+                }
+        }
+
+        if(midShiftEl){
+            const midDivEls = [...midShiftEl.querySelectorAll(".day")]
+                midDivEls.length = 7
+
+                for(let i=7; i<=13; i++) {
+                    midDivEls[i % 7].dataset.nthday = i + 1 
+                }
+        }
+
+        if(nightShiftEl){
+            const nightDivEls = [...nightShiftEl.querySelectorAll(".day")]
+                nightDivEls.length = 7
+
+                for(let i=14; i<=20; i++) {
+                    nightDivEls[i % 7].dataset.nthday = i + 1 
+                }
+        }
+
+        Today_and_Importance_Highlight()
+
+
+        function Today_and_Importance_Highlight() {
+
+            const totalDays = 21
+            
+            setInterval(() => {
+                const time = (new Date()).toTimeString().split(" ")[0].split(":")
+                const hour = time[0]
+                const minute = time[1]
+
+                    console.log({hour,minute});
+
+                    if(hour === "00" && minute >=0 || minute <=59) console.log("bingo");
+            }, 1000);
+        }
 }
