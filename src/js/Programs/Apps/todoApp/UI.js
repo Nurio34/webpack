@@ -218,7 +218,7 @@ export function allTodosHTML(data,filter) {
                                                     <li class="relative grid border-b-2 border-black pb-2 pr-2">
                                                         <div class=" col-span-2 ml-1">
                                                             <div class="float-left mr-1 rounded-b-xl p-1 text-center" style="background-color : rgba(255,255,255,0.5">
-                                                                <p class=" leading-4">${todo.date}</p>
+                                                                <p class="leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
                                                             <p class="break-all pl-2 font-bold ">${todo.todo}</p>

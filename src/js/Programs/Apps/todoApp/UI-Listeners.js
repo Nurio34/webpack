@@ -155,9 +155,14 @@ export function editBtnsListeners() {
     const todoEls = document.querySelectorAll("#work,#love,#other,#lesson")
 
         todoEls.forEach(todoEl=>todoEl.addEventListener("contextmenu",e=>{
+            let li 
             const sectionEl = document.querySelector("section")
 
-            const li = e.target.parentElement.parentElement
+            if(e.target.nodeName == "P")li = e.target.parentElement.parentElement
+            else if(e.target.nodeName == "DIV")li = e.target.parentElement
+            else if(e.target.nodeName === "LI") li = e.target
+
+                console.log(li);
             const editBtnContainer = li.querySelector(".editBtns")
 
             document.querySelectorAll(".editBtns").forEach(btn=>btn.classList.add("invisible"))
