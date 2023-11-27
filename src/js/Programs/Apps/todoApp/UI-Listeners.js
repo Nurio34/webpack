@@ -245,15 +245,15 @@ export function editBtnsListeners() {
                             timeSelect.addEventListener("change", (e)=> time = e.target.value)
 
 
-                        if(importance) {
+                        if(!importance) {
                             const importanceSelect = editModal.querySelector("[name='ModalImportance']")
-                        const importanceOptions =Array.from(importanceSelect.querySelectorAll("option"))       
+                            const importanceOptions =Array.from(importanceSelect.querySelectorAll("option"))       
                             console.log(importance);
-                            importanceOptions.forEach(option=>{
-                                option.setAttribute("selected", false)                            
-                            })
-                            importanceOptions.filter(option => option.value === importance)[0].selected = true
-                            importanceSelect.addEventListener("change", (e)=> importance = e.target.value)
+                                importanceOptions.forEach(option=>{
+                                    option.setAttribute("selected", false)                            
+                                })
+                                importanceOptions.filter(option => option.value === importance)[0].selected = true
+                                importanceSelect.addEventListener("change", (e)=> importance = e.target.value)
                         }
 
 
