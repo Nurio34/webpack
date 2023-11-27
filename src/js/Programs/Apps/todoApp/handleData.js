@@ -27,7 +27,7 @@ export default function handleData(shift,day,category,todo,date,hour,importance,
 
     else if(editingMode = "complate") {
         todoList = Delete(todoList,id)
-        AddToComplated(complatedList,shift,day,category,todo,date,"importance",hour,addDate,updateDate,addTime,complateDate,complateTime)
+        AddToComplated(complatedList,shift,day,category,todo,date,hour,addDate,updateDate,addTime,complateDate,complateTime)
         localStorage.setItem("complated",JSON.stringify(complatedList))
     }
 

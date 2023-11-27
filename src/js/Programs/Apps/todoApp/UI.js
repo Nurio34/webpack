@@ -122,7 +122,7 @@ function todoTextareaHTML() {
                 col-start-1 col-span-full
         ">
             <textarea  name="Todo" id="todoTextarea" rows="3" class=" col-span-10 px-1 grow border-r-2 border-black "></textarea>
-            <i id="submitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2 h-full grid place-content-center"></i>
+            <i id="submitBtn" class="fa-regular fa-rectangle-list col-span-2 h-full grid place-content-center"></i>
         </div>
         
     `
@@ -300,7 +300,7 @@ export function partlyTodosHTML(shiftFilter,data) {
                                                 return `
                                                     <li class="${todo.importance} relative grid border-b-2 border-black pb-2 pr-2">
                                                         <div class=" pointer-events-none col-span-2 ml-1">
-                                                            <div class=" pointer-events-none float-left mr-1 bg-white rounded-b-xl p-1">
+                                                            <div class=" pointer-events-none float-left mr-1 rounded-b-xl p-1 text-center" style="background-color : rgba(255,255,255,0.5">
                                                                 <p class="text-center leading-4">${todo.date}</p>
                                                                 <p>${todo.hour}</p>
                                                             </div>
@@ -510,7 +510,7 @@ export function editModal() {
                 <textarea name="ModalTodo" id="modalTodoTextarea" rows="3"
                     class=" col-span-10 px-1 grow border-r-2 border-black"
                 ></textarea>
-                <i id="ModalSubmitBtn" class="fa-regular fa-rectangle-list px-2 col-span-2"></i>
+                <i id="ModalSubmitBtn" class="fa-regular fa-rectangle-list col-span-2 w-full h-full grid place-content-center"></i>
             </div>
 
             <p id="addDate" class=" col-start-1 col-span-6">Add : 12.12.23 </p>
@@ -527,7 +527,7 @@ export function Are_You_Sure_Modal_HTML() {
 
 
     modalEl.innerHTML = `
-        <h2 class=" w-full text-center"> Is Complated ? </h2>
+        <h2 class=" w-full text-center"></h2>
         <button id="yesBtn" class=" border-2 border-black bg-green-500 py-1 px-2"> Yes </button>
         <button id="noBtn" class=" border-2 border-black bg-red-500 py-1 px-2"> No </button> 
     `
@@ -583,7 +583,9 @@ export function Nth_Day() {
 
                     console.log({hour,minute});
 
-                    if(hour === "00" && minute >=0 || minute <=59) console.log("bingo");
+                    if(hour === "00" && minute >=0 || minute <=59) {
+                        console.log("bingo");
+                    }
             }, 1000);
         }
 }

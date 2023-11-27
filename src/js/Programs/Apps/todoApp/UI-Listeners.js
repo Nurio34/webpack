@@ -105,7 +105,6 @@ export function listeners() {
                 case "Date":
                     date = e.target.value
                     const day = days[new Date(date).getDay()]
-                    console.log(day);
                     date = date.split("-")
                     date = `${date[2]}-${date[1]}-${date[0].substring(2)}<br>${day}`
                     break;
@@ -173,7 +172,7 @@ export function editBtnsListeners() {
             const click_X = e.clientX
             const click_Y = e.clientY
 
-            // if(!editBtnsContainer) return 
+            if(!editBtnContainer) return 
 
             const editBtnContainer_Width = editBtnContainer.getBoundingClientRect().width
             const screenWidth = window.innerWidth
@@ -210,6 +209,7 @@ export function editBtnsListeners() {
                                 shiftOptions.filter(option => option.value === shift)[0].selected = true
                             shiftSelect.addEventListener("change", (e)=> shift = e.target.value)
     
+
                         const daySelect = editModal.querySelector("[name='ModalDay']")
                             const dayOptions = Array.from(daySelect.querySelectorAll("option"))                                
                                     dayOptions.forEach(option=>{
@@ -234,17 +234,20 @@ export function editBtnsListeners() {
                             }).join("-")
                             dateSelect.addEventListener("change", (e)=> {
                                 date = e.target.value
-                                date = date.split("-").reverse().map((item,ind)=>{
-                                    return ind === 2 ? item.substring(2,4) : item
-                                }).join(".")
+                                const day = days[new Date(date).getDay()]
+                                date = date.split("-")
+                                date = `${date[2]}-${date[1]}-${date[0].substring(2)}<br>${day}`
                             } )
                             
+
                         const timeSelect = editModal.querySelector("[name='ModalTime']")
                             timeSelect.value = time
                             timeSelect.addEventListener("change", (e)=> time = e.target.value)
 
+
                         const importanceSelect = editModal.querySelector("[name='ModalImportance']")
-                        const importanceOptions =Array.from(importanceSelect.querySelectorAll("option"))                        
+                        const importanceOptions =Array.from(importanceSelect.querySelectorAll("option"))       
+                            console.log(importance);
                             importanceOptions.forEach(option=>{
                                 option.setAttribute("selected", false)                            
                             })
@@ -252,18 +255,19 @@ export function editBtnsListeners() {
                             importanceSelect.addEventListener("change", (e)=> importance = e.target.value)
 
 
-                            console.log(importanceSelect);
-    
                         const todoTextarea = editModal.querySelector("[name='ModalTodo']")
                             todoTextarea.value = editingTodo
                             todoTextarea.addEventListener("input",(e)=> todo = e.target.value)
     
+
                         const addDateEl = editModal.querySelector("#addDate")
                             addDateEl.innerText = `Add : ${addDate}`
     
+
                         const updateDateEl = editModal.querySelector("#updateDate")
                             updateDateEl.innerText = `Update : ${updateDate}`
     
+
                         const submitBtn = editModal.querySelector("#ModalSubmitBtn")
                             submitBtn.addEventListener("click",()=> {
     
@@ -363,24 +367,30 @@ function Change_Selects_Background(selectEl,shift) {
 }
 
 function Are_You_Sure_Modal(target) {
-
     const sectionEl = document.querySelector("section")
         sectionEl.appendChild(Are_You_Sure_Modal_HTML())
-
+ 
     const sureModalEls = document.querySelectorAll(".sureModal")
+
+    let h2
+    const msgFrom = target.dataset.type
+        sureModalEls.forEach(sureModal=>{
+            h2 = sureModal.querySelectorAll("h2")
+        })
+        h2.forEach(h=>{
+            if(msgFrom === "complateBtn") h.textContent = "Is Complated ?"
+            else h.textContent = "U Sure ?"
+        })
 
     const modalBtns = document.querySelectorAll("#yesBtn,#noBtn")
 
-
         modalBtns.forEach(btn=>btn.addEventListener("click",modalFunction))
 
-    
     function modalFunction(e) {
 
         switch (target.dataset.type) {
 
                 case "complateBtn":
-
                     switch (e.target.id) {
                 
                         case "yesBtn":                            
