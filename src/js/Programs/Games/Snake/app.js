@@ -15,6 +15,7 @@ export function Options() {
     return {
         Size : 10,
         Width : 1.875,
-        GameSpeed : 500
+        GameSpeed : 1000,
+        Snake_Length : 1
     }
 }

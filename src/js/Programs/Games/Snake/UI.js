@@ -93,6 +93,6 @@ export function Curren_Position(item) {
     else if( item_Y_Position >= Options().Width && item_Y_Position < Options().Width * 9) item_Y_Position = "Y9"
     else if( item_Y_Position >= Options().Width && item_Y_Position < Options().Width * 10) item_Y_Position = "Y10"
 
-    Position_Obj.XY = [item_X_Position,item_Y_Position]
+    Position_Obj.XY = [item_X_Position,   item_Y_Position]
     return Position_Obj
 }
