@@ -1,9 +1,11 @@
 
+import CwParseInt from "./Programs/Code-Wars/4-parseInt"
+import {carRace} from "./Programs/Apps/carRace/main"
 import { todo } from "./Programs/Apps/todoApp/app"
 import { g2048 } from "./Programs/Games/2048/app"
 import { Snake } from "./Programs/Games/Snake/app"
-import {carRace} from "./Programs/Apps/carRace/main"
-import CwParseInt from "./Programs/Code-Wars/4-parseInt"
+import { Puzzle } from "./Programs/Games/Puzzle/app"
+
 
 export function Main_Header_Container_HTML() {
 
@@ -59,5 +61,5 @@ export function Main_Header_Container_Listeners() {
                     break;
             }
         }))
-        Snake()
+        Puzzle()
 }
