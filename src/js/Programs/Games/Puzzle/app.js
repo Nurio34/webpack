@@ -18,7 +18,7 @@ import border_left_2 from "../../../../assets/images/border-left-2.png"
 import border_top_2 from "../../../../assets/images/border-top-2.png"
 import border_right_2 from "../../../../assets/images/border-right-2.png"
 import border_bottom_2 from "../../../../assets/images/border-bottom-2.png"
-import { Events } from "./events"
+import { Inventory } from "./inventory"
 const Inventory_Borders = [border_left_2,border_top_2,border_right_2,border_bottom_2]
 
 
@@ -105,13 +105,15 @@ export function Puzzle() {
                 Piece.dataset.piece = i + 1
                 Piece.className = `absolute top-[0px] w-[34px] rounded-full`
                 if(Pieces[i]) Piece.src = Pieces[i]
-                Piece.style.transform = `translate(${Pieces_Translates[i+1]})`
+            
+            let random = Math.floor(Math.random()*361)
+                Piece.style.transform = `translate(${Pieces_Translates[i+1]}) rotateZ(${random}deg)`
         }
 
     const Inventory_Bar = document.createElement("div")
         Main_El.appendChild(Inventory_Bar)
         Inventory_Bar.id = "Inventory"
-        Inventory_Bar.className = "relative h-[72px]"
+        Inventory_Bar.className = "relative h-[72px] pointer-events-none"
             for(let i = 0; i<Inventory_Borders.length; i++) {
                 let border = document.createElement("img")
                     Inventory_Bar.appendChild(border)
@@ -119,5 +121,5 @@ export function Puzzle() {
                     border.src = Inventory_Borders[i]
             }
 
-    Events()
+    Inventory()
 }
