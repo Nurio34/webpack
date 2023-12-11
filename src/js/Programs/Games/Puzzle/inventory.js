@@ -1,19 +1,19 @@
-import { Drag } from "./drag"
 
 export function Inventory() {
     
-    const Items_In_Inventory = []
+    let Items_In_Inventory = []
 
     const Pieces = document.querySelectorAll("[data-piece]")
         Pieces.forEach(Piece => Piece.addEventListener("click",e=>{
-            if(Piece.dataset.status !== "in_inventory") {
-                Piece.dataset.status = "in_inventory"
+            if(Piece.dataset.status === "hidden") {
+                setTimeout(() => {
+                    Piece.dataset.status = "in_inventory"
+                }, 0);
                 Piece.classList.add("transition")                
-                Items_In_Inventory.push(Piece)                
+                Items_In_Inventory.push(Piece)
+                Items_In_Inventory = Items_In_Inventory.filter(Item => Item.dataset.status !== "in_hole")                
                 Inventory_Moves(Items_In_Inventory)
-                Drag()
             }
-            
         }))
 }
 

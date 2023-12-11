@@ -18,10 +18,9 @@ import border_left_2 from "../../../../assets/images/border-left-2.png"
 import border_top_2 from "../../../../assets/images/border-top-2.png"
 import border_right_2 from "../../../../assets/images/border-right-2.png"
 import border_bottom_2 from "../../../../assets/images/border-bottom-2.png"
-import { Inventory } from "./inventory"
 const Inventory_Borders = [border_left_2,border_top_2,border_right_2,border_bottom_2]
-
-
+import { Inventory } from "./inventory"
+import {Drag} from "./drag"
 
 
 export function Puzzle() {
@@ -74,6 +73,7 @@ export function Puzzle() {
         6 : `60px,290px`,
         7 : `180px,180px`
     }
+    
         for(let i=1; i <= Holes; i++){
             let Hole = document.createElement("div")
                 Image_Container.appendChild(Hole)
@@ -81,15 +81,6 @@ export function Puzzle() {
                 Hole.classList.add(`hole${i}`)
                 Hole.style.transform = `translate(${Holes_Translates[i]})`
         }
-
-    const Pieces_Translate_Solves = {
-        1 : "71px,171px",
-        2 : `141px,81px`,
-        3 : `271px,31px`,
-        4 : `281px,181px`,
-        5 : `231px,251px`,
-        6 : `61px,291px`,
-    }
 
     const Pieces_Translates = {
         1 : "121px,-11px",
@@ -103,6 +94,7 @@ export function Puzzle() {
             let Piece = document.createElement("img")
                 if(i < Pieces.length) Image_Container.appendChild(Piece)
                 Piece.dataset.piece = i + 1
+                Piece.dataset.status = "hidden"
                 Piece.className = `absolute top-[0px] w-[34px] rounded-full`
                 if(Pieces[i]) Piece.src = Pieces[i]
             
@@ -121,5 +113,8 @@ export function Puzzle() {
                     border.src = Inventory_Borders[i]
             }
 
+    const All_Images = document.querySelectorAll("img")
+        All_Images.forEach(img=>img.addEventListener("mousedown",e=>e.preventDefault()))
     Inventory()
+    Drag()
 }
