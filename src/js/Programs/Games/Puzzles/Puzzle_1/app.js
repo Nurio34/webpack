@@ -1,47 +1,42 @@
 
-import puzzle1 from "../../../../assets/images/puzzle1.webp"
-import border_left from "../../../../assets/images/border_left.png"
-import border_right from "../../../../assets/images/border_right.png"
-import border_top from "../../../../assets/images/border_top.png"
-import border_bottom from "../../../../assets/images/border_bottom.png"
+import puzzle1 from "../../../../../assets/images/puzzle1.webp"
+import border_left from "../../../../../assets/images/border_left.png"
+import border_right from "../../../../../assets/images/border_right.png"
+import border_top from "../../../../../assets/images/border_top.png"
+import border_bottom from "../../../../../assets/images/border_bottom.png"
 const Borders = [border_left,border_top,border_right,border_bottom]
-import piece1 from "../../../../assets/images/1.png"
-import piece2 from "../../../../assets/images/2.png"
-import piece3 from "../../../../assets/images/3.png"
-import piece4 from "../../../../assets/images/4.png"
-import piece5 from "../../../../assets/images/5.png"
-import piece6 from "../../../../assets/images/6.png"
+import piece1 from "../../../../../assets/images/1.png"
+import piece2 from "../../../../../assets/images/2.png"
+import piece3 from "../../../../../assets/images/3.png"
+import piece4 from "../../../../../assets/images/4.png"
+import piece5 from "../../../../../assets/images/5.png"
+import piece6 from "../../../../../assets/images/6.png"
 const Pieces = [piece1,piece2,piece3,piece4,piece5,piece6]
-import cyberpunk_bgImg from "../../../../assets/images/cyberpunk.png"
-import cyberpunk2_bgImg from "../../../../assets/images/cyberpunk-2.jpg"
-import border_left_2 from "../../../../assets/images/border-left-2.png"
-import border_top_2 from "../../../../assets/images/border-top-2.png"
-import border_right_2 from "../../../../assets/images/border-right-2.png"
-import border_bottom_2 from "../../../../assets/images/border-bottom-2.png"
+import border_left_2 from "../../../../../assets/images/border-left-2.png"
+import border_top_2 from "../../../../../assets/images/border-top-2.png"
+import border_right_2 from "../../../../../assets/images/border-right-2.png"
+import border_bottom_2 from "../../../../../assets/images/border-bottom-2.png"
 const Inventory_Borders = [border_left_2,border_top_2,border_right_2,border_bottom_2]
 import { Inventory } from "./inventory"
 import {Drag} from "./drag"
+import { Dev } from "./dev"
+import { Puzzle2 } from "../Puzzle_2/app"
+const Puzzles = [Puzzle1,Puzzle2]
 
+export function Select_Puzzle(ind) {
+    return Puzzles[ind]()
+}
 
-export function Puzzle() {
-    
-    document.body.className = "grid justify-center items-start min-h-[100vh]"
-    document.body.style.backgroundImage = `url('${cyberpunk2_bgImg}')`
-    document.body.style.backgroundRepeat = "no-repeat"
-    document.body.style.backgroundSize = "cover"
+export function Puzzle1() {
 
-    const Header = document.querySelector("header")
-        Header.className = `self-start`
-    const Header_Height = Header.getBoundingClientRect().height
+    const Main_El = document.querySelector("main")
 
-    const Main_El = document.createElement("main")
-        document.body.appendChild(Main_El)
-        Main_El.style.minHeight = `calc(667px - ${Header_Height}px )`
-        Main_El.className = "grid place-content-center isolate overflow-hidden max-w-[375px]"
-        Main_El.style.backgroundImage = `url('${cyberpunk_bgImg}')`
+    const Container = document.createElement("div")
+        Main_El.appendChild(Container)
+        Container.id = "container"
 
     const Gameboard = document.createElement("section")
-        Main_El.appendChild(Gameboard)
+        Container.appendChild(Gameboard)
         Gameboard.id = "Gameboard"
         Gameboard.className = "w-[375px] max-w-[375px]"
 
@@ -103,7 +98,7 @@ export function Puzzle() {
         }
 
     const Inventory_Bar = document.createElement("div")
-        Main_El.appendChild(Inventory_Bar)
+        Container.appendChild(Inventory_Bar)
         Inventory_Bar.id = "Inventory"
         Inventory_Bar.className = "relative h-[72px] pointer-events-none"
             for(let i = 0; i<Inventory_Borders.length; i++) {
@@ -115,6 +110,16 @@ export function Puzzle() {
 
     const All_Images = document.querySelectorAll("img")
         All_Images.forEach(img=>img.addEventListener("mousedown",e=>e.preventDefault()))
+
+    const Audio_El = document.createElement("audio")
+        Container.appendChild(Audio_El)
     Inventory()
     Drag()
+    // Dev()
+}
+
+export function Audio(sound) {
+    const Audio_El = document.querySelector("audio")
+        Audio_El.src = sound
+        Audio_El.play()
 }

@@ -11,16 +11,16 @@ export function Move_Boxes() {
 
     let X_Start,Y_Start,X_End,Y_End
 
-    window.addEventListener("touchstart",e=>{
+    window.addEventListener("start",e=>{
 
-        X_Start = e.touches[0].clientX
-        Y_Start = e.touches[0].clientY
+        X_Start = e.es[0].clientX
+        Y_Start = e.es[0].clientY
         console.log({X_Start,Y_Start});
     })
 
-    window.addEventListener("touchend",e=>{
-        X_End = e.changedTouches[0].clientX
-        Y_End = e.changedTouches[0].clientY
+    window.addEventListener("end",e=>{
+        X_End = e.changedes[0].clientX
+        Y_End = e.changedes[0].clientY
             console.log({X_End,Y_End});
 
         if(X_Start - X_End > 50) Lines_Y_Backward()

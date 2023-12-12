@@ -1,5 +1,7 @@
 import { Inventory_Moves } from "./inventory"
 import {Move} from "./move"
+import hole from "../../../../../assets/audios/hole.wav"
+import { Audio } from "./app"
 
 export function Drag() {
     let drag = false
@@ -67,7 +69,7 @@ export function Drag() {
                                             Piece.dataset.hole = i    
                                             Piece.classList.remove(`z-[10]`)
                                             Holes_With_Pieces.push(i)
-
+                                                Audio(hole)
                                             const Pieces_In_Inventory = document.querySelectorAll("[data-status='in_inventory']")
                                                 if(Pieces_In_Inventory.length)Inventory_Moves(Pieces_In_Inventory)
 

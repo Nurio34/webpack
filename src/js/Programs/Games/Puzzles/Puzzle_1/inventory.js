@@ -1,4 +1,7 @@
 
+import found from "../../../../../assets/audios/found.wav"
+import {Audio} from "./app"
+
 export function Inventory() {
     
     let Items_In_Inventory = []
@@ -9,9 +12,10 @@ export function Inventory() {
                 setTimeout(() => {
                     Piece.dataset.status = "in_inventory"
                 }, 0);
-                Piece.classList.add("transition")                
+                Piece.classList.add("transition")              
                 Items_In_Inventory.push(Piece)
                 Items_In_Inventory = Items_In_Inventory.filter(Item => Item.dataset.status !== "in_hole")                
+                Audio(found)
                 Inventory_Moves(Items_In_Inventory)
             }
         }))

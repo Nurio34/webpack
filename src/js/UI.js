@@ -4,7 +4,7 @@ import {carRace} from "./Programs/Apps/carRace/main"
 import { todo } from "./Programs/Apps/todoApp/app"
 import { g2048 } from "./Programs/Games/2048/app"
 import { Snake } from "./Programs/Games/Snake/app"
-import { Puzzle } from "./Programs/Games/Puzzle/app"
+import { Puzzle } from "./Programs/Games/Puzzles/Puzzle"
 
 
 export function Main_Header_Container_HTML() {

@@ -24,13 +24,13 @@ module.exports = {
             },
 
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif|svg|mp3|wav)$/i,
                 use: [
                   {
                     loader: 'file-loader',
                     options: {
                       name: '[name].[ext]',
-                      outputPath: 'images/',
+                      outputPath: 'assets/',
                     },
                   },
                 ],
@@ -40,6 +40,7 @@ module.exports = {
                 test: /\.webp$/i,
                 type: 'asset/resource',
             },
+            
         ]
     },
 

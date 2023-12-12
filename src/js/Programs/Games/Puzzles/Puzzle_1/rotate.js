@@ -1,3 +1,6 @@
+import { Audio } from "./app"
+import locked from "../../../../../assets/audios/locked.wav"
+import { Puzzle_Solved } from "../Solved"
 
 export function Rotate() {
 
@@ -17,34 +20,58 @@ export function Rotate() {
 
     const Pieces = document.querySelectorAll("[data-status = 'in_hole']")
 
-        Pieces.forEach(Piece=>Piece.addEventListener("mousedown",e=>{
+        Pieces.forEach(Piece=>Piece.addEventListener("mousedown",Mouse_Down))
+
+        window.addEventListener("mousemove",Mouse_Move)
+
+        window.addEventListener("mouseup",Mouse_Up)
+
+
+        Pieces.forEach(Piece=>Piece.addEventListener("touchstart",Mouse_Down))
+
+        window.addEventListener("touchmove",Mouse_Move)
+
+        window.addEventListener("touchend",Mouse_Up)
+
+        function Mouse_Down(e) {
             Rotate = true
-
+        
             const Piece = e.target
-
                 
-                Piece.classList.add("transition")
+            Piece.classList.add("transition")
             Piece_Left = Math.floor(Piece.getBoundingClientRect().x)
             Piece_Top =  Math.floor(Piece.getBoundingClientRect().y)
             Piece_Width = Piece.clientWidth
             Piece_Rotate = +Piece.style.transform.split(" ")[2].split("(")[1].split("deg)")[0]
             Piece_Translate = Piece.style.transform.split(" ").filter((item,ind)=> ind != 2).join(" ")
-
-            Mouse_OldX = e.clientX
-            Mouse_OldY = e.clientY
-
+        
+            if(e.touches) {
+                Mouse_OldX = e.touches[0].clientX
+                Mouse_OldY = e.touches[0].clientY
+            }
+            else {
+                Mouse_OldX = e.clientX
+                Mouse_OldY = e.clientY
+            }
+        
             Current_Piece = Piece
-        }))
+        }
 
-        window.addEventListener("mousemove",e=>{
+        function Mouse_Move(e) {
 
             if(Rotate === true) {
 
                 Mouse_OldX = Mouse_NewX
                 Mouse_OldY = Mouse_NewY
 
-                Mouse_NewX = e.clientX
-                Mouse_NewY = e.clientY
+                if(e.touches) {
+                    Mouse_NewX = e.touches[0].clientX
+                    Mouse_NewY = e.touches[0].clientY
+                }else {
+                    Mouse_NewX = e.clientX
+                    Mouse_NewY = e.clientY
+                }
+                
 
                 const X_Diff = Mouse_NewX - Mouse_OldX
                 const Y_Diff = Mouse_NewY - Mouse_OldY
@@ -75,14 +102,19 @@ export function Rotate() {
                     Current_Piece.style.transform = `${Piece_Translate} rotateZ(${Piece_Rotate}deg)`
                 }                
             }
-        })
+        }
 
-        window.addEventListener("mouseup",e=>{
+        function Mouse_Up(e) {
             Rotate = false
-            const True_Rotate = Piece_Rotate % 360 < 10 || Piece_Rotate % 360 > 350
-            if(True_Rotate && Current_Piece.dataset.piece === Current_Piece.dataset.hole) {
-                Current_Piece.dataset.status = "locked"
-            }
-
-        })
+            const True_Rotate = Math.abs(Piece_Rotate % 360) < 10 || Math.abs(Piece_Rotate % 360) > 350
+                if(Current_Piece && Current_Piece.dataset.status !== "locked" && True_Rotate && Current_Piece.dataset.piece === Current_Piece.dataset.hole) {
+                    Current_Piece.dataset.status = "locked"
+                    Audio(locked)
+                    Current_Piece = ""
+                }
+            
+            const Locked_Pieces = document.querySelectorAll("[data-status='locked']")
+                if(Locked_Pieces.length === 6) Puzzle_Solved()
+        }
 }
+
