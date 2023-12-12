@@ -27,11 +27,11 @@ export function Rotate() {
         window.addEventListener("mouseup",Mouse_Up)
 
 
-        Pieces.forEach(Piece=>Piece.addEventListener("touchstart",Mouse_Down))
+        Pieces.forEach(Piece=>Piece.addEventListener("touchstart",Mouse_Down,{passive:true}))
 
-        window.addEventListener("touchmove",Mouse_Move)
+        window.addEventListener("touchmove",Mouse_Move,{passive:true})
 
-        window.addEventListener("touchend",Mouse_Up)
+        window.addEventListener("touchend",Mouse_Up,{passive:true})
 
         function Mouse_Down(e) {
             Rotate = true
@@ -46,6 +46,7 @@ export function Rotate() {
             Piece_Translate = Piece.style.transform.split(" ").filter((item,ind)=> ind != 2).join(" ")
         
             if(e.touches) {
+                e.preventDefault()
                 Mouse_OldX = e.touches[0].clientX
                 Mouse_OldY = e.touches[0].clientY
             }
@@ -65,6 +66,7 @@ export function Rotate() {
                 Mouse_OldY = Mouse_NewY
 
                 if(e.touches) {
+                    e.preventDefault()
                     Mouse_NewX = e.touches[0].clientX
                     Mouse_NewY = e.touches[0].clientY
                 }else {

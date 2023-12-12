@@ -78,8 +78,8 @@ export function Puzzle1() {
         }
 
     const Pieces_Translates = {
-        1 : "121px,-11px",
-        2 : `361px,-116px`,
+        1 : "121px,11px",
+        2 : `331px,116px`,
         3 : `71px,431px`,
         4 : `321px,331px`,
         5 : `1px,201px`,
