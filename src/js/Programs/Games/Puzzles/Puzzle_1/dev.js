@@ -21,6 +21,6 @@ export function Dev() {
         Piece.dataset.hole = i + 1
     })
 
-    Move()
-    // Puzzle_Solved()
+    // Move()
+    Puzzle_Solved()
 }

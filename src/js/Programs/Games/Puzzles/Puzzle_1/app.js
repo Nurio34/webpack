@@ -33,7 +33,7 @@ export function Puzzle1() {
 
     const Container = document.createElement("div")
         Main_El.appendChild(Container)
-        Container.id = "container"
+        Container.id = "Container"
 
     const Gameboard = document.createElement("section")
         Container.appendChild(Gameboard)
@@ -109,7 +109,7 @@ export function Puzzle1() {
             }
 
     const All_Images = document.querySelectorAll("img")
-        All_Images.forEach(img=>img.addEventListener("mousedown",e=>e.preventDefault()))
+        All_Images.forEach(img=>img.addEventListener("mousedown",e=>e.preventDefault()))            
 
     const Audio_El = document.createElement("audio")
         Container.appendChild(Audio_El)

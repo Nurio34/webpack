@@ -11,15 +11,20 @@ export function createUI(){
     const Gap = Options.Gap
     const Theme =  Options.Theme
 
+    const Header_El = document.querySelector("header")
+    const Header_Height = Header_El.clientHeight
+        console.log(Header_Height);
+
     const mainElement = document.createElement("main")
-        mainElement.className = "min-h-[80vh] grid place-items-center"
+        mainElement.className = "grid place-items-center"
+        mainElement.style.minHeight = `calc(100vh - ${Header_Height}px)`
         document.body.append(mainElement) 
         document.body.className = "min-h-screen"
 
     const gameZone = document.createElement("section")
         mainElement.append(gameZone)
         gameZone.className = `grid relative rounded-lg`
-        gameZone.style = `padding:${Padding}rem; gap:${Gap}rem; background-color:${Theme}; grid-template-columns: repeat(${Size}, minmax(0,1fr))`
+        gameZone.style = `padding:${Padding}rem; gap:${Gap}rem; background-color:${Theme}; grid-template-columns: repeat(${Size},1fr); max-width:${Options.Max_GameZone_Width})`
         gameZone.innerHTML = drawGameZone()
 
     //** AFTER CRETAING UI and GAMEZONE, CREATE FİRST BOX */

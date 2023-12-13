@@ -22,18 +22,18 @@ export function Rotate() {
 
         Pieces.forEach(Piece=>Piece.addEventListener("mousedown",Mouse_Down))
 
-        window.addEventListener("mousemove",Mouse_Move)
+        document.querySelector("#container").addEventListener("mousemove",Mouse_Move)
 
-        window.addEventListener("mouseup",Mouse_Up)
+        document.querySelector("#container").addEventListener("mouseup",Mouse_Up)
 
 
         Pieces.forEach(Piece=>Piece.addEventListener("touchstart",Mouse_Down,{passive:true}))
 
-        window.addEventListener("touchmove",Mouse_Move,{passive:true})
+        document.querySelector("#container").addEventListener("touchmove",Mouse_Move,{passive:true})
 
-        window.addEventListener("touchend",Mouse_Up,{passive:true})
+        document.querySelector("#container").addEventListener("touchend",Mouse_Up,{passive:true})
 
-        function Mouse_Down(e) {
+        function Mouse_Down(e) {            
             Rotate = true
         
             const Piece = e.target
@@ -58,7 +58,7 @@ export function Rotate() {
             Current_Piece = Piece
         }
 
-        function Mouse_Move(e) {
+        function Mouse_Move(e) {            
 
             if(Rotate === true) {
 
@@ -106,7 +106,7 @@ export function Rotate() {
             }
         }
 
-        function Mouse_Up(e) {
+        function Mouse_Up(e) {            
             Rotate = false
             const True_Rotate = Math.abs(Piece_Rotate % 360) < 10 || Math.abs(Piece_Rotate % 360) > 350
                 if(Current_Piece && Current_Piece.dataset.status !== "locked" && True_Rotate && Current_Piece.dataset.piece === Current_Piece.dataset.hole) {
