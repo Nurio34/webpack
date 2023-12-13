@@ -29,7 +29,7 @@ export function Move_Boxes() {
         else if(Y_Start - Y_End < -50) Lines_X_Down();
     },{passive:true})
 
-
+    document.querySelector("main").addEventListener("touchmove",e=>{},{passive:true})
 }
 
 export function Arrow_Keys_Events(e){

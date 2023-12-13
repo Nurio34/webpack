@@ -3,6 +3,9 @@ import {createUI} from "./gameZone"
 import { Arrow_Keys_Events } from "./moveBoxes";
 
 export function g2048() {
+
+    document.body.className = "min-h-[100vh] overflow-hidden"
+
     localStorage.removeItem("AllPositions")
     window.removeEventListener("keydown",Arrow_Keys_Events)
     createUI()

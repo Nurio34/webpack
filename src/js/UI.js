@@ -41,6 +41,7 @@ export function Main_Header_Container_Listeners() {
     const selectEls = document.querySelectorAll("select")
 
         selectEls.forEach(el=> el.addEventListener("change", e=>{
+            console.log(window);
 
             document.body.className = ""
             document.body.style.backgroundImage = ``
@@ -73,5 +74,4 @@ export function Main_Header_Container_Listeners() {
                     break;
             }
         }))
-        g2048()
 }

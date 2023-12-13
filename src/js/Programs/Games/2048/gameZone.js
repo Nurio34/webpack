@@ -19,7 +19,6 @@ export function createUI(){
         mainElement.className = "grid place-items-center"
         mainElement.style.minHeight = `calc(100vh - ${Header_Height}px)`
         document.body.append(mainElement) 
-        document.body.className = "min-h-screen"
 
     const gameZone = document.createElement("section")
         mainElement.append(gameZone)

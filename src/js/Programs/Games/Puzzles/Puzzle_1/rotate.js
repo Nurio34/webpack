@@ -22,16 +22,16 @@ export function Rotate() {
 
         Pieces.forEach(Piece=>Piece.addEventListener("mousedown",Mouse_Down))
 
-        document.querySelector("#container").addEventListener("mousemove",Mouse_Move)
+        document.querySelector("#Container").addEventListener("mousemove",Mouse_Move)
 
-        document.querySelector("#container").addEventListener("mouseup",Mouse_Up)
+        document.querySelector("#Container").addEventListener("mouseup",Mouse_Up)
 
 
         Pieces.forEach(Piece=>Piece.addEventListener("touchstart",Mouse_Down,{passive:true}))
 
-        document.querySelector("#container").addEventListener("touchmove",Mouse_Move,{passive:true})
+        document.querySelector("#Container").addEventListener("touchmove",Mouse_Move,{passive:true})
 
-        document.querySelector("#container").addEventListener("touchend",Mouse_Up,{passive:true})
+        document.querySelector("#Container").addEventListener("touchend",Mouse_Up,{passive:true})
 
         function Mouse_Down(e) {            
             Rotate = true
