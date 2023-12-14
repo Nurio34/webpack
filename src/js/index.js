@@ -1,5 +1,6 @@
 
 import Tailwind_Css from "../assets/styles/tailwind.css"
+import logo from "../assets/images/logo.png"
 import { get } from "lodash"
 import { Main_Header_Container_HTML, Main_Header_Container_Listeners } from "./UI"
 

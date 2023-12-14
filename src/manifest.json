@@ -1,0 +1,16 @@
+{
+    "name" : "All In One Application",
+    "short_name" : "All In 1",
+    "start_url" : "./index.html",
+    "display" : "standalone",
+    "background_color" : "#4CB9E7",
+    "theme_color" : "#E26EE5",
+    "orientation" : "portrait-primary",
+    "icons" : [
+        {
+            "src" : "./assets/logo.png",
+            "type" : "image/png",
+            "sizes" : "144x144"
+        }
+    ]
+}
