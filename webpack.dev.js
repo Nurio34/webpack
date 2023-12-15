@@ -8,7 +8,7 @@ module.exports = merge(common,{
 
     devServer : {
 
-        static : "./dist",
+        static : "./src",
         hot : true,
         port : 3000,
         open : true,
