@@ -24,7 +24,7 @@ module.exports = {
             },
 
             {
-                test: /\.(png|jpe?g|gif|svg|mp3|wav)$/i,
+                test: /\.(png|jpe?g|gif|svg|mp3|wav|webp)$/i,
                 use: [
                   {
                     loader: 'file-loader',
@@ -35,12 +35,6 @@ module.exports = {
                   },
                 ],
             },
-
-            {
-                test: /\.webp$/i,
-                type: 'asset/resource',
-            },
-            
         ]
     },
 

@@ -1,5 +1,6 @@
 
 import Tailwind_Css from "../assets/styles/tailwind.css"
+import Style from "../assets/styles/style.css"
 import logo144 from "../assets/images/logo144.png"
 import logo192 from "../assets/images/logo192.png"
 import logo512 from "../assets/images/logo512.png"

@@ -2,7 +2,7 @@
 import Recipe_Logo from "../../../../assets/images/Recipe_Logo.webp"
 import Shakshuk from "../../../../assets/images/Shakshuk.webp"
 
-export function Recipe() {
+export function API_App() {
 
     const Header = document.querySelector("header")
     const Recipe_Header = document.createElement("div")

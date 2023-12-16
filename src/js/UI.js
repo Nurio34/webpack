@@ -7,7 +7,7 @@ import { g2048 } from "./Programs/Games/2048/app"
 import { Snake } from "./Programs/Games/Snake/app"
 import { Puzzle } from "./Programs/Games/Puzzles/Puzzle"
 import { Arrow_Keys_Events } from "./Programs/Games/2048/moveBoxes"
-import { Recipe } from "./Programs/Apps/recipeApp/app"
+import { API_App } from "./Programs/Apps/recipeApp/app"
 
 
 export function Main_Header_Container_HTML() {
@@ -25,7 +25,7 @@ export function Main_Header_Container_HTML() {
                 <option selected disabled value="apps">Apps</option>
                 <option value="">Car Race</option>
                 <option value="todo">Todo</option>
-                <option value="recipe">Recipe</option>
+                <option value="apiApp">API Apps</option>
             </select>
             <select name="Games" id="gamesSelect">
                 <option selected disabled value="games">Games</option>
@@ -78,14 +78,14 @@ export function Main_Header_Container_Listeners() {
                     Puzzle()
                     break;
                     
-                case "recipe":
-                    Recipe()
+                case "apiApp":
+                    API_App()
                     break;
             
                 default:
                     break;
             }
         }))
-        Recipe()
+        API_App()
 
 }
